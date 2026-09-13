@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Sunless City</title>
+<style>
+  :root{
+    --ink:#e8e2d4; --ink-dim:#9a9282; --ink-faint:#5d574c;
+    --ground:#14120f; --panel:#1c1915; --line:#2e2a23;
+    --gold:#c9a227; --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+
+    --v-NARRATOR:#a9a394;
+    --v-FLIN:#d8a657;
+    --v-YOBMOT:#e39ac0;
+    --v-GUBMUH:#7fb3d5;
+    --v-MR_YTIDRUSBA:#8fc08f;
+    --v-MRS_YTIDRUSBA:#c1a0dc;
+    --v-YREKCAUQ:#dd8d70;
+    --v-HTURTEHTERAPS:#6fc0b8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+       font:16px/1.6 var(--serif);-webkit-font-smoothing:antialiased}
+
+  header{padding:34px 24px 20px;text-align:center;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-size:30px;letter-spacing:.16em;font-weight:400;text-transform:uppercase}
+  header .by{margin:10px 0 0;color:var(--ink-dim);font-size:13px;letter-spacing:.1em}
+  header .rule{width:60px;height:1px;background:var(--gold);margin:16px auto 14px;opacity:.7}
+  .cast{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;
+        font-size:12px;letter-spacing:.04em;color:var(--ink-faint)}
+  .cast span{display:inline-flex;align-items:center;gap:6px}
+  .cast i{width:9px;height:9px;border-radius:50%;display:inline-block}
+
+  .wrap{display:grid;grid-template-columns:290px 1fr;min-height:60vh}
+  nav{border-right:1px solid var(--line);padding:18px 0 60px;overflow-y:auto;
+      max-height:calc(100vh - 260px);position:sticky;top:0}
+  nav ol{list-style:none;margin:0;padding:0}
+  nav li button{display:flex;gap:12px;width:100%;text-align:left;background:none;border:0;
+      color:var(--ink-dim);font:14px/1.45 var(--serif);padding:9px 22px;cursor:pointer}
+  nav li button:hover{color:var(--ink);background:var(--panel)}
+  nav li button .num{color:var(--ink-faint);min-width:22px;text-align:right;
+      font-variant-numeric:tabular-nums}
+  nav li.on button{color:var(--gold);background:var(--panel);box-shadow:inset 3px 0 0 var(--gold)}
+  nav li.done button .num::after{content:"\2713";color:var(--gold);margin-left:4px;font-size:11px}
+
+  main{padding:26px 40px 150px;max-width:740px}
+  h2{margin:0 0 4px;font-size:22px;font-weight:400;letter-spacing:.04em}
+  .meta{color:var(--ink-faint);font-size:13px;margin:0 0 26px;letter-spacing:.06em}
+    .stage{margin:0 0 28px;padding:12px;background:linear-gradient(180deg,#171410,#0d0c0a);
+      border:1px solid var(--line);box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+    #viz{display:block;width:100%;aspect-ratio:16/9;height:auto;background:#090806;
+      border:1px solid #29241c;image-rendering:pixelated;image-rendering:crisp-edges}
+
+  .blk{margin:0 0 1.15em}
+  .blk .who{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+      margin:0 0 3px;opacity:.85}
+  .blk .line{color:var(--ink-faint);transition:color .15s}
+  .blk.speech .line{padding-left:14px;border-left:2px solid currentColor}
+  .blk span.s{cursor:pointer}
+  .blk span.s.cur{background:rgba(201,162,39,.16);box-shadow:0 0 0 3px rgba(201,162,39,.16);
+      border-radius:2px;color:#fff}
+  .blk.now .line{color:var(--ink-dim)}
+
+  footer{position:fixed;left:0;right:0;bottom:0;background:rgba(20,18,15,.97);
+     border-top:1px solid var(--line);backdrop-filter:blur(8px);padding:10px 20px}
+  .bar{display:flex;align-items:center;gap:14px;max-width:1000px;margin:0 auto;flex-wrap:wrap}
+  .bar button{background:none;border:1px solid var(--line);color:var(--ink);border-radius:4px;
+     padding:7px 12px;cursor:pointer;font:13px var(--serif)}
+  .bar button:hover{border-color:var(--gold);color:var(--gold)}
+  .bar button.play{min-width:72px;border-color:var(--gold);color:var(--gold)}
+  .bar .now-title{flex:1;min-width:150px;color:var(--ink-dim);font-size:13px;
+     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar .speaking{font-size:12px;letter-spacing:.1em;text-transform:uppercase;min-width:90px}
+  .bar .time{color:var(--ink-faint);font-size:12px;font-variant-numeric:tabular-nums}
+  input[type=range]{accent-color:var(--gold)}
+  #seek{flex-basis:100%;width:100%;margin:0}
+  select{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+     border-radius:4px;padding:6px;font:13px var(--serif)}
+
+  @media (max-width:760px){
+    .wrap{grid-template-columns:1fr}
+    nav{position:static;max-height:230px;border-right:0;border-bottom:1px solid var(--line)}
+    main{padding:22px 18px 180px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>The Sunless City</h1>
+  <p class="by">J. E. Preston Muddock &middot; 1905</p>
+  <div class="rule"></div>
+  <div class="cast" id="cast"></div>
+</header>
+
+<div class="wrap">
+  <nav><ol id="toc"></ol></nav>
+  <main>
+    <h2 id="ct">&nbsp;</h2>
+    <p class="meta" id="cm"></p>
+    <div class="stage">
+      <canvas id="viz" width="96" height="54" aria-hidden="true"></canvas>
+    </div>
+    <div id="script"></div>
+  </main>
+</div>
+
+<footer>
+  <div class="bar">
+    <button class="play" id="play">Play</button>
+    <button id="prev">&#8592; Prev</button>
+    <button id="next">Next &#8594;</button>
+    <button id="b15">&#8630; 15s</button>
+    <button id="f15">15s &#8631;</button>
+    <span class="now-title" id="nt"></span>
+    <span class="speaking" id="sp"></span>
+    <select id="rate">
+      <option value="0.75">0.75&times;</option>
+      <option value="1" selected>1&times;</option>
+      <option value="1.25">1.25&times;</option>
+      <option value="1.5">1.5&times;</option>
+      <option value="1.75">1.75&times;</option>
+      <option value="2">2&times;</option>
+    </select>
+    <span class="time" id="tm">0:00 / 0:00</span>
+    <input type="range" id="seek" min="0" max="1000" value="0">
+  </div>
+</footer>
+
+<audio id="au" preload="metadata"></audio>
+
+<script>
+const KEY = "sunlesscity.progress";
+const NAMES = {
+  NARRATOR: "Narrator",
+  FLIN: "Flin Flon",
+  YOBMOT: "Princess Yobmot",
+  GUBMUH: "King Gubmuh",
+  MR_YTIDRUSBA: "Mr. Ytidrusba",
+  MRS_YTIDRUSBA: "Mrs. Ytidrusba",
+  YREKCAUQ: "Doctor Yrekcauq",
+  HTURTEHTERAPS: "Hturtehteraps"
+};
+
+const au = document.getElementById("au");
+const viz = document.getElementById("viz");
+const vx = viz.getContext("2d", {alpha: false});
+let chapters = [], cur = 0, cues = [], cueIdx = -1;
+const vizState = {flash: 0, lastCue: -2, lastScene: ""};
+const CHARACTER_MATCHERS = [
+  {id: "FLIN", terms: [" flin ", " flonatin ", " josiah "]},
+  {id: "YOBMOT", terms: [" yobmot ", " princess "]},
+  {id: "GUBMUH", terms: [" gubmuh ", " king "]},
+  {id: "MR_YTIDRUSBA", terms: [" ytidrusba ", " magician "]},
+  {id: "MRS_YTIDRUSBA", terms: [" mrs ytidrusba ", " mrs. ytidrusba "]},
+  {id: "YREKCAUQ", terms: [" yrekcauq ", " doctor "]},
+  {id: "HTURTEHTERAPS", terms: [" hturtehteraps "]}
+];
+const SCENE_TERMS = {
+  water: [" lake ", " tarn ", " water ", " sea ", " shore ", " boat ", " vessel ", " ocean ", " waves ", " fish "],
+  mountains: [" mountain ", " mountains ", " rocky ", " rocks ", " valley ", " crag ", " crags ", " hill ", " cliff "],
+  river: [" river ", " current ", " stream ", " springs ", " flow ", " waters "],
+  forest: [" forest ", " tree ", " trees ", " wood ", " woods ", " branch ", " branches ", " petrified "],
+  underground: [" cavern ", " subterranean ", " underground ", " depths ", " tunnel ", " cave ", " gloomy ", " crater "],
+  hall: [" hall ", " audience ", " fellows ", " society ", " president ", " meeting ", " address ", " speech ", " papers ", " philosophers ", " lecture ", " assemblage "],
+  palace: [" princess ", " king ", " palace ", " royal ", " dais ", " apartment ", " courtyard ", " wing ", " throne ", " chamber ", " magnificent "],
+  court: [" trial ", " judge ", " sentence ", " prisoner ", " criminal ", " indicting ", " bar of justice ", " verdict ", " witnesses "],
+  city: [" city ", " streets ", " houses ", " station ", " crowd ", " crowds ", " route ", " procession ", " flags ", " bands ", " police ", " militia ", " train "],
+  chamber: [" room ", " table ", " seat ", " chair ", " couch ", " apartment ", " corridor ", " door ", " window ", " building "],
+  storm: [" storm ", " electric ", " lightning ", " thunder ", " flashed ", " flash ", " shock "],
+  fire: [" fire ", " flames ", " flame ", " lava ", " molten ", " volcano ", " fiery ", " red-hot "],
+  jewels: [" jewels ", " jewel ", " gem ", " gems ", " gold ", " treasure ", " glitter ", " sparkling "],
+  bridge: [" bridge ", " crossing ", " span ", " arch "],
+  prison: [" bars ", " cell ", " captive ", " prisoner ", " locked ", " gaol ", " cage "],
+  crowd: [" crowd ", " crowds ", " audience ", " people ", " subjects ", " ladies ", " gentlemen ", " assembly "],
+  furniture: [" table ", " chair ", " couch ", " seat ", " dais ", " bench ", " throne "]
+};
+
+const pad = n => String(n).padStart(2, "0");
+const colour = v => "var(--v-" + v + ")";
+const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
+const fmt = s => {
+  if (!isFinite(s)) return "0:00";
+  s = Math.floor(s);
+  const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60);
+  return h ? h + ":" + pad(m) + ":" + pad(s % 60) : m + ":" + pad(s % 60);
+};
+const mix = (a, b, t) => a + (b - a) * t;
+const hexToRgb = hex => {
+  const clean = hex.replace("#", "").trim();
+  const full = clean.length === 3
+    ? clean.split("").map(ch => ch + ch).join("")
+    : clean;
+  return [0, 1, 2].map(i => parseInt(full.slice(i * 2, i * 2 + 2), 16));
+};
+const tint = (base, amount, target) =>
+  base.map((value, i) => Math.round(mix(value, target[i], amount)));
+const rgba = (rgb, alpha = 1) => "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + alpha + ")";
+const voiceRgb = voice => {
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue("--v-" + voice).trim() || "#c9a227";
+  return hexToRgb(raw);
+};
+const wrap = (value, size) => ((value % size) + size) % size;
+
+function rect(x, y, w, h, color){
+  vx.fillStyle = color;
+  vx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
+}
+
+function pixelCircle(x, y, r, color){
+  vx.fillStyle = color;
+  for (let py = -r; py <= r; py++){
+    for (let px = -r; px <= r; px++){
+      if (px * px + py * py <= r * r) vx.fillRect(x + px, y + py, 1, 1);
+    }
+  }
+}
+
+function textWindow(){
+  if (!cues.length) return [];
+  const center = cueIdx >= 0 ? cueIdx : 0;
+  const start = Math.max(0, center - 2);
+  const end = Math.min(cues.length, center + 3);
+  return cues.slice(start, end);
+}
+
+function padText(text){
+  return " " + text.toLowerCase().replace(/[^a-z0-9]+/g, " ") + " ";
+}
+
+function countTerms(text, terms){
+  let count = 0;
+  for (const term of terms) if (text.includes(term)) count++;
+  return count;
+}
+
+function inferSceneContext(){
+  const windowCues = textWindow();
+  const body = padText(windowCues.map(c => c.text).join(" "));
+  const title = padText(chapters[cur] ? chapters[cur].title : "");
+  const hits = {};
+  for (const key in SCENE_TERMS)
+    hits[key] = countTerms(body, SCENE_TERMS[key]) * 3 + countTerms(title, SCENE_TERMS[key]);
+
+  const scores = [
+    ["fire", hits.fire + hits.water],
+    ["storm", hits.storm + hits.underground],
+    ["court", hits.court + hits.crowd],
+    ["palace", hits.palace + hits.furniture],
+    ["hall", hits.hall + hits.crowd],
+    ["city", hits.city + hits.crowd],
+    ["forest", hits.forest + hits.mountains],
+    ["river", hits.river + hits.underground],
+    ["water", hits.water + hits.mountains],
+    ["bridge", hits.bridge + hits.river],
+    ["chamber", hits.chamber + hits.furniture],
+    ["cavern", hits.underground + hits.mountains + hits.jewels]
+  ];
+
+  let best = "cavern";
+  let bestScore = 0;
+  for (const [id, score] of scores){
+    if (score > bestScore){
+      best = id;
+      bestScore = score;
+    }
+  }
+
+  if (!bestScore){
+    const titleText = chapters[cur] ? chapters[cur].title.toLowerCase() : "";
+    if (titleText.includes("princess") || titleText.includes("king")) best = "palace";
+    else if (titleText.includes("forest")) best = "forest";
+    else if (titleText.includes("river")) best = "river";
+    else if (titleText.includes("storm")) best = "storm";
+    else if (titleText.includes("fire")) best = "fire";
+    else if (titleText.includes("lake") || titleText.includes("sea")) best = "water";
+  }
+
+  return {id: best, hits, text: body, windowCues};
+}
+
+function inferCharacters(scene){
+  const found = [];
+  const seen = new Set();
+  const add = id => {
+    if (!id || id === "NARRATOR" || seen.has(id)) return;
+    seen.add(id);
+    found.push(id);
+  };
+
+  if (cueIdx >= 0) add(cues[cueIdx].voice);
+  for (const cue of scene.windowCues) add(cue.voice);
+  for (const match of CHARACTER_MATCHERS){
+    if (match.terms.some(term => scene.text.includes(term))) add(match.id);
+  }
+  if (!found.length && scene.text.includes(" flin ")) add("FLIN");
+  return found.slice(0, 3);
+}
+
+function drawPeak(cx, baseY, width, height, color){
+  vx.fillStyle = color;
+  for (let dx = -width; dx <= width; dx++){
+    const ratio = 1 - Math.abs(dx) / Math.max(1, width);
+    const span = Math.max(1, Math.round(height * ratio));
+    vx.fillRect(cx + dx, baseY - span, 1, span);
+  }
+}
+
+function drawWater(top, amp, fill, crest, drift){
+  for (let x = 0; x < viz.width; x++){
+    const wave = Math.round(Math.sin(x * .3 + drift) * amp);
+    const y = top + wave;
+    rect(x, y, 1, viz.height - y, fill);
+    if (x % 2 === 0) rect(x, y, 1, 1, crest);
+  }
+}
+
+function drawGem(cx, cy, size, body, shine){
+  vx.fillStyle = body;
+  for (let dy = -size; dy <= size; dy++){
+    const span = size - Math.abs(dy);
+    vx.fillRect(cx - span, cy + dy, span * 2 + 1, 1);
+  }
+  rect(cx, cy - size + 1, 1, 2, shine);
+  rect(cx - 1, cy, 3, 1, shine);
+}
+
+function drawBubble(cx, cy, r, color){
+  pixelCircle(cx, cy, r, color);
+  rect(cx - 1, cy - 1, 1, 1, rgba([255, 255, 255], .55));
+}
+
+function drawFigure(x, baseY, body, head){
+  pixelCircle(x, baseY - 9, 2, head);
+  rect(x - 1, baseY - 7, 3, 5, body);
+  rect(x - 3, baseY - 5, 7, 1, body);
+  rect(x - 2, baseY - 2, 1, 3, body);
+  rect(x + 1, baseY - 2, 1, 3, body);
+}
+
+function drawCrown(cx, baseY, body, shine){
+  rect(cx - 8, baseY - 2, 16, 3, body);
+  drawPeak(cx - 5, baseY - 2, 2, 6, body);
+  drawPeak(cx, baseY - 2, 2, 8, body);
+  drawPeak(cx + 5, baseY - 2, 2, 6, body);
+  rect(cx - 5, baseY - 7, 1, 1, shine);
+  rect(cx, baseY - 9, 1, 1, shine);
+  rect(cx + 5, baseY - 7, 1, 1, shine);
+}
+
+function drawFrame(accent, pale){
+  vx.strokeStyle = rgba(tint(accent, .22, pale), .9);
+  vx.strokeRect(.5, .5, viz.width - 1, viz.height - 1);
+}
+
+function drawStars(count, drift, color){
+  for (let i = 0; i < count; i++){
+    const x = wrap(Math.floor(i * 11 + drift * (1 + (i % 3) * .12)), viz.width);
+    const y = 4 + ((i * 7 + cur * 3) % 18);
+    rect(x, y, 1, 1, color);
+  }
+}
+
+function drawCurtains(shadow, accent){
+  rect(0, 0, 10, viz.height, rgba(shadow));
+  rect(viz.width - 10, 0, 10, viz.height, rgba(shadow));
+  for (let y = 0; y < viz.height; y += 4){
+    rect(0, y, 10, 1, rgba(accent, .22));
+    rect(viz.width - 10, y, 10, 1, rgba(accent, .22));
+  }
+}
+
+function drawCharacters(ids, sceneId, activeVoice, accent, pulse){
+  if (!ids.length) return;
+  const positions = ids.length === 1 ? [48] : ids.length === 2 ? [34, 62] : [22, 48, 74];
+  const baseYByScene = {
+    water: 38,
+    river: 37,
+    forest: 41,
+    palace: 42,
+    hall: 42,
+    court: 42,
+    city: 42,
+    chamber: 42,
+    storm: 41,
+    fire: 40,
+    bridge: 29,
+    cavern: 41
+  };
+  const baseY = baseYByScene[sceneId] || 41;
+
+  ids.forEach((id, index) => {
+    const x = positions[index];
+    const bob = Math.round(Math.sin(index + pulse * Math.PI) * .8);
+    const bodyRgb = voiceRgb(id);
+    const body = rgba(bodyRgb);
+    const shade = rgba(tint(bodyRgb, .35, [0, 0, 0]));
+    const skin = rgba(tint(bodyRgb, .68, [238, 226, 204]));
+    const active = id === activeVoice;
+
+    if (active) pixelCircle(x, baseY - 10, 6, rgba(bodyRgb, .18));
+    pixelCircle(x, baseY - 10 + bob, id === "GUBMUH" ? 3 : 2, skin);
+
+    if (id === "YOBMOT" || id === "MRS_YTIDRUSBA"){
+      drawPeak(x, baseY + 1, 4, 8, body);
+      rect(x - 3, baseY - 4 + bob, 7, 1, body);
+    } else {
+      rect(x - 1, baseY - 8 + bob, 3, 7, body);
+      rect(x - 3, baseY - 6 + bob, 7, 1, body);
+      rect(x - 2, baseY - 1 + bob, 1, 3, shade);
+      rect(x + 1, baseY - 1 + bob, 1, 3, shade);
+    }
+
+    if (id === "GUBMUH") drawCrown(x, baseY - 9 + bob, rgba(tint(bodyRgb, .35, [201, 162, 39])), rgba(tint(bodyRgb, .7, [255, 241, 196])));
+    if (id === "MR_YTIDRUSBA" || id === "YREKCAUQ") rect(x + 4, baseY - 7 + bob, 1, 9, rgba(tint(bodyRgb, .42, [220, 210, 180])));
+    if (id === "FLIN") rect(x - 2, baseY - 14 + bob, 5, 2, rgba(tint(bodyRgb, .3, [40, 32, 24])));
+    if (id === "HTURTEHTERAPS") rect(x - 4, baseY - 5 + bob, 2, 5, rgba(tint(bodyRgb, .28, [245, 245, 230])));
+    if (active){
+      rect(x - 2, baseY - 16 + bob, 5, 2, rgba(tint(bodyRgb, .55, [255, 247, 206])));
+      rect(x + 3, baseY - 15 + bob, 2, 1, rgba(tint(bodyRgb, .55, [255, 247, 206])));
+    }
+  });
+}
+
+function drawScene(scene, characters, t, pulse, drift, cueProgress, accent, pale, warm, deep, stone, shadow, spark, intensity){
+  const w = viz.width;
+  const h = viz.height;
+  for (let y = 0; y < h; y++){
+    const band = y / h;
+    const row = tint(deep, .08 + (1 - band) * .18, y < 24 ? accent : [14, 12, 10]);
+    rect(0, y, w, 1, rgba(y % 2 ? tint(row, .12, [0, 0, 0]) : row));
+  }
+
+  switch (scene.id){
+    case "water": {
+      drawPeak(16, 30, 16, 17, rgba(stone));
+      drawPeak(44, 28, 20, 19, rgba(shadow));
+      drawPeak(76, 29, 18, 15, rgba(stone));
+      pixelCircle(74, 11, 6 + Math.round(pulse * 2), rgba(spark, .9));
+      drawWater(33, 2 + intensity, rgba(tint(stone, .18, accent)), rgba(pale, .45), drift * 1.4);
+      if (scene.hits.city){
+        for (let i = 0; i < 5; i++) rect(8 + i * 15, 22 - (i % 2) * 4, 8, 11 + (i % 3) * 2, rgba(shadow, .9));
+      }
+      if (characters.includes("FLIN")){
+        rect(22, 31, 20, 2, rgba(shadow));
+        drawPeak(30, 31, 4, 5, rgba(warm));
+      }
+      break;
+    }
+    case "river": {
+      rect(0, 0, 18, h, rgba(shadow));
+      rect(78, 0, 18, h, rgba(shadow));
+      for (let i = 0; i < 4; i++) drawPeak(10 + i * 22, 18, 6, 8 + (i % 2) * 5, rgba(stone));
+      for (let y = 12; y < h; y++){
+        const mid = 46 + Math.sin(y * .18 + drift) * 11;
+        rect(mid - 8, y, 16, 1, rgba(tint(accent, .24, [48, 80, 92])));
+      }
+      break;
+    }
+    case "forest": {
+      rect(0, 34, w, 20, rgba(tint(stone, .18, [72, 68, 61])));
+      for (let i = 0; i < 8; i++){
+        const x = 6 + i * 11;
+        rect(x, 12 + (i % 3), 4, 24, rgba(tint(stone, .12, [118, 109, 95])));
+        rect(x - 1, 11 + (i % 3), 6, 2, rgba(pale, .18));
+      }
+      if (scene.hits.water) drawWater(39, 1 + pulse, rgba(tint(accent, .18, [68, 85, 94])), rgba(pale, .35), drift * 1.1);
+      break;
+    }
+    case "palace": {
+      drawCurtains(shadow, accent);
+      rect(12, 34, 72, 20, rgba(tint(stone, .12, [94, 78, 52])));
+      rect(18, 10, 8, 24, rgba(tint(stone, .18, [145, 132, 116])));
+      rect(70, 10, 8, 24, rgba(tint(stone, .18, [145, 132, 116])));
+      rect(34, 20, 28, 6, rgba(tint(stone, .14, [132, 110, 78])));
+      if (scene.hits.palace || scene.hits.furniture){
+        rect(39, 14, 18, 6, rgba(tint(warm, .16, stone)));
+        rect(42, 10, 12, 5, rgba(shadow));
+      }
+      if (scene.hits.jewels) for (let i = 0; i < 3; i++) drawGem(28 + i * 20, 18, 3, rgba(i % 2 ? warm : accent), rgba(spark));
+      break;
+    }
+    case "hall": {
+      rect(0, 39, w, 15, rgba(stone));
+      rect(30, 20, 36, 6, rgba(tint(stone, .16, [110, 90, 62])));
+      rect(40, 17, 16, 3, rgba(shadow));
+      for (let i = 0; i < 8; i++) pixelCircle(8 + i * 11, 43 + (i % 2), 2, rgba(shadow));
+      rect(46, 23, 4, 10, rgba(pale, .5));
+      rect(34, 29, 28, 2, rgba(shadow));
+      break;
+    }
+    case "court": {
+      rect(0, 40, w, 14, rgba(stone));
+      rect(12, 18, 72, 2, rgba(pale, .45));
+      rect(44, 14, 8, 20, rgba(shadow));
+      rect(32, 24, 10, 5, rgba(shadow));
+      rect(54, 24, 10, 5, rgba(shadow));
+      rect(47, 12, 2, 10, rgba(warm));
+      rect(41, 20, 14, 2, rgba(warm));
+      break;
+    }
+    case "city": {
+      rect(0, 39, w, 15, rgba(stone));
+      for (let i = 0; i < 7; i++){
+        const x = 4 + i * 13;
+        const buildingH = 9 + (i % 3) * 6;
+        rect(x, 39 - buildingH, 10, buildingH, rgba(shadow));
+        rect(x + 2, 39 - buildingH + 3, 1, 1, rgba(spark, .6));
+        rect(x + 6, 39 - buildingH + 6, 1, 1, rgba(spark, .45));
+      }
+      if (scene.hits.crowd) for (let i = 0; i < 6; i++) rect(9 + i * 14, 18, 1, 11, rgba(pale, .6));
+      if (scene.hits.city) for (let i = 0; i < 6; i++) drawPeak(12 + i * 14 + Math.sin(t + i) * 2, 18, 4, 5, rgba(i % 2 ? accent : warm));
+      break;
+    }
+    case "chamber": {
+      rect(0, 34, w, 20, rgba(tint(stone, .12, [78, 64, 44])));
+      rect(12, 12, 72, 22, rgba(tint(stone, .16, [94, 82, 66])));
+      rect(20, 22, 20, 6, rgba(shadow));
+      rect(58, 26, 12, 4, rgba(shadow));
+      if (scene.hits.furniture) rect(52, 20, 18, 3, rgba(tint(warm, .16, stone)));
+      break;
+    }
+    case "storm": {
+      rect(0, 18, w, 36, rgba(shadow));
+      for (let i = 0; i < 4; i++) pixelCircle(18 + i * 20, 16 + (i % 2), 6, rgba(tint(stone, .12, pale), .7));
+      const bolt = vizState.flash > .5 ? spark : warm;
+      rect(48, 14, 2, 10, rgba(bolt));
+      rect(46, 22, 6, 2, rgba(bolt));
+      rect(44, 24, 2, 9, rgba(bolt));
+      rect(42, 31, 7, 2, rgba(bolt));
+      break;
+    }
+    case "fire": {
+      rect(0, 32, w, 22, rgba(tint(warm, .16, [68, 18, 8])));
+      drawWater(34, 3 + pulse * 2, rgba(tint(warm, .18, [180, 58, 12])), rgba(spark, .55), drift * 2.8);
+      for (let i = 0; i < 6; i++) drawPeak(10 + i * 15, 34, 3, 6 + ((i + cur) % 3) * 3 + pulse * 4, rgba(warm));
+      break;
+    }
+    case "bridge": {
+      drawPeak(18, 36, 16, 16, rgba(stone));
+      drawPeak(78, 36, 16, 16, rgba(stone));
+      rect(24, 28, 48, 3, rgba(tint(warm, .16, stone)));
+      for (let i = 0; i < 5; i++) rect(28 + i * 9, 31, 2, 7, rgba(tint(warm, .1, stone)));
+      break;
+    }
+    case "cavern":
+    default: {
+      for (let i = 0; i < 7; i++){
+        const x = wrap(Math.floor(i * 17 - drift * (.6 + i * .03)), w + 10) - 5;
+        const top = 8 + ((cur * 11 + i * 13) % 12);
+        const bottom = 30 + ((cur * 7 + i * 9) % 14);
+        rect(x, 0, 4 + (i % 3), top, rgba(tint(stone, .12, [0, 0, 0])));
+        rect(x + 1, bottom, 3 + (i % 2), h - bottom - 5, rgba(tint(stone, .12, [0, 0, 0])));
+      }
+      if (scene.hits.water || scene.hits.river) drawWater(34, 2 + intensity, rgba(tint(stone, .18, accent)), rgba(pale, .45), drift * 1.4);
+      if (scene.hits.jewels) [[18, 35], [33, 29], [48, 37], [62, 31], [78, 39]].forEach(([x, y], i) =>
+        drawGem(x, y, 4 + (i % 2), rgba(i % 2 ? accent : warm), rgba(spark)));
+      drawStars(10, drift * .5, rgba(spark, .6));
+      break;
+    }
+  }
+
+  if (scene.hits.jewels && scene.id !== "cavern" && scene.id !== "palace"){
+    for (let i = 0; i < 3; i++) drawGem(24 + i * 22, 18 + (i % 2) * 5, 3, rgba(i % 2 ? accent : warm), rgba(spark));
+  }
+  if (scene.hits.crowd && (scene.id === "hall" || scene.id === "city" || scene.id === "court")){
+    for (let i = 0; i < 8; i++) pixelCircle(8 + i * 11, 43 + (i % 2), 2, rgba(shadow));
+  }
+}
+
+function drawViz(){
+  const w = viz.width, h = viz.height;
+  const t = au.currentTime || 0;
+  const cue = cueIdx >= 0 ? cues[cueIdx] : null;
+  const scene = inferSceneContext();
+  const characters = inferCharacters(scene);
+  const voice = cue ? cue.voice : "NARRATOR";
+  const accent = voiceRgb(voice);
+  const pale = tint(accent, .56, [232, 226, 212]);
+  const warm = tint(accent, .35, [201, 162, 39]);
+  const deep = tint(accent, .14, [8, 7, 6]);
+  const stone = tint(accent, .09, [36, 31, 26]);
+  const shadow = tint(stone, .28, [6, 5, 4]);
+  const spark = tint(accent, .72, [255, 247, 206]);
+  const playing = !au.paused && !au.ended;
+  const cueLen = cue ? cue.text.length : 40;
+  const marks = cue ? (cue.text.match(/[!?;,]/g) || []).length : 0;
+  const cueSpan = cue ? Math.max(.25, cue.end - cue.start) : 1;
+  const cueProgress = cue ? clamp((t - cue.start) / cueSpan, 0, 1) : 0;
+  const intensity = clamp(cueLen / 110 + marks * .08, .22, 1.1);
+  const pulse = playing ? Math.sin(t * (1.2 + intensity)) * .5 + .5 : .18;
+  const drift = playing ? t * (1 + intensity * .8) : t * .2;
+
+  if (cueIdx !== vizState.lastCue){
+    vizState.flash = 1;
+    vizState.lastCue = cueIdx;
+  }
+  if (scene.id !== vizState.lastScene){
+    vizState.flash = 1;
+    vizState.lastScene = scene.id;
+  }
+  vizState.flash *= playing ? .9 : .84;
+
+  rect(0, 0, w, h, rgba(deep));
+  drawScene(scene, characters, t, pulse, drift, cueProgress, accent, pale, warm, deep, stone, shadow, spark, intensity);
+  drawCharacters(characters, scene.id, cue && cue.voice !== "NARRATOR" ? cue.voice : characters[0], accent, pulse);
+
+  if (vizState.flash > .08) rect(0, 0, w, 2, rgba(spark, vizState.flash * .35));
+
+  const progress = au.duration ? clamp(au.currentTime / au.duration, 0, 1) : 0;
+  rect(0, h - 1, w, 1, rgba([34, 29, 24]));
+  rect(0, h - 1, Math.max(1, Math.round(progress * w)), 1, rgba(warm));
+  drawFrame(accent, pale);
+
+  requestAnimationFrame(drawViz);
+}
+const save = () => {
+  if (!chapters.length) return;
+  try {
+    localStorage.setItem(KEY, JSON.stringify(
+      {n: chapters[cur].n, t: au.currentTime, rate: au.playbackRate}));
+  } catch (e) {}
+};
+const load = () => {
+  try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch (e) { return null; }
+};
+
+function buildCast(){
+  const box = document.getElementById("cast");
+  for (const id in NAMES){
+    const s = document.createElement("span");
+    const dot = document.createElement("i");
+    dot.style.background = colour(id);
+    s.appendChild(dot);
+    s.appendChild(document.createTextNode(NAMES[id]));
+    box.appendChild(s);
+  }
+}
+
+function renderScript(){
+  const box = document.getElementById("script");
+  box.innerHTML = "";
+  if (!cues.length){
+    box.innerHTML = '<p style="color:var(--ink-faint)">Transcript unavailable for this chapter.</p>';
+    return;
+  }
+  let blk = null, blkVoice = null;
+  cues.forEach((c, i) => {
+    if (c.voice !== blkVoice){
+      blk = document.createElement("div");
+      blk.className = "blk" + (c.voice === "NARRATOR" ? "" : " speech");
+      blk.style.color = colour(c.voice);
+      if (c.voice !== "NARRATOR"){
+        const who = document.createElement("b");
+        who.className = "who";
+        who.textContent = NAMES[c.voice] || c.voice;
+        blk.appendChild(who);
+      }
+      const line = document.createElement("p");
+      line.className = "line";
+      line.style.margin = "0";
+      blk.appendChild(line);
+      box.appendChild(blk);
+      blkVoice = c.voice;
+    }
+    const s = document.createElement("span");
+    s.className = "s";
+    s.textContent = c.text + " ";
+    s.dataset.i = i;
+    s.addEventListener("click", () => { au.currentTime = c.start + 0.01; au.play(); });
+    blk.querySelector(".line").appendChild(s);
+  });
+}
+
+function highlight(){
+  if (!cues.length) return;
+  const t = au.currentTime;
+  let i = cueIdx;
+  if (i < 0 || t < cues[i].start || t > cues[i].end){
+    i = cues.findIndex(c => t >= c.start && t <= c.end);
+    if (i < 0) return;
+  }
+  if (i === cueIdx) return;
+  cueIdx = i;
+  const box = document.getElementById("script");
+  const prevCur = box.querySelector("span.cur");
+  if (prevCur) prevCur.classList.remove("cur");
+  const prevBlk = box.querySelector(".blk.now");
+  if (prevBlk) prevBlk.classList.remove("now");
+  const span = box.querySelector('span[data-i="' + i + '"]');
+  if (!span) return;
+  span.classList.add("cur");
+  const blk = span.closest(".blk");
+  if (blk) blk.classList.add("now");
+
+  const sp = document.getElementById("sp");
+  sp.textContent = cues[i].voice === "NARRATOR" ? "" : (NAMES[cues[i].voice] || cues[i].voice);
+  sp.style.color = colour(cues[i].voice);
+  vizState.flash = 1;
+
+  const r = span.getBoundingClientRect();
+  if (r.top < 90 || r.bottom > window.innerHeight - 140)
+    span.scrollIntoView({behavior: "smooth", block: "center"});
+}
+
+async function openChapter(i, seekTo, autoplay){
+  cur = i;
+  cueIdx = -1;
+  vizState.flash = 1;
+  vizState.lastCue = -2;
+  const c = chapters[i];
+  const id = pad(c.n);
+  document.getElementById("ct").textContent = c.title;
+  document.getElementById("cm").textContent =
+    "Chapter " + c.n + " of " + chapters.length + " · " + c.words.toLocaleString() + " words";
+  document.getElementById("nt").textContent = c.n + ". " + c.title;
+  document.getElementById("sp").textContent = "";
+  document.querySelectorAll("#toc li").forEach((li, k) => li.classList.toggle("on", k === i));
+  au.src = "audio/ch" + id + ".mp3";
+  document.getElementById("script").innerHTML =
+    '<p style="color:var(--ink-faint)">Loading&hellip;</p>';
+  cues = [];
+  try {
+    const r = await fetch("audio/ch" + id + ".json");
+    if (r.ok) cues = (await r.json()).cues || [];
+  } catch (e) {}
+  renderScript();
+  if (seekTo > 0){
+    const seekWhenReady = () => { au.currentTime = seekTo; };
+    if (au.readyState > 0) seekWhenReady();
+    else au.addEventListener("loadedmetadata", seekWhenReady, {once: true});
+  }
+  if (autoplay) au.play();
+  save();
+}
+
+function buildTOC(){
+  const ol = document.getElementById("toc");
+  chapters.forEach((c, i) => {
+    const li = document.createElement("li");
+    const b = document.createElement("button");
+    const num = document.createElement("span");
+    num.className = "num";
+    num.textContent = c.n;
+    const t = document.createElement("span");
+    t.textContent = c.title;
+    b.appendChild(num);
+    b.appendChild(t);
+    b.addEventListener("click", () => openChapter(i, 0, true));
+    li.appendChild(b);
+    ol.appendChild(li);
+  });
+}
+
+document.getElementById("play").onclick = () => au.paused ? au.play() : au.pause();
+document.getElementById("prev").onclick = () => { if (cur > 0) openChapter(cur - 1, 0, true); };
+document.getElementById("next").onclick = () => {
+  if (cur < chapters.length - 1) openChapter(cur + 1, 0, true);
+};
+document.getElementById("b15").onclick = () => au.currentTime = Math.max(0, au.currentTime - 15);
+document.getElementById("f15").onclick = () =>
+  au.currentTime = Math.min(au.duration || 0, au.currentTime + 15);
+document.getElementById("rate").onchange = e => { au.playbackRate = +e.target.value; save(); };
+
+const seek = document.getElementById("seek");
+let scrubbing = false;
+seek.oninput = () => { scrubbing = true; };
+seek.onchange = () => {
+  if (au.duration) au.currentTime = (seek.value / 1000) * au.duration;
+  scrubbing = false;
+};
+
+au.onplay = () => document.getElementById("play").textContent = "Pause";
+au.onpause = () => { document.getElementById("play").textContent = "Play"; save(); };
+au.ontimeupdate = () => {
+  document.getElementById("tm").textContent = fmt(au.currentTime) + " / " + fmt(au.duration);
+  if (!scrubbing && au.duration) seek.value = (au.currentTime / au.duration) * 1000;
+  highlight();
+};
+au.onended = () => {
+  document.querySelectorAll("#toc li")[cur].classList.add("done");
+  if (cur < chapters.length - 1) openChapter(cur + 1, 0, true);
+};
+au.onerror = () => {
+  document.getElementById("script").innerHTML =
+    '<p style="color:#d98b8b">Chapter ' + chapters[cur].n +
+    ' could not be loaded from audio/ch' + pad(chapters[cur].n) + '.mp3</p>';
+};
+setInterval(save, 5000);
+
+document.addEventListener("keydown", e => {
+  if (e.target.tagName === "SELECT" || e.target.tagName === "INPUT") return;
+  if (e.code === "Space"){ e.preventDefault(); au.paused ? au.play() : au.pause(); }
+  if (e.code === "ArrowLeft") au.currentTime = Math.max(0, au.currentTime - 15);
+  if (e.code === "ArrowRight") au.currentTime = Math.min(au.duration || 0, au.currentTime + 15);
+});
+
+buildCast();
+drawViz();
+fetch("chapters.json")
+  .then(r => {
+    if (!r.ok) throw new Error("chapters.json returned HTTP " + r.status);
+    return r.json();
+  })
+  .then(js => {
+    chapters = js;
+    buildTOC();
+    const p = load();
+    let i = 0;
+    if (p){
+      const k = chapters.findIndex(c => c.n === p.n);
+      if (k >= 0) i = k;
+      if (p.rate){
+        au.playbackRate = p.rate;
+        document.getElementById("rate").value = p.rate;
+      }
+    }
+    openChapter(i, p ? p.t : 0, false);
+  })
+  .catch(err => {
+    document.getElementById("script").innerHTML =
+      '<p style="color:#d98b8b">Could not load the chapter list: ' + err.message +
+      '. Serve this folder over HTTP (python -m http.server 8000) instead of opening the file directly.</p>';
+  });
+</script>
+</body>
+</html>
