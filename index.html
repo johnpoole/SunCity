@@ -48,7 +48,8 @@
   h2{margin:0 0 4px;font-size:22px;font-weight:400;letter-spacing:.04em}
   .meta{color:var(--ink-faint);font-size:13px;margin:0 0 26px;letter-spacing:.06em}
     .stage{margin:0 0 28px;padding:12px;background:linear-gradient(180deg,#171410,#0d0c0a);
-      border:1px solid var(--line);box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+      border:1px solid var(--line);box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
+      position:sticky;top:0;z-index:2}
     #viz{display:block;width:100%;aspect-ratio:16/9;height:auto;background:#090806;
       border:1px solid #29241c;image-rendering:pixelated;image-rendering:crisp-edges}
 
@@ -700,8 +701,9 @@ function highlight(){
   vizState.flash = 1;
 
   const r = span.getBoundingClientRect();
-  if (r.top < 90 || r.bottom > window.innerHeight - 140)
-    span.scrollIntoView({behavior: "smooth", block: "center"});
+  const stageBottom = document.querySelector(".stage").getBoundingClientRect().bottom;
+  if (r.top < stageBottom + 20 || r.bottom > window.innerHeight - 140)
+    window.scrollTo({top: window.scrollY + r.top - stageBottom - 40, behavior: "smooth"});
 }
 
 async function openChapter(i, seekTo, autoplay){
