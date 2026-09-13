@@ -1,0 +1,7 @@
+.git
+__pycache__
+suncity_raw.html
+cast.json
+text
+*.py
+*.log

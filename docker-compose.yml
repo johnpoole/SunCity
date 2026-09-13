@@ -1,0 +1,7 @@
+services:
+  suncity:
+    build: .
+    container_name: suncity
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8095:80"
