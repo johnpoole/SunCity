@@ -203,7 +203,8 @@ function sceneAt(){
   const scene = list[k];
   const hits = {};
   for (const f of scene.flags) hits[f] = true;
-  return {id: scene.id, hits, characters: scene.characters, note: scene.note, cue: scene.cue, next: list[k + 1] || null};
+  return {id: scene.id, hits, characters: scene.characters, note: scene.note,
+          cue: scene.cue, index: k, next: list[k + 1] || null};
 }
 
 function drawPeak(cx, baseY, width, height, color){
@@ -553,7 +554,10 @@ function inkWrap(text, maxWidth, font){
 }
 
 function inkLetter(text, x, y, size, opts = {}){
-  vx.font = (opts.weight || "bold") + " " + size + "px Georgia, serif";
+  const face = px => (opts.weight || "bold") + " " + px + "px Georgia, serif";
+  vx.font = face(size);
+  if (opts.max)
+    while (size > 11 && vx.measureText(text.toUpperCase()).width > opts.max) vx.font = face(--size);
   vx.textAlign = opts.align || "center";
   vx.textBaseline = "middle";
   vx.fillStyle = opts.color || INK.line;
@@ -931,14 +935,481 @@ function inkStreetsNight(a, sp, t, pulse){
   return {};
 }
 
-const INK_SCENES = {city: inkCityMorning, chamber: inkWorks, hall: inkBanquet};
+// ---- Chapter 1: the lake, the grocer, the boat, the meeting ----
 
-function inkSceneFor(scene){
-  if (scene.id === "chamber" && scene.hits.crowd) return inkMuseum;
-  if (scene.id === "city" && !scene.hits.crowd) return inkStreetsNight;
-  const fn = INK_SCENES[scene.id];
-  if (!fn) throw new Error("No inked drawing for scene '" + scene.id + "' in chapter " + chapters[cur].n);
-  return fn;
+function inkHatch(x, y, w, h, step, ink, slant){
+  vx.save();
+  vx.beginPath();
+  vx.rect(x, y, w, h);
+  vx.clip();
+  for (let k = -h; k < w + h; k += step)
+    inkShape(P.line([[x + k, y], [x + k + (slant || 0.6) * h, y + h]]), null, {width: 1.2, ink: ink || "#6b6257"});
+  vx.restore();
+}
+
+function inkGorgeWalls(a, mouth){
+  const cx = a.x + a.w / 2;
+  inkShape(P.poly([[a.x - 5, a.y - 5], [cx - mouth, a.y - 5], [cx - mouth, a.y + 54],
+                   [cx - mouth - 70, a.y + 170], [cx - mouth - 120, a.y + 320],
+                   [a.x - 5, a.y + a.h + 5]]), INK.stone);
+  inkShape(P.poly([[a.x + a.w + 5, a.y - 5], [cx + mouth, a.y - 5], [cx + mouth, a.y + 54],
+                   [cx + mouth + 74, a.y + 180], [cx + mouth + 126, a.y + 330],
+                   [a.x + a.w + 5, a.y + a.h + 5]]), INK.stone);
+  inkHatch(a.x, a.y, cx - mouth - 20, a.h, 22, "#8a7f6d", 0.35);
+  inkHatch(cx + mouth + 20, a.y, a.w, a.h, 22, "#8a7f6d", -0.35);
+}
+
+function inkDeadWater(a, y, t, tone){
+  inkShape(P.rect(a.x - 5, y, a.w + 10, a.h), tone || "#171d26");
+  for (let i = 0; i < 8; i++){
+    const wy = y + 22 + i * 26;
+    if (wy > a.y + a.h) break;
+    inkShape(P.line([[a.x + 30 + i * 26, wy], [a.x + a.w - 40 - i * 22, wy]]), null,
+             {width: 1.4, ink: "#39465a"});
+  }
+}
+
+function drawProfessor(x, ground, s, o){
+  o = o || {};
+  drawGent(x, ground, s, {coat: o.coat || INK.line, beard: o.beard || "#6b4a2b"});
+  if (o.book){
+    inkShape(P.poly([[x - 26 * s, ground - 74 * s], [x + 2 * s, ground - 80 * s],
+                     [x + 2 * s, ground - 58 * s], [x - 26 * s, ground - 52 * s]]), INK.red);
+    inkShape(P.line([[x + 2 * s, ground - 80 * s], [x + 2 * s, ground - 58 * s]]), null, {width: 2});
+  }
+  if (o.arm !== undefined){
+    const hx = x + 20 * s, hy = ground - 100 * s + o.arm * 16 * s;
+    inkShape(P.line([[x + 13 * s, ground - 86 * s], [hx, hy]]), null, {width: 4 * s + 1});
+    inkShape(P.ellipse(hx, hy, 5 * s, 6 * s), INK.flesh, {width: 2});
+  }
+}
+
+function drawRowBoat(cx, cy, s, t, o){
+  o = o || {};
+  inkShape(g => {
+    g.moveTo(cx - 70 * s, cy - 14 * s);
+    g.quadraticCurveTo(cx, cy + 26 * s, cx + 70 * s, cy - 14 * s);
+    g.lineTo(cx + 62 * s, cy - 20 * s);
+    g.quadraticCurveTo(cx, cy + 14 * s, cx - 62 * s, cy - 20 * s);
+    g.closePath();
+  }, INK.wood);
+  for (const side of (o.oars ? [-1, 1] : [])){
+    const dip = Math.sin(t * 2) * 6 * s;
+    inkShape(P.line([[cx + side * 16 * s, cy - 20 * s],
+                     [cx + side * 86 * s, cy + 6 * s + dip]]), null, {width: 3 * s + 1});
+  }
+  (o.crew || []).forEach((k, i) => {
+    const x = cx - 34 * s + i * 34 * s;
+    inkShape(P.rect(x - 8 * s, cy - 52 * s, 16 * s, 34 * s), k, {width: 2});
+    inkShape(P.ellipse(x, cy - 60 * s, 8 * s, 9 * s), INK.flesh, {width: 2});
+  });
+}
+
+// -- scene 1: the tarn nobody can account for --
+
+function lakeGorge(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, "#2b3340");
+  const cx = a.x + a.w / 2;
+  inkShape(P.rect(cx - 76, a.y - 5, 152, 54), INK.sky);
+  inkGorgeWalls(a, 76);
+  inkDeadWater(a, a.y + a.h * .66, t);
+  inkLetter("A little square patch of blue, far above", cx, a.y + a.h - 34, 26,
+            {color: INK.white, max: a.w - 80});
+}
+
+function lakeSavants(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, INK.wall);
+  inkShape(P.rect(a.x + 300, a.y + 26, 360, 190), INK.line);
+  inkShape(P.rect(a.x + 308, a.y + 34, 344, 174), "#2f3a33", {stroke: false});
+  const theories = ["CRATER?", "FISSURES?", "A CAVERN?", "POROUS ROCK?"];
+  theories.forEach((s, i) => inkLetter(s, a.x + 480, a.y + 62 + i * 40, 24, {color: INK.white}));
+  inkShape(P.rect(a.x - 5, a.y + a.h - 44, a.w + 10, 50), INK.wood, {width: 3});
+  const men = [[80, INK.blue, 1], [200, INK.line, -1], [330, INK.purple, 1],
+               [640, INK.line, -1], [770, INK.blue, 1], [880, INK.line, -1]];
+  men.forEach(([x, coat, dir], i) => {
+    const wave = Math.sin(t * 3 + i * 1.7);
+    drawProfessor(a.x + x, a.y + a.h - 40 + Math.sin(t * 2 + i) * 2, .92,
+                  {coat, book: i % 2 === 0, arm: wave * dir});
+  });
+}
+
+function lakeDead(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, "#3a4453");
+  inkShape(P.poly([[a.x - 5, a.y + 150], [a.x + 250, a.y + 60], [a.x + 640, a.y + 92],
+                   [a.x + a.w + 5, a.y + 40], [a.x + a.w + 5, a.y + 250], [a.x - 5, a.y + 250]]), INK.stone);
+  inkHatch(a.x, a.y + 40, a.w, 210, 26, "#8a7f6d", 0.3);
+  inkDeadWater(a, a.y + 246, t);
+  const ny = a.y + 246;
+  [[170, .9, INK.coat], [330, .95, INK.blue], [520, .88, INK.line]].forEach(([x, s, coat], i) => {
+    const gx = a.x + x, gy = a.y + 150 + i * 26;
+    drawGent(gx, gy, s, {coat, beard: i % 2 ? "#6b4a2b" : null});
+    const rod = gx + 56 * s, tip = gy - 150 * s;
+    inkShape(P.line([[gx + 14 * s, gy - 88 * s], [rod, tip]]), null, {width: 4});
+    inkShape(g => {
+      g.moveTo(rod, tip);
+      g.quadraticCurveTo(rod + 70, tip + 90, rod + 96, ny + 40 + i * 14);
+    }, null, {width: 1.6, ink: "#cfc7b4"});
+    inkShape(P.ellipse(rod + 96, ny + 40 + i * 14, 5, 5), null, {width: 2, ink: "#cfc7b4"});
+  });
+  inkLetter("No weed. No fish. Not a trace of life.", a.x + a.w / 2, a.y + a.h - 44, 28,
+            {color: INK.white, max: a.w - 80});
+}
+
+function lakeFall(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, "#39424f");
+  inkShape(P.poly([[a.x - 5, a.y - 5], [a.x + 380, a.y - 5], [a.x + 330, a.y + 220],
+                   [a.x + 300, a.y + a.h + 5], [a.x - 5, a.y + a.h + 5]]), INK.stone);
+  inkShape(P.poly([[a.x + a.w + 5, a.y - 5], [a.x + 560, a.y - 5], [a.x + 600, a.y + 240],
+                   [a.x + 650, a.y + a.h + 5], [a.x + a.w + 5, a.y + a.h + 5]]), INK.stone);
+  inkHatch(a.x, a.y, 340, a.h, 24, "#8a7f6d", 0.3);
+  inkHatch(a.x + 600, a.y, a.w, a.h, 24, "#8a7f6d", -0.3);
+  inkShape(P.rect(a.x + 388, a.y - 5, 168, 300), INK.white);
+  for (let i = 0; i < 9; i++){
+    const fx = a.x + 396 + i * 19;
+    inkShape(g => {
+      g.moveTo(fx, a.y);
+      g.quadraticCurveTo(fx + Math.sin(t * 3 + i) * 10, a.y + 150, fx + Math.sin(t * 2 + i) * 6, a.y + 292);
+    }, null, {width: 2, ink: "#9fb6c6"});
+  }
+  inkDeadWater(a, a.y + 292, t);
+  for (let i = 0; i < 5; i++)
+    inkShape(P.ellipse(a.x + 400 + i * 34, a.y + 300 + (i % 2) * 10, 20 + i * 4, 7), INK.white, {width: 2});
+  for (let i = 0; i < 6; i++)
+    inkShape(P.poly([[a.x + 296 - i * 8, a.y + 300 + i * 34], [a.x + 386 - i * 8, a.y + 300 + i * 34],
+                     [a.x + 386 - i * 8, a.y + 318 + i * 34]]), INK.wood, {width: 2});
+}
+
+// -- scene 2: the grocer with a soul above bacon --
+
+function shopCounter(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, INK.wall);
+  inkShape(P.rect(a.x - 5, a.y - 5, a.w + 10, 52), INK.wood, {width: 3});
+  inkLetter("J. Flonatin  ~  Grocer", a.x + a.w / 2, a.y + 22, 28, {color: INK.dawn});
+  for (let i = 0; i < 5; i++){
+    const bx = a.x + 40 + i * 92;
+    inkShape(P.poly([[bx, a.y + 52], [bx + 30, a.y + 118], [bx + 60, a.y + 52]]), INK.brick, {width: 2});
+    inkShape(P.line([[bx + 30, a.y + 52], [bx + 30, a.y + 116]]), null, {width: 1.5});
+  }
+  inkShape(P.rect(a.x + 560, a.y + 70, 360, 14), INK.wood, {width: 2});
+  for (let i = 0; i < 5; i++)
+    inkShape(P.ellipse(a.x + 600 + i * 74, a.y + 54, 30, 18), INK.brass, {width: 2});
+  const cy = a.y + a.h - 150;
+  const head = drawFlin(a.x + 250, cy + 76, .82, {look: 1});
+  inkShape(P.rect(a.x - 5, cy, a.w + 10, 24), INK.wood, {width: 3});
+  inkShape(P.rect(a.x - 5, cy + 24, a.w + 10, a.h), "#6d4622", {width: 3});
+  for (let i = 0; i < 12; i++) inkShape(P.line([[a.x + i * 84, cy + 24], [a.x + i * 84, a.y + a.h]]), null, {width: 1.5});
+  const sx = a.x + 760;
+  inkShape(P.line([[sx, cy - 96], [sx, cy - 30]]), null, {width: 3});
+  inkShape(P.line([[sx - 52, cy - 30], [sx + 52, cy - 30]]), null, {width: 3});
+  for (const side of [-1, 1]){
+    const drop = side < 0 ? 8 : -8;
+    inkShape(P.line([[sx + side * 52, cy - 30], [sx + side * 52, cy - 4 + drop]]), null, {width: 2});
+    inkShape(P.ellipse(sx + side * 52, cy + 2 + drop, 26, 7), INK.brass, {width: 2});
+  }
+  return {FLIN: head};
+}
+
+function flinPortrait(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, INK.dawn);
+  for (let i = 0; i < 22; i++)
+    inkShape(P.line([[a.x + a.w / 2, a.y + 250], [a.x + a.w / 2 + Math.cos(i * .285) * 900,
+                     a.y + 250 + Math.sin(i * .285) * 900]]), null, {width: 1.2, ink: "#e2c477"});
+  inkShape(P.rect(a.x - 5, a.y + a.h - 58, a.w + 10, 64), INK.coat, {width: 3});
+  const head = drawFlin(a.x + a.w / 2, a.y + a.h - 54, 1.45, {hat: true, look: 0, swing: 6});
+  inkShape(P.line([[a.x + a.w / 2 + 62, a.y + a.h - 214], [a.x + a.w / 2 + 62, a.y + a.h - 50]]), null, {width: 5});
+  inkShape(P.ellipse(a.x + a.w / 2 + 56, a.y + a.h - 218, 12, 7), INK.line, {width: 2});
+  inkLetter("Josiah Flintabbatey Flonatin, F.S.E.U.R.", a.x + a.w / 2, a.y + 38, 26);
+  return {FLIN: head};
+}
+
+function flinHead(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, INK.sky);
+  for (let i = 0; i < 9; i++)
+    inkShape(P.line([[a.x - 5, a.y + i * 46], [a.x + a.w + 5, a.y + i * 46]]), null, {width: 1.2, ink: "#8fb6cb"});
+  const cx = a.x + a.w / 2, cy = a.y + 190;
+  inkShape(P.rect(cx - 46, cy + 128, 92, 120), INK.coat);
+  inkShape(P.ellipse(cx, cy, 168, 205), INK.flesh);
+  inkShape(P.ellipse(cx - 168, cy + 22, 28, 44), INK.flesh, {width: 3});
+  inkShape(P.ellipse(cx + 168, cy + 22, 28, 44), INK.flesh, {width: 3});
+  const ey = cy - 10;
+  inkShape(P.ellipse(cx - 64, ey, 54, 44), INK.white, {width: 4});
+  inkShape(P.ellipse(cx + 64, ey, 54, 44), INK.white, {width: 4});
+  inkShape(P.line([[cx - 10, ey], [cx + 10, ey]]), null, {width: 4});
+  inkShape(P.line([[cx - 118, ey - 10], [cx - 162, ey + 6]]), null, {width: 3});
+  inkShape(P.line([[cx + 118, ey - 10], [cx + 162, ey + 6]]), null, {width: 3});
+  const look = Math.sin(t * .8) * 10;
+  inkShape(P.ellipse(cx - 64 + look, ey, 13, 13), INK.line, {width: 2});
+  inkShape(P.ellipse(cx + 64 + look, ey, 13, 13), INK.line, {width: 2});
+  inkShape(P.line([[cx, ey + 22], [cx + 15, ey + 78], [cx - 10, ey + 82]]), null, {width: 3});
+  inkShape(P.line([[cx - 44, ey + 126], [cx, ey + 138], [cx + 44, ey + 126]]), null, {width: 3});
+  inkShape(P.ellipse(cx + 58, ey + 146, 9, 9), INK.line, {width: 2});
+  for (let i = 0; i < 3; i++)
+    inkShape(P.line([[cx + 58, ey + 146], [cx + 74 + i * 6, ey + 120 + i * 12]]), null, {width: 1.5, ink: "#9a9a9a"});
+  inkShape(P.ellipse(cx - 62, ey + 66, 7, 7), INK.red, {width: 2});
+  inkLetter("Bald, and therefore intellectual", cx, a.y + a.h - 30, 26);
+  return {FLIN: [cx, cy - 208]};
+}
+
+function debatingRoom(a, sp, t, pulse){
+  inkFlat(a.x, a.y, a.w, a.h, "#e6d6b2");
+  inkShape(P.rect(a.x - 5, a.y - 5, a.w + 10, 60), INK.wall, {width: 3});
+  inkLetter("Society for the Exploration of Unknown Regions", a.x + a.w / 2, a.y + 26, 24);
+  for (let i = 0; i < 4; i++){
+    const wx = a.x + 70 + i * 240;
+    inkShape(P.rect(wx, a.y + 76, 108, 128), INK.night, {width: 3});
+    inkShape(P.line([[wx + 54, a.y + 76], [wx + 54, a.y + 204]]), null, {width: 2});
+    inkShape(P.line([[wx, a.y + 140], [wx + 108, a.y + 140]]), null, {width: 2});
+  }
+  const ty = a.y + a.h - 122;
+  const men = [[160, INK.line], [300, INK.blue], [700, INK.line], [840, INK.purple]];
+  men.forEach(([x, coat], i) => drawGent(a.x + x, ty + 60, .9, {coat, beard: i % 2 ? "#6b4a2b" : null}));
+  const head = drawFlin(a.x + 500, ty + 64, .95, {point: 1, look: 1, talking: pulse.voice === "FLIN"});
+  inkShape(P.rect(a.x + 60, ty, a.w - 120, 20), INK.wood, {width: 3});
+  inkShape(P.rect(a.x + 60, ty + 20, a.w - 120, 102), "#6d4622", {width: 3});
+  return {FLIN: head};
+}
+
+// -- scene 3: round and round the mysterious lake --
+
+function boatLowered(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, "#38424f");
+  inkShape(P.poly([[a.x - 5, a.y - 5], [a.x + 470, a.y - 5], [a.x + 400, a.y + 200],
+                   [a.x + 250, a.y + 360], [a.x - 5, a.y + a.h + 5]]), INK.stone);
+  inkHatch(a.x, a.y, 430, a.h, 22, "#8a7f6d", 0.3);
+  for (let i = 0; i < 5; i++){
+    const lx = a.x + 400 - i * 70, ly = a.y + 120 + i * 62;
+    inkShape(P.poly([[lx - 90, ly], [lx + 30, ly], [lx + 22, ly + 18], [lx - 90, ly + 18]]), INK.wood, {width: 2});
+    const s = .62;
+    inkShape(P.rect(lx - 46 - 7 * s, ly - 34 * s, 6 * s, 34 * s), INK.brick, {width: 1.5});
+    inkShape(P.poly([[lx - 60, ly - 32], [lx - 58, ly - 68], [lx - 34, ly - 68], [lx - 32, ly - 32]]), INK.brick);
+    inkShape(P.ellipse(lx - 46, ly - 78, 10, 11), INK.flesh, {width: 2});
+    inkShape(P.line([[lx - 46, ly - 89], [lx - 40, ly - 104]]), null, {width: 2});
+    inkShape(P.poly([[lx - 80, ly - 96], [lx - 12, ly - 96], [lx - 16, ly - 78], [lx - 76, ly - 78]]), INK.wood, {width: 2});
+  }
+  inkDeadWater(a, a.y + a.h - 110, t);
+  inkLetter("A boat built in sections, carried down the ledges",
+            a.x + a.w - 240, a.y + 60, 24, {color: INK.white, max: 440});
+}
+
+function boatOnLake(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, "#2b3340");
+  const cx = a.x + a.w / 2;
+  inkShape(P.rect(cx - 62, a.y - 5, 124, 46), INK.sky);
+  inkGorgeWalls(a, 62);
+  const wy = a.y + a.h * .62;
+  inkDeadWater(a, wy, t);
+  drawRowBoat(cx, wy + 90 + Math.sin(t * 1.2) * 5, 1.15, t,
+              {oars: true, crew: [INK.coat, INK.blue, INK.line]});
+  for (let i = 0; i < 3; i++)
+    inkShape(g => {
+      const r = 80 + i * 60;
+      g.ellipse(cx, wy + 100, r, r * .22, 0, 0, Math.PI * 2);
+    }, null, {width: 1.5, ink: "#46536a"});
+}
+
+function boatNoFish(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, "#2f3846");
+  const wy = a.y + 150;
+  inkDeadWater(a, wy, t, "#141a23");
+  inkShape(g => {
+    g.moveTo(a.x - 5, a.y + a.h + 5);
+    g.lineTo(a.x - 5, a.y + 230);
+    g.quadraticCurveTo(a.x + 300, a.y + 170, a.x + 700, a.y + 268);
+    g.lineTo(a.x + 700, a.y + a.h + 5);
+    g.closePath();
+  }, INK.wood);
+  for (let i = 0; i < 8; i++)
+    inkShape(P.line([[a.x + i * 88, a.y + 250], [a.x + i * 88, a.y + a.h]]), null, {width: 1.5});
+  const hx = a.x + 470, hy = a.y + 232;
+  inkShape(P.poly([[hx - 20, hy - 70], [hx - 12, hy - 130], [hx + 12, hy - 130], [hx + 20, hy - 70]]), INK.coat);
+  inkShape(P.ellipse(hx, hy - 144, 15, 17), INK.flesh, {width: 2});
+  inkShape(P.line([[hx + 14, hy - 118], [hx + 96, hy - 150]]), null, {width: 4});
+  inkShape(g => {
+    g.moveTo(hx + 96, hy - 150);
+    g.quadraticCurveTo(hx + 150, hy - 60, hx + 176, hy + 60);
+  }, null, {width: 2});
+  inkShape(P.ellipse(hx + 176, hy + 74, 16, 20), null, {width: 3});
+  inkLetter("Every means were tried to catch fish", a.x + a.w - 260, a.y + 60, 24, {color: INK.white});
+  inkLetter("There were no fish there", a.x + a.w - 260, a.y + 96, 24, {color: INK.white});
+}
+
+function boatSounding(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, "#252d3a");
+  inkShape(P.rect(a.x - 5, a.y - 5, a.w + 10, 140), INK.wood, {width: 3});
+  for (let i = 0; i < 11; i++) inkShape(P.line([[a.x + i * 90, a.y], [a.x + i * 90, a.y + 134]]), null, {width: 1.5});
+  inkDeadWater(a, a.y + 140, t, "#141a23");
+  const lx = a.x + 380;
+  inkShape(g => {
+    g.moveTo(lx, a.y + 120);
+    for (let k = 1; k <= 12; k++) g.lineTo(lx + Math.sin(k * 1.1 + t) * 9, a.y + 120 + k * 24);
+  }, null, {width: 2, ink: "#c9c2b0"});
+  inkShape(P.ellipse(lx + Math.sin(13.2 + t) * 9, a.y + 420, 11, 16), INK.iron, {width: 2});
+  for (let i = 0; i < 3; i++)
+    inkShape(P.ellipse(a.x + 700 + i * 60, a.y + 92, 44, 16), null, {width: 3, ink: "#c9c2b0"});
+  const marks = ["100", "500", "1000", "2000"];
+  marks.forEach((m, i) => inkLetter(m + " fathoms", a.x + 150, a.y + 200 + i * 62, 24, {color: "#7f8da3"}));
+  inkLetter("Alas! the lake is bottomless", a.x + a.w - 250, a.y + a.h - 60, 26, {color: INK.white});
+}
+
+// -- scene 4: the Society's great hall in New York --
+
+function hallTiers(a, rows, t){
+  for (let r = 0; r < rows; r++){
+    const y = a.y + a.h - 40 - r * 52;
+    const n = 13 + r;
+    for (let i = 0; i < n; i++){
+      const x = a.x + 30 + i * ((a.w - 60) / (n - 1)) + (r % 2 ? 14 : 0);
+      const bob = Math.sin(t * 2 + i + r) * 2;
+      inkShape(P.ellipse(x, y + bob, 21, 23), INK.line);
+      if ((i + r) % 3 === 0){
+        inkShape(P.rect(x - 18, y - 46 + bob, 36, 30), INK.line, {width: 2});
+        inkShape(P.rect(x - 27, y - 18 + bob, 54, 6), INK.line, {width: 2});
+      } else if ((i + r) % 3 === 1){
+        inkShape(P.ellipse(x, y - 28 + bob, 30, 13), (i + r) % 2 ? INK.purple : INK.blue, {width: 2});
+      }
+    }
+  }
+}
+
+function hallWide(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, INK.wall);
+  inkShape(P.rect(a.x - 5, a.y - 5, a.w + 10, 96), "#c0aa7e", {width: 3});
+  for (let i = 0; i < 7; i++)
+    inkShape(P.ellipse(a.x + 70 + i * 140, a.y + 122, 26, 26), INK.yellow, {width: 3});
+  inkLetter("Society for the Exploration of Unknown Regions", a.x + a.w / 2, a.y + 48, 26,
+            {color: INK.line, max: a.w - 220});
+  const st = a.y + 176;
+  inkShape(P.rect(a.x + 300, st, 360, 20), INK.wood, {width: 3});
+  inkShape(P.rect(a.x + 420, st - 60, 120, 60), INK.wood, {width: 3});
+  const head = drawFlin(a.x + 480, st, .52, {point: 1, talking: true});
+  hallTiers(a, 4, t);
+  return {FLIN: head, PEOPLE: [a.x + 150, a.y + a.h - 220]};
+}
+
+function hallLectern(a, sp, t, pulse){
+  inkFlat(a.x, a.y, a.w, a.h, "#d8c8a4");
+  inkShape(P.poly([[a.x + 120, a.y + a.h], [a.x + 160, a.y + 40], [a.x + 220, a.y + 40],
+                   [a.x + 250, a.y + a.h]]), "#c0aa7e", {width: 2});
+  inkShape(P.poly([[a.x + 700, a.y + a.h], [a.x + 730, a.y + 40], [a.x + 790, a.y + 40],
+                   [a.x + 830, a.y + a.h]]), "#c0aa7e", {width: 2});
+  const ty = a.y + a.h - 140;
+  const head = drawFlin(a.x + a.w / 2, ty + 74, 1.12, {point: 1, look: 1, talking: pulse.voice === "FLIN"});
+  inkShape(P.rect(a.x + 300, ty, 360, 20), INK.wood, {width: 3});
+  inkShape(P.rect(a.x + 320, ty + 20, 320, 120), "#7a4a20", {width: 3});
+  inkShape(P.ellipse(a.x + 356, ty - 14, 26, 16), INK.brass, {width: 2});
+  inkShape(P.rect(a.x + 596, ty - 44, 30, 44), INK.white, {width: 2});
+  inkShape(P.ellipse(a.x + 611, ty - 46, 15, 6), INK.white, {width: 2});
+  inkShape(P.line([[a.x + 660, ty - 150], [a.x + 668, ty]]), null, {width: 5});
+  inkShape(P.ellipse(a.x + 658, ty - 156, 13, 8), INK.line, {width: 2});
+  return {FLIN: head};
+}
+
+function hallDiagram(a, sp, t, pulse){
+  inkFlat(a.x, a.y, a.w, a.h, INK.wall);
+  const cx = a.x + 630, cy = a.y + 196, R = 158;
+  inkShape(P.line([[cx - 130, a.y + a.h], [cx - 40, cy + R - 20]]), null, {width: 4});
+  inkShape(P.line([[cx + 130, a.y + a.h], [cx + 40, cy + R - 20]]), null, {width: 4});
+  inkShape(P.ellipse(cx, cy, R, R), INK.blue);
+  vx.save();
+  vx.beginPath();
+  vx.moveTo(cx, cy);
+  vx.arc(cx, cy, R + 4, -0.35, 1.9);
+  vx.closePath();
+  vx.clip();
+  inkShape(P.ellipse(cx, cy, R, R), INK.coat, {stroke: false});
+  inkShape(P.ellipse(cx, cy, R - 42, R - 42), INK.dawn, {stroke: false});
+  vx.restore();
+  inkShape(P.ellipse(cx, cy, R - 42, R - 42), null, {width: 3});
+  inkShape(P.line([[cx, cy], [cx + Math.cos(-0.35) * R, cy + Math.sin(-0.35) * R]]), null, {width: 3});
+  inkShape(P.line([[cx, cy], [cx + Math.cos(1.9) * R, cy + Math.sin(1.9) * R]]), null, {width: 3});
+  for (let i = 0; i < 7; i++){
+    const ang = 0.1 + i * 0.22;
+    inkShape(P.ellipse(cx + Math.cos(ang) * (R - 88), cy + Math.sin(ang) * (R - 88), 5, 5), INK.line, {width: 2});
+  }
+  inkLetter("The interior of the globe is inhabited", cx, a.y + 34, 26, {max: a.w - 300});
+  const head = drawFlin(a.x + 210, a.y + a.h - 20, 1.16, {point: 1, look: 1, talking: pulse.voice === "FLIN"});
+  return {FLIN: head};
+}
+
+function hallUproar(a, sp, t){
+  inkFlat(a.x, a.y, a.w, a.h, "#e3d0a6");
+  for (let i = 0; i < 10; i++){
+    const hx = a.x + 40 + i * 96, hy = a.y + 60 + ((i * 53) % 110) - Math.abs(Math.sin(t * 2 + i)) * 40;
+    vx.save();
+    vx.translate(hx, hy);
+    vx.rotate(Math.sin(t * 2.5 + i) * .9);
+    if (i % 2){
+      inkShape(P.rect(-20, -16, 40, 32), INK.line, {width: 2});
+      inkShape(P.rect(-30, 12, 60, 7), INK.line, {width: 2});
+    } else {
+      inkShape(P.rect(-18, -12, 36, 26), INK.white, {width: 2});
+      for (let k = 0; k < 3; k++) inkShape(P.line([[-12, -6 + k * 7], [12, -6 + k * 7]]), null, {width: 1.2});
+    }
+    vx.restore();
+  }
+  hallTiers(a, 4, t * 2.2);
+  inkLetter("Applause, and loud shouts of disapproval", a.x + a.w / 2, a.y + 42, 28);
+  return {PEOPLE: [a.x + a.w / 2, a.y + 96]};
+}
+
+function hallDecanter(a, sp, t, pulse){
+  inkFlat(a.x, a.y, a.w, a.h, "#d8c8a4");
+  const ty = a.y + a.h - 130;
+  const head = drawFlin(a.x + 400, ty + 70, 1.05, {point: 1, look: 1, talking: pulse.voice === "FLIN"});
+  inkShape(P.rect(a.x + 250, ty, 460, 20), INK.wood, {width: 3});
+  inkShape(P.rect(a.x + 276, ty + 20, 408, 110), "#7a4a20", {width: 3});
+  inkShape(P.line([[a.x + 452, ty - 190], [a.x + 590, ty - 26]]), null, {width: 6});
+  inkShape(P.ellipse(a.x + 446, ty - 198, 14, 9), INK.line, {width: 2});
+  const burst = a.x + 600, by = ty - 14;
+  for (let i = 0; i < 14; i++){
+    const ang = -2.9 + i * 0.21, r = 40 + (i % 4) * 30;
+    inkShape(P.line([[burst + Math.cos(ang) * 16, by + Math.sin(ang) * 10],
+                     [burst + Math.cos(ang) * r, by + Math.sin(ang) * r]]), null, {width: 2});
+  }
+  for (let i = 0; i < 6; i++)
+    inkShape(P.poly([[burst - 40 + i * 20, by - 6], [burst - 28 + i * 20, by - 34],
+                     [burst - 16 + i * 20, by - 4]]), INK.sky, {width: 2});
+  inkLetter("Shivering the water decanter to atoms", a.x + a.w / 2, a.y + 52, 28);
+  return {FLIN: head};
+}
+
+function hallSnuff(a, sp, t, pulse){
+  inkFlat(a.x, a.y, a.w, a.h, INK.dawn);
+  for (let i = 0; i < 18; i++)
+    inkShape(P.line([[a.x + a.w / 2, a.y + 270], [a.x + a.w / 2 + Math.cos(i * .349) * 820,
+                     a.y + 270 + Math.sin(i * .349) * 820]]), null, {width: 1.2, ink: "#e2c477"});
+  const head = drawFlin(a.x + a.w / 2, a.y + a.h - 30, 1.35,
+                        {look: 0, talking: pulse.voice === "FLIN", swing: 4});
+  const bx = a.x + a.w / 2 + 96;
+  inkShape(P.rect(bx, a.y + a.h - 250, 42, 26), INK.brass, {width: 2});
+  for (let i = 0; i < 6; i++)
+    inkShape(P.ellipse(bx + 8 + i * 6, a.y + a.h - 262 - Math.abs(Math.sin(t * 3 + i)) * 20, 3, 3),
+             INK.line, {width: 1});
+  inkLetter("He took snuff with the air of one destined", a.x + a.w / 2, a.y + 40, 26);
+  inkLetter("to reveal great truths to unenlightened mankind", a.x + a.w / 2, a.y + 74, 26);
+  return {FLIN: head};
+}
+
+// Each scene is a run of panels. The panel changes when the scene changes, or every
+// BEAT_SECONDS of the reading, whichever comes first, and the run repeats on a long scene.
+const BEAT_SECONDS = 15;
+const INK_BEATS = {
+  1: [[lakeGorge, lakeSavants, lakeDead, lakeFall],
+      [shopCounter, flinPortrait, flinHead, debatingRoom],
+      [boatLowered, boatOnLake, boatNoFish, boatSounding],
+      [hallWide, hallLectern, hallDiagram, hallUproar, hallDecanter, hallSnuff]],
+  2: [[inkCityMorning], [inkWorks], [inkMuseum], [inkBanquet], [inkStreetsNight]]
+};
+
+function inkBeatsFor(n, scene){
+  const chapter = INK_BEATS[n];
+  if (!chapter) throw new Error("No inked panels for chapter " + n);
+  const beats = chapter[scene.index];
+  if (!beats || !beats.length)
+    throw new Error("No inked panels for chapter " + n + " scene " + (scene.index + 1) +
+                    " ('" + scene.id + "'). scenes.json has " + scenes[n].length +
+                    " scenes and INK_BEATS[" + n + "] has " + chapter.length + ".");
+  return beats;
 }
 
 function drawInk(){
@@ -963,7 +1434,9 @@ function drawInk(){
   vx.beginPath();
   vx.rect(area.x, area.y, area.w, area.h);
   vx.clip();
-  const anchors = inkSceneFor(scene)(area, sp, t, {voice});
+  const beats = inkBeatsFor(chapters[cur].n, scene);
+  const beat = Math.floor(Math.max(0, t - start) / BEAT_SECONDS) % beats.length;
+  const anchors = beats[beat](area, sp, t, {voice}) || {};
   if (voice && anchors[voice]) drawBalloon(cue.text, anchors[voice][0], anchors[voice][1], area);
   vx.restore();
 
@@ -984,7 +1457,7 @@ function drawInk(){
 }
 
 function drawViz(){
-  const ink = chapters.length > 0 && chapters[cur].n === 2;
+  const ink = chapters.length > 0 && INK_BEATS[chapters[cur].n] !== undefined;
   if (ink && viz.width !== INK_W){ viz.width = INK_W; viz.height = INK_H; }
   if (!ink && viz.width !== 96){ viz.width = 96; viz.height = 54; }
   viz.classList.toggle("ink", ink);
