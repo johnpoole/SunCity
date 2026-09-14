@@ -1,0 +1,1654 @@
+{
+ "1": [
+  {
+   "cue": 0,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [],
+   "note": "Lake Avernus lies silent and lifeless in the Rocky Mountains while savants argue over where its water goes"
+  },
+  {
+   "cue": 13,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin Flon the grocer is introduced and his person and habits described"
+  },
+  {
+   "cue": 63,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin and his party row round Lake Avernus in a small boat and find it bottomless"
+  },
+  {
+   "cue": 83,
+   "id": "hall",
+   "flags": [
+    "crowd",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin addresses the packed hall of the Society in New York and proposes to descend into Lake Avernus"
+  }
+ ],
+ "2": [
+  {
+   "cue": 0,
+   "id": "city",
+   "flags": [
+    "city",
+    "crowd"
+   ],
+   "characters": [],
+   "note": "New York wakes to the news of Flin's proposal and the papers and Wall Street talk of nothing else"
+  },
+  {
+   "cue": 28,
+   "id": "chamber",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin superintends the building of his fish vessel at the engineers' works"
+  },
+  {
+   "cue": 31,
+   "id": "chamber",
+   "flags": [
+    "crowd"
+   ],
+   "characters": [],
+   "note": "The finished fish is on view at Barnum's Museum and its workings are described"
+  },
+  {
+   "cue": 77,
+   "id": "hall",
+   "flags": [
+    "crowd",
+    "furniture",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Barnum gives a grand banquet for Flin at Astor House with the ladies in the gallery"
+  },
+  {
+   "cue": 108,
+   "id": "city",
+   "flags": [
+    "city"
+   ],
+   "characters": [],
+   "note": "The guests leave the banquet and go out into the dark streets"
+  }
+ ],
+ "3": [
+  {
+   "cue": 0,
+   "id": "city",
+   "flags": [
+    "city",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin rides a white elephant through the crowded streets of New York in the procession"
+  },
+  {
+   "cue": 18,
+   "id": "city",
+   "flags": [
+    "city",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The expedition boards the train at the station and steams away amid cheering crowds"
+  },
+  {
+   "cue": 26,
+   "id": "water",
+   "flags": [
+    "water",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "On the shore of Lake Avernus Flin bids his friends farewell, enters the fish and sinks out of sight"
+  }
+ ],
+ "4": [
+  {
+   "cue": 0,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin descends in the fish vessel through Lake Avernus and lodges on a rock ledge for the night"
+  },
+  {
+   "cue": 14,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Morning on the ledge, Flin breakfasts and studies the strange creatures clinging to the rock wall"
+  },
+  {
+   "cue": 35,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The fish slides off the ledge and is sucked spinning down into the mouth of the subterranean river"
+  },
+  {
+   "cue": 66,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The fish is swept along the underground river through a tunnel and Flin dines and goes to bed"
+  },
+  {
+   "cue": 92,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin wakes at night as the fish strikes a rock and is carried down a rapid and over a waterfall"
+  },
+  {
+   "cue": 120,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The fish lies jammed in a cove at the foot of the waterfall and Flin unscrews the door"
+  },
+  {
+   "cue": 138,
+   "id": "cavern",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin lights magnesium wire, sees the great stalactite cavern and steps out onto its floor"
+  }
+ ],
+ "5": [
+  {
+   "cue": 0,
+   "id": "cavern",
+   "flags": [
+    "river",
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin stands in the cavern by the rushing river and the waterfall and fixes a torch beside the moored fish"
+  },
+  {
+   "cue": 20,
+   "id": "forest",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin wanders through the petrified forest of white stone trees and loses his way"
+  },
+  {
+   "cue": 48,
+   "id": "cavern",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin comes out on a treeless plain of stone and measures the bones of giants and a behemoth"
+  },
+  {
+   "cue": 76,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin finds a second river full of blind fish and follows it downstream"
+  },
+  {
+   "cue": 101,
+   "id": "cavern",
+   "flags": [
+    "river",
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin returns to the moored fish, eats, writes his diary and sleeps"
+  },
+  {
+   "cue": 112,
+   "id": "cavern",
+   "flags": [
+    "river",
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Next morning Flin inspects the dented fish and puzzles how to get it out of the pool beneath the fall"
+  }
+ ],
+ "6": [
+  {
+   "cue": 0,
+   "id": "cavern",
+   "flags": [
+    "river",
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin clambers along the rocks beside the waterfall and tows the fish into a cove"
+  },
+  {
+   "cue": 22,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin boards the fish, dives beneath the waterfall and is spun in the maelstrom until he faints"
+  },
+  {
+   "cue": 42,
+   "id": "river",
+   "flags": [
+    "river",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin wakes in the steady fish drifting through a glittering tunnel and writes his diary until he sleeps"
+  },
+  {
+   "cue": 62,
+   "id": "river",
+   "flags": [
+    "river",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin wakes in oppressive heat as a red glow fills the tunnel"
+  },
+  {
+   "cue": 70,
+   "id": "cavern",
+   "flags": [
+    "river",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The river opens into a vast hall of jewelled pillars and Flin moors the fish and steps ashore"
+  }
+ ],
+ "7": [
+  {
+   "cue": 0,
+   "id": "cavern",
+   "flags": [
+    "river",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin lays a paper trail from his vessel on the river and studies the jewelled hall of pillars"
+  },
+  {
+   "cue": 32,
+   "id": "cavern",
+   "flags": [
+    "jewels"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin climbs and crawls through the low honeycomb cavern away from the river"
+  },
+  {
+   "cue": 49,
+   "id": "fire",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin kneels on the brink of a fiery gulf, the bed of a living volcano, and leaves a bottle with his name in it"
+  },
+  {
+   "cue": 85,
+   "id": "cavern",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin retraces his paper trail, lies down on the rock and dreams of being tried in Pluto's court"
+  },
+  {
+   "cue": 115,
+   "id": "river",
+   "flags": [
+    "river",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin reaches the river again and finds his vessel gone"
+  }
+ ],
+ "8": [
+  {
+   "cue": 0,
+   "id": "river",
+   "flags": [
+    "river",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin wakes from his swoon beside the river where his vessel was moored"
+  },
+  {
+   "cue": 23,
+   "id": "cavern",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin follows the river bank downstream as the cavern grows dark"
+  },
+  {
+   "cue": 44,
+   "id": "cavern",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin sits on a mound of rock in the dark and creeps toward two gleaming eyes at the water's edge"
+  }
+ ],
+ "9": [
+  {
+   "cue": 0,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin strips and swims out to his vessel wedged between two pillars in the stream"
+  },
+  {
+   "cue": 44,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin steers the fish out of the pillars into a tunnel and sinks it to the bottom to sleep"
+  },
+  {
+   "cue": 54,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin wakes, breakfasts and is driven fast through the narrow tunnel by a rushing wind"
+  },
+  {
+   "cue": 68,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The vessel is swept down a rapid, strikes rock and rises into a deafening roar"
+  }
+ ],
+ "10": [
+  {
+   "cue": 0,
+   "id": "fire",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Inside and then on top of the fish in the cavern of the Waters of Fire, where blue flames burst from the lake and the pigeon dies"
+  },
+  {
+   "cue": 54,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The fish rushes down a steep dark tunnel on the swift underground river while Flin fights sleep"
+  },
+  {
+   "cue": 101,
+   "id": "fire",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The tunnel opens out and the fish is swept toward a roaring cauldron of water and fire"
+  }
+ ],
+ "11": [
+  {
+   "cue": 0,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Inside the fish, tossed through the whirlpool, then waking bruised among the wreckage of the cabin"
+  },
+  {
+   "cue": 33,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin steps out onto the fish beside a ledge of rock and sees the Sea of Echoes under coloured clouds"
+  },
+  {
+   "cue": 65,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin sets sail and runs along the coast of waterfalls toward the smoke on the horizon"
+  },
+  {
+   "cue": 85,
+   "id": "water",
+   "flags": [
+    "water",
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "In rough sea by the barrier reef where the river from Lake Avernus bursts out as a giant waterspout"
+  },
+  {
+   "cue": 114,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Moored at the ledge, Flin walks the black shore, shoots at a giant turtle, hears the echo, and christens the Sea of Echoes"
+  }
+ ],
+ "12": [
+  {
+   "cue": 0,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Inside the fish moored on the Sea of Echoes, Flin wakes sore, brews punch, and finds the air charged with electricity"
+  },
+  {
+   "cue": 23,
+   "id": "storm",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "An electric storm bursts over the Sea of Echoes with sheets of flame and thunder that shakes the rocks"
+  },
+  {
+   "cue": 64,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The storm passes and Flin moors at the rocks to sew himself a suit from blankets and sheets"
+  },
+  {
+   "cue": 86,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin hoists the sail and flag and runs along the coast and across open sea to a new coast where he moors for the night"
+  },
+  {
+   "cue": 111,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Next day Flin sails fast along the new coast on a strong current toward a great headland"
+  },
+  {
+   "cue": 115,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The fish is swept through a narrow channel between black rock walls lit blood red"
+  },
+  {
+   "cue": 121,
+   "id": "cavern",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The river carries the fish through a colossal doorway in a mountain into a dark tunnel"
+  }
+ ],
+ "13": [
+  {
+   "cue": 0,
+   "id": "cavern",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The fish is swept down a dark rock tunnel by a fast current"
+  },
+  {
+   "cue": 10,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The vessel shoots out of the tunnel onto an open river between banks of ferns, palms and flowers"
+  },
+  {
+   "cue": 43,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin moors in a small bay of a lagoon, sleeps, and watches night fall with fireflies over the water"
+  },
+  {
+   "cue": 70,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Next morning Flin sails on down the broadening river through jungle to a wide plain of gold"
+  },
+  {
+   "cue": 77,
+   "id": "river",
+   "flags": [
+    "river",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin lands in a cove on the plain of solid gold and frantically loads his vessel with it"
+  },
+  {
+   "cue": 108,
+   "id": "river",
+   "flags": [
+    "river"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin casts off with the vessel crammed with gold, drifts on the river and falls asleep on the floor"
+  }
+ ],
+ "14": [
+  {
+   "cue": 0,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "jewels",
+    "furniture",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN",
+    "GUBMUH",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "Flin wakes in the golden throne hall of King Gubmuh before a crowd of tailed courtiers and is mesmerised by the priest"
+  }
+ ],
+ "15": [
+  {
+   "cue": 0,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "jewels",
+    "furniture",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN",
+    "MR_YTIDRUSBA",
+    "GUBMUH"
+   ],
+   "note": "Flin sits on a stool in the throne hall while the priest Ytidrusba questions and lectures him before the King and court"
+  }
+ ],
+ "16": [
+  {
+   "cue": 0,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "jewels",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "Flin wakes alone in the gold audience hall of the palace and the priest comes to him"
+  },
+  {
+   "cue": 24,
+   "id": "chamber",
+   "flags": [
+    "palace",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "In an ante-room of the palace Flin learns the language, quarrels with Ytidrusba, eats, and reads the Gazette"
+  }
+ ],
+ "17": [
+  {
+   "cue": 0,
+   "id": "hall",
+   "flags": [
+    "palace",
+    "crowd",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YREKCAUQ",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "In a gold room of the palace the savants examine Flin on a table and Dr. Yrekcauq lectures on him"
+  }
+ ],
+ "18": [
+  {
+   "cue": 0,
+   "id": "hall",
+   "flags": [
+    "palace",
+    "crowd",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YREKCAUQ"
+   ],
+   "note": "The lecture ends and the savants leave the conference room"
+  },
+  {
+   "cue": 4,
+   "id": "chamber",
+   "flags": [
+    "palace",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "In the magician's apartment Ytidrusba runs down the Doctor and plots with Flin to win the Princess"
+  }
+ ],
+ "19": [
+  {
+   "cue": 0,
+   "id": "palace",
+   "flags": [
+    "palace"
+   ],
+   "characters": [
+    "FLIN",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "Ytidrusba leads Flin through the palace corridors and across a courtyard to another wing"
+  },
+  {
+   "cue": 4,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "In the Princess's apartment Yobmot flirts with Flin and he asks her to stop the exhibition, and the King walks in"
+  }
+ ],
+ "20": [
+  {
+   "cue": 0,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT",
+    "GUBMUH"
+   ],
+   "note": "In the Princess's apartment Yobmot wheedles the King into granting Flin his liberty, then waltzes Flin round the room"
+  }
+ ],
+ "21": [
+  {
+   "cue": 0,
+   "id": "city",
+   "flags": [
+    "city"
+   ],
+   "characters": [],
+   "note": "The city of Esnesnon buzzes over Flin's arrival and the Anti-Humbug News prints its article"
+  },
+  {
+   "cue": 86,
+   "id": "palace",
+   "flags": [
+    "palace"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin reads the newspaper article in the palace and smiles"
+  }
+ ],
+ "22": [
+  {
+   "cue": 0,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Princess Yobmot bursts into Flin's room in the palace, teases him, and orders her chariot to take him to the Society meeting"
+  }
+ ],
+ "23": [
+  {
+   "cue": 0,
+   "id": "city",
+   "flags": [
+    "city"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Flin and the Princess ride through the town in her electric chariot while she makes love to him"
+  },
+  {
+   "cue": 85,
+   "id": "chamber",
+   "flags": [
+    "city"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "They climb the ruby stairs of a gold building and a servant announces them at the door"
+  },
+  {
+   "cue": 99,
+   "id": "hall",
+   "flags": [
+    "crowd",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "In the meeting room of the Society for the Protection of Males, seventy ladies stare at Flin and fall to squabbling"
+  }
+ ],
+ "24": [
+  {
+   "cue": 0,
+   "id": "hall",
+   "flags": [
+    "crowd",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "The Society meeting goes on, the Princess in the chair, while Mrs Sregdorpittemmocaig quarrels with the board over a chariot-driver's case"
+  }
+ ],
+ "25": [
+  {
+   "cue": 0,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin reads the newspaper war between the two court factions"
+  },
+  {
+   "cue": 163,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "Flin persuades Ytidrusba to let him speak to his wife"
+  }
+ ],
+ "26": [
+  {
+   "cue": 0,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "Flin talks the reluctant magician into letting him call on Mrs Ytidrusba"
+  },
+  {
+   "cue": 23,
+   "id": "chamber",
+   "flags": [
+    "furniture",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN",
+    "MRS_YTIDRUSBA"
+   ],
+   "note": "Flin argues with Mrs Ytidrusba in her room and she has the Amazons arrest him"
+  }
+ ],
+ "27": [
+  {
+   "cue": 0,
+   "id": "city",
+   "flags": [
+    "city"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The guard hurries Flin through the streets in a closed carriage to the citadel"
+  },
+  {
+   "cue": 4,
+   "id": "chamber",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin is thrust into a dark dungeon and mutters about his scrape"
+  },
+  {
+   "cue": 30,
+   "id": "palace",
+   "flags": [
+    "palace"
+   ],
+   "characters": [
+    "GUBMUH"
+   ],
+   "note": "The King hears of the arrest and dares not act against Mrs Ytidrusba"
+  },
+  {
+   "cue": 49,
+   "id": "chamber",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin languishes in gaol while the officials delay his case"
+  },
+  {
+   "cue": 68,
+   "id": "hall",
+   "flags": [
+    "crowd"
+   ],
+   "characters": [],
+   "note": "The Parliament of a thousand women wrangles over the case"
+  },
+  {
+   "cue": 101,
+   "id": "chamber",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin waits in prison while Parliament indicts him for treason"
+  },
+  {
+   "cue": 126,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Princess Yobmot returns and visits Flin in his cell the day before the trial"
+  }
+ ],
+ "28": [
+  {
+   "cue": 0,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "The Princess visits Flin in the room where he is confined and promises him the best counsel"
+  },
+  {
+   "cue": 38,
+   "id": "court",
+   "flags": [
+    "crowd",
+    "furniture",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT",
+    "HTURTEHTERAPS"
+   ],
+   "note": "Flin stands trial for treason in the packed amphitheatre court and the prosecution makes its opening speech"
+  }
+ ],
+ "29": [
+  {
+   "cue": 0,
+   "id": "court",
+   "flags": [
+    "crowd",
+    "furniture",
+    "jewels"
+   ],
+   "characters": [
+    "FLIN",
+    "HTURTEHTERAPS",
+    "YOBMOT"
+   ],
+   "note": "Hturtehteraps makes her speech for the defence in the crowded court and the judges acquit Flin"
+  }
+ ],
+ "30": [
+  {
+   "cue": 0,
+   "id": "court",
+   "flags": [
+    "crowd",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT",
+    "HTURTEHTERAPS"
+   ],
+   "note": "The judges and ladies crowd round Flin in the court to congratulate him on his acquittal"
+  },
+  {
+   "cue": 3,
+   "id": "chamber",
+   "flags": [
+    "crowd",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "A banquet in an ante-room where the Princess and the ladies make speeches over lunch"
+  },
+  {
+   "cue": 28,
+   "id": "city",
+   "flags": [
+    "city"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Alone in the Princess's chariot she declares her love and Flin agrees to be hers"
+  }
+ ],
+ "31": [
+  {
+   "cue": 0,
+   "id": "city",
+   "flags": [
+    "city",
+    "crowd"
+   ],
+   "characters": [
+    "MRS_YTIDRUSBA",
+    "YREKCAUQ"
+   ],
+   "note": "The city in uproar after the trial, with twenty thousand Amazons quartered in the streets"
+  },
+  {
+   "cue": 23,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [],
+   "note": "Four masked women take a male from his home at night"
+  },
+  {
+   "cue": 30,
+   "id": "hall",
+   "flags": [
+    "crowd"
+   ],
+   "characters": [],
+   "note": "Parliament debates whether to banish Flin"
+  },
+  {
+   "cue": 35,
+   "id": "city",
+   "flags": [
+    "city"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin goes about the town learning the customs of Esnesnon"
+  },
+  {
+   "cue": 73,
+   "id": "palace",
+   "flags": [
+    "palace"
+   ],
+   "characters": [
+    "GUBMUH",
+    "FLIN",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "The King and Ytidrusba worn down at court while Flin resolves on a revolution and a way home"
+  },
+  {
+   "cue": 104,
+   "id": "hall",
+   "flags": [
+    "crowd"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin petitions Parliament for leave to explore the cavern in the mountain"
+  }
+ ],
+ "32": [
+  {
+   "cue": 0,
+   "id": "palace",
+   "flags": [
+    "palace"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Flin prepares the expedition and the Princess begs him not to go"
+  },
+  {
+   "cue": 36,
+   "id": "city",
+   "flags": [
+    "city",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Flin and his band of old males march across the plain as the Princess waves from the castle tower"
+  },
+  {
+   "cue": 38,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "A four day voyage on an electric ship across the sea to Cape Desolation"
+  },
+  {
+   "cue": 44,
+   "id": "cavern",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The party walks the rim of a dead volcanic basin of black rock"
+  },
+  {
+   "cue": 64,
+   "id": "storm",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "An electric storm breaks over the crater while the travellers shelter in a rock opening"
+  },
+  {
+   "cue": 93,
+   "id": "cavern",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "The climb up the mountain through the clouds and a ravine to the mouth of the mammoth cavern"
+  },
+  {
+   "cue": 109,
+   "id": "cavern",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin and six males climb for days through the galleries inside the mountain until the air goes bad"
+  },
+  {
+   "cue": 122,
+   "id": "cavern",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Back down to the cave mouth and the return to Esnesnon"
+  }
+ ],
+ "33": [
+  {
+   "cue": 0,
+   "id": "city",
+   "flags": [
+    "city",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN",
+    "YREKCAUQ",
+    "MRS_YTIDRUSBA"
+   ],
+   "note": "The city grumbles at the wasted expedition while Flin quietly enjoys his find"
+  },
+  {
+   "cue": 16,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "Flin confides in Ytidrusba and has the breathing dress, water box and biscuits made"
+  },
+  {
+   "cue": 53,
+   "id": "cavern",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin slips out of the city by night and stores his gear at the mountain"
+  },
+  {
+   "cue": 56,
+   "id": "palace",
+   "flags": [
+    "palace"
+   ],
+   "characters": [
+    "YOBMOT",
+    "GUBMUH"
+   ],
+   "note": "The Princess frets over Flin's disappearance and the King issues a proclamation"
+  },
+  {
+   "cue": 61,
+   "id": "palace",
+   "flags": [
+    "palace"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Flin returns to the palace and the Princess hugs him"
+  },
+  {
+   "cue": 81,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [],
+   "note": "An upper world lady wastes away under the burden of a secret"
+  },
+  {
+   "cue": 106,
+   "id": "chamber",
+   "flags": [
+    "furniture"
+   ],
+   "characters": [],
+   "note": "On a stormy October night the lady dies in her bed after telling Nellie the secret"
+  }
+ ],
+ "34": [
+  {
+   "cue": 0,
+   "id": "palace",
+   "flags": [
+    "palace"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "In the palace the Princess Yobmot falls under Flin's influence and learns to love him"
+  },
+  {
+   "cue": 39,
+   "id": "chamber",
+   "flags": [
+    "furniture",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN",
+    "MR_YTIDRUSBA",
+    "GUBMUH"
+   ],
+   "note": "Flin works in secret with the King and Ytidrusba, winning men to the conspiracy"
+  },
+  {
+   "cue": 69,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Flin tells the Princess that man should rule and wins her over with a confession of love"
+  },
+  {
+   "cue": 162,
+   "id": "chamber",
+   "flags": [
+    "furniture",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN",
+    "GUBMUH",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "The conspirators rejoice at the Princess joining them and fix the hour for the coup"
+  }
+ ],
+ "35": [
+  {
+   "cue": 0,
+   "id": "palace",
+   "flags": [
+    "palace"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "The Princess struggles against Flin's hold on her and yields to it"
+  },
+  {
+   "cue": 38,
+   "id": "chamber",
+   "flags": [
+    "furniture",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN",
+    "GUBMUH",
+    "MR_YTIDRUSBA"
+   ],
+   "note": "The conspirators meet nightly while spies of the Government grow suspicious"
+  },
+  {
+   "cue": 48,
+   "id": "hall",
+   "flags": [
+    "crowd",
+    "furniture"
+   ],
+   "characters": [],
+   "note": "The members of Parliament shriek and quarrel over the news of the plot and order Flin's arrest"
+  },
+  {
+   "cue": 60,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Flin withdraws to the palace with troops the Princess has won over"
+  },
+  {
+   "cue": 62,
+   "id": "city",
+   "flags": [
+    "city",
+    "crowd"
+   ],
+   "characters": [],
+   "note": "The women of the city rage in stormy meetings and resolve to besiege the palace"
+  },
+  {
+   "cue": 71,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT",
+    "GUBMUH"
+   ],
+   "note": "The besiegers batter the palace for weeks while the besieged make sorties and fight back"
+  },
+  {
+   "cue": 81,
+   "id": "palace",
+   "flags": [
+    "palace",
+    "furniture"
+   ],
+   "characters": [
+    "GUBMUH",
+    "MR_YTIDRUSBA",
+    "FLIN"
+   ],
+   "note": "Inside the besieged palace the King wastes away and dies and Ytidrusba follows him"
+  },
+  {
+   "cue": 91,
+   "id": "city",
+   "flags": [
+    "city"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "Under cover of darkness Flin and the Princess slip out of the palace and hurry toward the mountain"
+  }
+ ],
+ "36": [
+  {
+   "cue": 0,
+   "id": "city",
+   "flags": [],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "The fugitives flee unmolested toward the mountain"
+  },
+  {
+   "cue": 9,
+   "id": "cavern",
+   "flags": [],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "They rest at the mouth of the cavern and then climb the dark galleries upward for days"
+  },
+  {
+   "cue": 47,
+   "id": "water",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN",
+    "YOBMOT"
+   ],
+   "note": "On the shore of a subterranean lake the Princess dies in Flin's arms"
+  },
+  {
+   "cue": 89,
+   "id": "cavern",
+   "flags": [],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin climbs on alone through the burnt galleries until he sees daylight"
+  },
+  {
+   "cue": 101,
+   "id": "cavern",
+   "flags": [
+    "water"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin emerges at the bottom of a huge crater with a lake and blue sky far above"
+  },
+  {
+   "cue": 109,
+   "id": "forest",
+   "flags": [
+    "crowd"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin climbs to the mountain summit, descends into a valley and meets a party of gold diggers"
+  },
+  {
+   "cue": 145,
+   "id": "city",
+   "flags": [
+    "city",
+    "crowd"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin reaches San Francisco and is seized by the police and held as a madman for a year"
+  },
+  {
+   "cue": 155,
+   "id": "hall",
+   "flags": [
+    "crowd",
+    "furniture"
+   ],
+   "characters": [
+    "FLIN"
+   ],
+   "note": "Flin gives receptions at Barnum's Museum in New York and is called an impostor"
+  }
+ ]
+}

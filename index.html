@@ -146,37 +146,8 @@ const NAMES = {
 const au = document.getElementById("au");
 const viz = document.getElementById("viz");
 const vx = viz.getContext("2d", {alpha: false});
-let chapters = [], cur = 0, cues = [], cueIdx = -1;
+let chapters = [], scenes = {}, cur = 0, cues = [], cueIdx = -1;
 const vizState = {flash: 0, lastCue: -2, lastScene: ""};
-const CHARACTER_MATCHERS = [
-  {id: "FLIN", terms: [" flin ", " flonatin ", " josiah "]},
-  {id: "YOBMOT", terms: [" yobmot ", " princess "]},
-  {id: "GUBMUH", terms: [" gubmuh ", " king "]},
-  {id: "MR_YTIDRUSBA", terms: [" ytidrusba ", " magician "]},
-  {id: "MRS_YTIDRUSBA", terms: [" mrs ytidrusba ", " mrs. ytidrusba "]},
-  {id: "YREKCAUQ", terms: [" yrekcauq ", " doctor "]},
-  {id: "HTURTEHTERAPS", terms: [" hturtehteraps "]}
-];
-const SCENE_TERMS = {
-  water: [" lake ", " tarn ", " water ", " sea ", " shore ", " boat ", " vessel ", " ocean ", " waves ", " fish "],
-  mountains: [" mountain ", " mountains ", " rocky ", " rocks ", " valley ", " crag ", " crags ", " hill ", " cliff "],
-  river: [" river ", " current ", " stream ", " springs ", " flow ", " waters "],
-  forest: [" forest ", " tree ", " trees ", " wood ", " woods ", " branch ", " branches ", " petrified "],
-  underground: [" cavern ", " subterranean ", " underground ", " depths ", " tunnel ", " cave ", " gloomy ", " crater "],
-  hall: [" hall ", " audience ", " fellows ", " society ", " president ", " meeting ", " address ", " speech ", " papers ", " philosophers ", " lecture ", " assemblage "],
-  palace: [" princess ", " king ", " palace ", " royal ", " dais ", " apartment ", " courtyard ", " wing ", " throne ", " chamber ", " magnificent "],
-  court: [" trial ", " judge ", " sentence ", " prisoner ", " criminal ", " indicting ", " bar of justice ", " verdict ", " witnesses "],
-  city: [" city ", " streets ", " houses ", " station ", " crowd ", " crowds ", " route ", " procession ", " flags ", " bands ", " police ", " militia ", " train "],
-  chamber: [" room ", " table ", " seat ", " chair ", " couch ", " apartment ", " corridor ", " door ", " window ", " building "],
-  storm: [" storm ", " electric ", " lightning ", " thunder ", " flashed ", " flash ", " shock "],
-  fire: [" fire ", " flames ", " flame ", " lava ", " molten ", " volcano ", " fiery ", " red-hot "],
-  jewels: [" jewels ", " jewel ", " gem ", " gems ", " gold ", " treasure ", " glitter ", " sparkling "],
-  bridge: [" bridge ", " crossing ", " span ", " arch "],
-  prison: [" bars ", " cell ", " captive ", " prisoner ", " locked ", " gaol ", " cage "],
-  crowd: [" crowd ", " crowds ", " audience ", " people ", " subjects ", " ladies ", " gentlemen ", " assembly "],
-  furniture: [" table ", " chair ", " couch ", " seat ", " dais ", " bench ", " throne "]
-};
-
 const pad = n => String(n).padStart(2, "0");
 const colour = v => "var(--v-" + v + ")";
 const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
@@ -218,85 +189,17 @@ function pixelCircle(x, y, r, color){
   }
 }
 
-function textWindow(){
-  if (!cues.length) return [];
-  const center = cueIdx >= 0 ? cueIdx : 0;
-  const start = Math.max(0, center - 2);
-  const end = Math.min(cues.length, center + 3);
-  return cues.slice(start, end);
-}
-
-function padText(text){
-  return " " + text.toLowerCase().replace(/[^a-z0-9]+/g, " ") + " ";
-}
-
-function countTerms(text, terms){
-  let count = 0;
-  for (const term of terms) if (text.includes(term)) count++;
-  return count;
-}
-
-function inferSceneContext(){
-  const windowCues = textWindow();
-  const body = padText(windowCues.map(c => c.text).join(" "));
-  const title = padText(chapters[cur] ? chapters[cur].title : "");
+function sceneAt(){
+  if (!chapters.length) return {id: "cavern", hits: {}, characters: []};
+  const list = scenes[chapters[cur].n];
+  let scene = list[0];
+  for (const s of list){
+    if (s.cue > cueIdx) break;
+    scene = s;
+  }
   const hits = {};
-  for (const key in SCENE_TERMS)
-    hits[key] = countTerms(body, SCENE_TERMS[key]) * 3 + countTerms(title, SCENE_TERMS[key]);
-
-  const scores = [
-    ["fire", hits.fire + hits.water],
-    ["storm", hits.storm + hits.underground],
-    ["court", hits.court + hits.crowd],
-    ["palace", hits.palace + hits.furniture],
-    ["hall", hits.hall + hits.crowd],
-    ["city", hits.city + hits.crowd],
-    ["forest", hits.forest + hits.mountains],
-    ["river", hits.river + hits.underground],
-    ["water", hits.water + hits.mountains],
-    ["bridge", hits.bridge + hits.river],
-    ["chamber", hits.chamber + hits.furniture],
-    ["cavern", hits.underground + hits.mountains + hits.jewels]
-  ];
-
-  let best = "cavern";
-  let bestScore = 0;
-  for (const [id, score] of scores){
-    if (score > bestScore){
-      best = id;
-      bestScore = score;
-    }
-  }
-
-  if (!bestScore){
-    const titleText = chapters[cur] ? chapters[cur].title.toLowerCase() : "";
-    if (titleText.includes("princess") || titleText.includes("king")) best = "palace";
-    else if (titleText.includes("forest")) best = "forest";
-    else if (titleText.includes("river")) best = "river";
-    else if (titleText.includes("storm")) best = "storm";
-    else if (titleText.includes("fire")) best = "fire";
-    else if (titleText.includes("lake") || titleText.includes("sea")) best = "water";
-  }
-
-  return {id: best, hits, text: body, windowCues};
-}
-
-function inferCharacters(scene){
-  const found = [];
-  const seen = new Set();
-  const add = id => {
-    if (!id || id === "NARRATOR" || seen.has(id)) return;
-    seen.add(id);
-    found.push(id);
-  };
-
-  if (cueIdx >= 0) add(cues[cueIdx].voice);
-  for (const cue of scene.windowCues) add(cue.voice);
-  for (const match of CHARACTER_MATCHERS){
-    if (match.terms.some(term => scene.text.includes(term))) add(match.id);
-  }
-  if (!found.length && scene.text.includes(" flin ")) add("FLIN");
-  return found.slice(0, 3);
+  for (const f of scene.flags) hits[f] = true;
+  return {id: scene.id, hits, characters: scene.characters};
 }
 
 function drawPeak(cx, baseY, width, height, color){
@@ -574,8 +477,8 @@ function drawViz(){
   const w = viz.width, h = viz.height;
   const t = au.currentTime || 0;
   const cue = cueIdx >= 0 ? cues[cueIdx] : null;
-  const scene = inferSceneContext();
-  const characters = inferCharacters(scene);
+  const scene = sceneAt();
+  const characters = scene.characters;
   const voice = cue ? cue.voice : "NARRATOR";
   const accent = voiceRgb(voice);
   const pale = tint(accent, .56, [232, 226, 212]);
@@ -800,13 +703,18 @@ document.addEventListener("keydown", e => {
 
 buildCast();
 drawViz();
-fetch("chapters.json")
-  .then(r => {
-    if (!r.ok) throw new Error("chapters.json returned HTTP " + r.status);
+Promise.all(["chapters.json", "scenes.json"].map(f =>
+  fetch(f).then(r => {
+    if (!r.ok) throw new Error(f + " returned HTTP " + r.status);
     return r.json();
-  })
-  .then(js => {
+  })))
+  .then(([js, sc]) => {
+    for (const c of js){
+      if (!Array.isArray(sc[c.n]) || !sc[c.n].length)
+        throw new Error("scenes.json has no scenes for chapter " + c.n);
+    }
     chapters = js;
+    scenes = sc;
     buildTOC();
     const p = load();
     let i = 0;
@@ -822,7 +730,7 @@ fetch("chapters.json")
   })
   .catch(err => {
     document.getElementById("script").innerHTML =
-      '<p style="color:#d98b8b">Could not load the chapter list: ' + err.message +
+      '<p style="color:#d98b8b">Could not load the book: ' + err.message +
       '. Serve this folder over HTTP (python -m http.server 8000) instead of opening the file directly.</p>';
   });
 </script>
