@@ -26,31 +26,45 @@ NAMES = {
     "PEOPLE":         "The people",
 }
 
-ROMAN = re.compile(r"^([IVXLC]+)\.\s*--\s*(.+)$")
 WORK = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "build")
 OUT = pathlib.Path("audio")
+
+
+SHOUTED = re.compile(r"\b[A-Z]{2,}\b")
 
 
 def speakable(text):
     text = re.sub(r"\[[*†‡]\]", "", text)
     text = text.replace(" -- ", ", ").replace("--", ", ")
     text = text.replace("“", "").replace("”", "").replace('"', "")
+    # The printer set the opening word of every chapter, and the newspaper headlines,
+    # in full capitals. Read aloud those come out as letters: I, N for IN. The book
+    # has no real abbreviation in capitals, so every one of them is a word.
+    text = SHOUTED.sub(lambda m: m.group(0).capitalize(), text)
     text = re.sub(r"\s+", " ", text).strip()
     # A fragment left holding only punctuation, such as the bracket around a reported
     # cry, has nothing to say and the speech service returns no audio for it.
     return text if re.search(r"[A-Za-z0-9]", text) else ""
 
 
-def spoken_heading(heading, n):
-    m = ROMAN.match(heading.rstrip("."))
-    if not m:
-        raise SystemExit(f"synth_cast.py: chapter {n} heading {heading!r} is not 'ROMAN. -- TITLE'")
-    return f"Chapter {n}. {m.group(2).title()}."
+def chapter_titles():
+    """The titles the page shows, so the voice reads the same words the reader sees."""
+    path = pathlib.Path("chapters.json")
+    if not path.exists():
+        raise SystemExit("synth_cast.py: chapters.json is missing. Run titles.py first.")
+    return {c["n"]: c["title"] for c in json.loads(path.read_text(encoding="utf-8"))}
 
 
-def blocks_for(chapter, n):
+def spoken_heading(titles, n):
+    if n not in titles:
+        raise SystemExit(f"synth_cast.py: chapters.json has no title for chapter {n}. "
+                         f"Run titles.py to rebuild it.")
+    return f"Chapter {n}. {titles[n]}."
+
+
+def blocks_for(chapter, n, titles):
     """Merge consecutive segments sharing a voice into one synthesis block."""
-    out = [{"voice": "NARRATOR", "text": spoken_heading(chapter["heading"], n)}]
+    out = [{"voice": "NARRATOR", "text": spoken_heading(titles, n)}]
     for s in chapter["segments"]:
         t = speakable(s["text"])
         if not t:
@@ -95,7 +109,7 @@ async def synth_block(text, voice, path):
             await asyncio.sleep(4 * attempt)
 
 
-async def build_chapter(n, chapter):
+async def build_chapter(n, chapter, titles):
     mp3 = OUT / f"ch{n:02d}.mp3"
     meta = OUT / f"ch{n:02d}.json"
     work = WORK / f"ch{n:02d}"
@@ -103,7 +117,7 @@ async def build_chapter(n, chapter):
         shutil.rmtree(work)
     work.mkdir(parents=True)
 
-    blocks = blocks_for(chapter, n)
+    blocks = blocks_for(chapter, n, titles)
     offset, cues, parts = 0.0, [], []
 
     for i, b in enumerate(blocks):
@@ -137,6 +151,7 @@ async def build_chapter(n, chapter):
 
 async def main():
     cast = json.loads(pathlib.Path("cast.json").read_text(encoding="utf-8"))
+    titles = chapter_titles()
     OUT.mkdir(exist_ok=True)
     WORK.mkdir(exist_ok=True)
     order = sorted(cast, key=lambda k: int(k))
@@ -149,7 +164,7 @@ async def main():
             print(f"ch{n:02d} already built, skip", flush=True)
             continue
         t0 = time.time()
-        nb, dur = await build_chapter(n, cast[k])
+        nb, dur = await build_chapter(n, cast[k], titles)
         total += dur
         print(f"ch{n:02d}  {nb:3d} blocks  {dur/60:5.1f} min  built in {time.time()-t0:5.0f}s",
               flush=True)
