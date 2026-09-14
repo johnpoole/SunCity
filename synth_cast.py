@@ -11,6 +11,7 @@ VOICES = {
     "MRS_YTIDRUSBA":  "en-US-MichelleNeural",
     "YREKCAUQ":       "en-GB-ThomasNeural",
     "HTURTEHTERAPS":  "en-AU-NatashaNeural",
+    "PEOPLE":         "en-US-GuyNeural",
 }
 
 NAMES = {
@@ -22,6 +23,7 @@ NAMES = {
     "MRS_YTIDRUSBA":  "Mrs. Ytidrusba",
     "YREKCAUQ":       "Doctor Yrekcauq",
     "HTURTEHTERAPS":  "Hturtehteraps",
+    "PEOPLE":         "The people",
 }
 
 ROMAN = re.compile(r"^([IVXLC]+)\.\s*--\s*(.+)$")
@@ -33,7 +35,10 @@ def speakable(text):
     text = re.sub(r"\[[*†‡]\]", "", text)
     text = text.replace(" -- ", ", ").replace("--", ", ")
     text = text.replace("“", "").replace("”", "").replace('"', "")
-    return re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"\s+", " ", text).strip()
+    # A fragment left holding only punctuation, such as the bracket around a reported
+    # cry, has nothing to say and the speech service returns no audio for it.
+    return text if re.search(r"[A-Za-z0-9]", text) else ""
 
 
 def spoken_heading(heading, n):
@@ -120,7 +125,13 @@ async def build_chapter(n, chapter):
         raise RuntimeError(f"ffmpeg concat failed for chapter {n}: {r.stderr.strip()}")
 
     meta.write_text(json.dumps({"chapter": n, "cues": cues}), encoding="utf-8")
-    shutil.rmtree(work)
+    # On Windows ffmpeg can still hold a part file for a moment after it exits. The chapter
+    # is already written, so a temp directory that will not delete is reported, not fatal.
+    try:
+        shutil.rmtree(work)
+    except OSError as e:
+        print(f"synth_cast.py: chapter {n} built, but the work directory {work} could not be "
+              f"removed: {e}. Delete it by hand.", flush=True)
     return len(blocks), duration(mp3)
 
 

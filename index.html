@@ -18,6 +18,7 @@
     --v-MRS_YTIDRUSBA:#c1a0dc;
     --v-YREKCAUQ:#dd8d70;
     --v-HTURTEHTERAPS:#6fc0b8;
+    --v-PEOPLE:#b5a68c;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--ink);
@@ -141,7 +142,8 @@ const NAMES = {
   MR_YTIDRUSBA: "Mr. Ytidrusba",
   MRS_YTIDRUSBA: "Mrs. Ytidrusba",
   YREKCAUQ: "Doctor Yrekcauq",
-  HTURTEHTERAPS: "Hturtehteraps"
+  HTURTEHTERAPS: "Hturtehteraps",
+  PEOPLE: "The people"
 };
 
 const au = document.getElementById("au");
@@ -716,13 +718,16 @@ function drawBalloon(text, tipX, tipY, area){
   vx.font = font;
   const tw = Math.max(...lines.map(l => vx.measureText(l).width));
   const w = tw + 36, h = lines.length * 24 + 24;
-  let bx = clamp(tipX - w / 2, area.x + 10, area.x + area.w - w - 10);
-  let by = tipY - h - 34;
-  if (by < area.y + 10) by = area.y + 10;
+  const bx = clamp(tipX - w / 2, area.x + 10, area.x + area.w - w - 10);
+  // A speaker near the top of the panel gets the balloon underneath, so it does not
+  // cover the scene above them.
+  const below = tipY - h - 34 < area.y + 10;
+  const by = below ? Math.min(tipY + 34, area.y + area.h - h - 10) : tipY - h - 34;
   inkShape(P.round(bx, by, w, h, 18), INK.white, {width: 3});
   const tx = clamp(tipX, bx + 30, bx + w - 30);
-  inkShape(P.poly([[tx - 14, by + h - 1], [tx + 10, by + h - 1], [tipX, tipY - 6]]), INK.white, {width: 3});
-  inkFlat(tx - 12, by + h - 4, 20, 6, INK.white);
+  const edge = below ? by + 1 : by + h - 1;
+  inkShape(P.poly([[tx - 14, edge], [tx + 10, edge], [tipX, tipY + (below ? 6 : -6)]]), INK.white, {width: 3});
+  inkFlat(tx - 12, below ? by - 2 : by + h - 4, 20, 6, INK.white);
   vx.font = font;
   vx.textAlign = "center";
   vx.textBaseline = "middle";
@@ -762,9 +767,11 @@ function inkCityMorning(a, sp, t, pulse){
   }
   const gents = [[60, .95, INK.line], [150, 1.05, INK.blue], [255, .9, INK.line], [360, 1, INK.purple],
     [590, 1, INK.line], [690, .92, INK.blue], [790, 1.06, INK.line], [880, .96, INK.purple]];
+  let crowd = null;
   gents.forEach(([gx, gs, coat], i) => {
     const bob = Math.sin(t * 3 + i * 1.3) * 3;
     drawGent(a.x + gx, ground + 6 + bob, gs, {coat, paper: i % 2 ? Math.sin(t * 4 + i) : 0, beard: i % 3 === 0 ? "#6b4a2b" : null});
+    if (i === 3) crowd = [a.x + gx, ground + 6 + bob - 142 * gs];
   });
   const nb = a.x + 478, ns = .8, arm = Math.sin(t * 5) * 10;
   inkShape(P.rect(nb - 8 * ns, ground - 36 * ns, 6 * ns, 36 * ns), INK.trousers, {width: 2});
@@ -776,7 +783,7 @@ function inkCityMorning(a, sp, t, pulse){
   inkShape(P.ellipse(nb, ground - 102 * ns, 14 * ns, 6 * ns), INK.blue, {width: 2});
   inkShape(P.ellipse(nb, ground - 100 * ns, 8 * ns, 3 * ns), INK.line, {width: 1});
   inkShape(P.ellipse(nb, ground - 92 * ns + 6 * ns, 3 * ns, 2.5 * ns + Math.max(0, Math.sin(t * 5)) * 2), INK.line, {width: 1});
-  return {};
+  return {PEOPLE: crowd};
 }
 
 function inkWorks(a, sp, t, pulse){
@@ -815,7 +822,7 @@ function inkWorks(a, sp, t, pulse){
     const sa = -1.2 + i * .5;
     inkShape(P.line([[hx + Math.cos(ang) * 48 + Math.cos(sa) * 14, hy + Math.sin(ang) * 48 + Math.sin(sa) * 14], [hx + Math.cos(ang) * 48 + Math.cos(sa) * 30, hy + Math.sin(ang) * 48 + Math.sin(sa) * 30]]), null, {width: 2, ink: INK.yellow});
   }
-  const head = drawFlin(a.x + 150, ground + 8, 1, {hat: true, point: 1, look: 1, talking: !!pulse.talking});
+  const head = drawFlin(a.x + 150, ground + 8, 1, {hat: true, point: 1, look: 1, talking: pulse.voice === "FLIN"});
   return {FLIN: head};
 }
 
@@ -856,17 +863,19 @@ function inkMuseum(a, sp, t, pulse){
 
 function inkBanquet(a, sp, t, pulse){
   const ground = a.y + a.h - 10;
+  let gallery = null;
   inkFlat(a.x, a.y, a.w, a.h, INK.cloth);
   inkFlat(a.x, a.y, a.w, 150, INK.wall);
   for (let k = 0; k < 6; k++){
     const ax = a.x + 40 + k * 152;
     inkShape(g => { g.moveTo(ax, a.y + 150); g.lineTo(ax, a.y + 60); g.arc(ax + 56, a.y + 60, 56, Math.PI, 0); g.lineTo(ax + 112, a.y + 150); }, INK.purple, {width: 3});
     drawLady(ax + 56, a.y + 150, .7, {gown: k % 2 ? INK.red : INK.blue, jewel: t * 3 + k * 1.7});
+    if (k === 1) gallery = [ax + 56, a.y + 74];
   }
   inkShape(P.rect(a.x - 5, a.y + 148, a.w + 10, 14), INK.stone, {width: 3});
   for (let k = 0; k < 30; k++) inkShape(P.rect(a.x + 10 + k * 32, a.y + 120, 8, 30), INK.stone, {width: 1.5});
   const cx = a.x + a.w / 2, cy = a.y + 215;
-  inkShape(P.line([[cx, a.y], [cx, cy - 30]]), null, {width: 3});
+  inkShape(P.line([[cx, a.y + 162], [cx, cy - 30]]), null, {width: 3});
   inkShape(P.ellipse(cx, cy, 120, 22), INK.brass, {width: 3});
   for (let k = 0; k < 9; k++){
     const fxp = cx - 100 + k * 25, fl = 10 + Math.sin(t * 9 + k * 2) * 3;
@@ -875,7 +884,8 @@ function inkBanquet(a, sp, t, pulse){
   }
   const guests = [[90, INK.line], [210, INK.blue], [330, INK.line], [630, INK.line], [750, INK.purple], [870, INK.line]];
   guests.forEach(([gx, coat], i) => drawGent(a.x + gx, ground + 30, 1, {coat, beard: i % 2 ? "#6b4a2b" : null}));
-  const head = drawFlin(a.x + 480, ground - 10, 1.05, {talking: !!pulse.talking, look: 0, point: pulse.talking ? 1 : 0});
+  const flinTalks = pulse.voice === "FLIN";
+  const head = drawFlin(a.x + 480, ground - 10, 1.05, {talking: flinTalks, look: 0, point: flinTalks ? 1 : 0});
   const ty = ground - 60;
   inkShape(P.poly([[a.x - 5, ty + 90], [a.x + 60, ty], [a.x + a.w - 60, ty], [a.x + a.w + 5, ty + 90]]), INK.white);
   for (let k = 0; k < 9; k++){
@@ -887,7 +897,7 @@ function inkBanquet(a, sp, t, pulse){
     }
     if (k % 3 === 2) inkShape(P.ellipse(px - 30, ty + 6, 16, 20), INK.brass, {width: 2});
   }
-  return {FLIN: head};
+  return {FLIN: head, PEOPLE: gallery};
 }
 
 function inkStreetsNight(a, sp, t, pulse){
@@ -940,7 +950,7 @@ function drawInk(){
   const start = cues.length ? cues[Math.min(scene.cue, cues.length - 1)].start : 0;
   const end = scene.next && cues.length ? cues[Math.min(scene.next.cue, cues.length - 1)].start : (au.duration || start + 1);
   const sp = clamp((t - start) / Math.max(1, end - start), 0, 1);
-  const talking = !!(cue && cue.voice !== "NARRATOR" && playing);
+  const voice = cue && cue.voice !== "NARRATOR" && playing ? cue.voice : null;
 
   vx.setTransform(1, 0, 0, 1, 0, 0);
   vx.fillStyle = inkPaperPattern();
@@ -953,8 +963,8 @@ function drawInk(){
   vx.beginPath();
   vx.rect(area.x, area.y, area.w, area.h);
   vx.clip();
-  const anchors = inkSceneFor(scene)(area, sp, t, {talking});
-  if (talking && cue && anchors[cue.voice]) drawBalloon(cue.text, anchors[cue.voice][0], anchors[cue.voice][1], area);
+  const anchors = inkSceneFor(scene)(area, sp, t, {voice});
+  if (voice && anchors[voice]) drawBalloon(cue.text, anchors[voice][0], anchors[voice][1], area);
   vx.restore();
 
   inkFlat(box.x, area.y + area.h, box.w, capH, INK.white);

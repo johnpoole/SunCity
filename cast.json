@@ -108,7 +108,7 @@
    {
     "voice": "FLIN",
     "text": "\"Down the ringing grooves of time.\"",
-    "how": "default"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -298,17 +298,17 @@
    {
     "voice": "FLIN",
     "text": "\"Mr President, learned Fellows, and ladies and gentlemen, -- I have the distinguished honour of appearing before you to-night as a member of this ancient Society, but I must also add with regret as a representative of the expedition to Lake Avernus, whose mission has entirely failed practically.\"",
-    "how": "default"
+    "how": "previous-subject"
    },
    {
     "voice": "FLIN",
     "text": "\"In dealing with the subject in hand it will be necessary for me to digress somewhat, but I respectfully claim your indulgence on this point, and hope that what I have to say will not altogether be uninteresting.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "FLIN",
     "text": "\"It is a well-known fact, ladies and gentlemen, that we live upon a globe; that is, on the external crust of a huge ball. There is one thing which science has proved beyond all doubt, and that is, that this ball is not solid but hollow. Now the capacity of that hollow must almost be beyond comprehension. From time immemorial it has been supposed that the hollow is filled with seething fire and molten lava. I say supposed, because it is only a supposition. But I boldly denounce the theory of internal fire as incorrect. I say science has been at fault. Central heat is a delusion unworthy of the consideration of great men. And now having demolished the monstrous and ancient fable with one blow, I have a theory of my own to advance that will startle you. I know it will, but I cannot help it. Nay, it is more than a theory, it is a conviction; and I say that in the centre of the earth are subterranean rivers and buried seas; more than that, ladies and gentlemen, I go so far as to say that the interior of the earth is as likely to be inhabited as the exterior.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -318,12 +318,12 @@
    {
     "voice": "FLIN",
     "text": "\"To resume.\"",
-    "how": "default"
+    "how": "previous-subject"
    },
    {
     "voice": "FLIN",
     "text": "\"By the light of science it has further been revealed to us that the crust of the earth upon which we stand in no part attains a greater thickness than fifteen miles; and it is stated as a scientific truth that if we could dig down to that depth, and break through the inner surface of the crust, we should come to fire. I assert that that is a monstrously absurd theory; that we should do nothing of the kind, but that we should break in upon a new world, a new race of beings. That we should find a land of beauty and fertility; that we should find rivers, seas, mountains and valleys. The inequalities of the bottoms of our valleys will form mountains there; and our mountains will be their seas. Like unto a pudding-mould, whereon the fruit and flowers are convex on one side and concave on the other.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -336,19 +336,19 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"No, no.\"",
-    "how": "default"
+    "how": "lead-in-crowd"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Humbug.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Absurd.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "FLIN",
@@ -393,12 +393,12 @@
    {
     "voice": "FLIN",
     "text": "\"Pioneers in knowledge, like pioneers in exploration, have always to endure great hardships, but I know my fellow men too well to expect to meet with no opposition. I am, however, prepared to brave that opposition, to stand firm to my faith, and, if needs be, to lay down my life in the glorious cause of attempting to extend our knowledge of the earth we dwell upon. I repeat that the interior of the globe is inhabited. By what kind of beings I am not prepared to say. They may be monsters; they may be pigmies, or both; but that is a question I hope to be able to answer at some future day. Ladies and gentlemen, as the Creator has adapted a race of beings to exist on the surface of the earth, I fearlessly assert that He may have adapted a race to exist in the interior. If I have startled you by the boldness of my propositions, I shall startle you still more when I say that I intend, at all hazards, to attempt, in the interests of this honourable Society and the world at large, to penetrate into the bowels of the earth.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"How, how?\"",
-    "how": "default"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -408,12 +408,12 @@
    {
     "voice": "FLIN",
     "text": "\"By descending to the bottom of Lake Avernus.\"",
-    "how": "same-paragraph"
+    "how": "reply"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Impossible! impossible!\"",
-    "how": "default"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -423,7 +423,7 @@
    {
     "voice": "FLIN",
     "text": "\"Nothing is impossible to the resolute and energetic man of science. If I fail in my project I shall be but one more martyr added to the many who have been sacrificed in a noble cause.\"",
-    "how": "default"
+    "how": "reply"
    },
    {
     "voice": "NARRATOR",
@@ -446,9 +446,9 @@
     "how": "pre-tag-gender"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Or be food for fishes,\"",
-    "how": "default"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -458,7 +458,7 @@
    {
     "voice": "FLIN",
     "text": "\"Possibly so,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -468,7 +468,7 @@
    {
     "voice": "FLIN",
     "text": "\"But it will be some satisfaction to my friends to know that I sacrificed myself in the glorious cause of science; that I am but one more martyr added to the already long list of those who have unselfishly devoted themselves to the enlightenment of their fellows. I am desirous of extending our knowledge; of writing another page to the history of the world of wonders. Moreover, if there is a race of beings inhabiting the centre of our globe, they may be living in a state of spiritual darkness. And in that case I should make arrangements to send a number of missionaries in to them. They may be naked and cannibals. Then I should clothe and civilize them. In short, I deem it to be my duty to endeavour to solve the great problem as to what is in the interior of the earth; and I shall not flinch from that duty. Ladies and gentlemen, I shall devote myself to the cause, and if I perish I shall perish nobly.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -499,19 +499,19 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Is it not wonderful?\"",
-    "how": "default"
+    "how": "lead-in-crowd"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"How strange to be sure!\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"I wonder that it has never been thought of before.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -654,9 +654,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "NARRATOR",
     "text": "\"As a scene of exquisite loveliness. It seemed as if the angels had gathered all the early dewdrops from the roses in Eden, and then scattered them with a lavish hand amongst this group of earth's fairest creatures; illuminating them with luculent rays of great purity, caught up from the jasper river that rolled its course through the peaceful plains of heaven, these rays produced a hundred prismatic hues, dazzling the beholder, and helped to complete a scene that mortals could gaze upon only once in a lifetime.\"",
-    "how": "default"
+    "how": "lead-in-press"
    },
    {
     "voice": "NARRATOR",
@@ -684,9 +684,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Wal, I guess that licks creation, it does. I should like to hug the old man, I should, God bless him!\"",
-    "how": "default"
+    "how": "lead-in-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -898,7 +898,7 @@
    {
     "voice": "FLIN",
     "text": "\"Bless my life,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -923,7 +923,7 @@
    {
     "voice": "FLIN",
     "text": "\"Good gracious!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -933,7 +933,7 @@
    {
     "voice": "FLIN",
     "text": "\"what would I not give if I could only procure a few specimens. They are evidently an entirely new species of water animal, for I have never seen anything like them before. \"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -953,7 +953,7 @@
    {
     "voice": "FLIN",
     "text": "\"Hullo!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -1053,7 +1053,7 @@
    {
     "voice": "FLIN",
     "text": "\"Hurrah!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -1106,9 +1106,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "FLIN",
     "text": "\"Confound it,\"",
-    "how": "narration"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -1116,9 +1116,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "FLIN",
     "text": "\"that is a contingency I did not calculate upon, and a few such shocks would very soon bring my expedition to a premature close. It is no use meeting trouble halfway, though. I must hope for the best.\"",
-    "how": "narration"
+    "how": "pre-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -1128,7 +1128,7 @@
    {
     "voice": "FLIN",
     "text": "\"This is very awkward,\"",
-    "how": "following-pronoun"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -1188,7 +1188,7 @@
    {
     "voice": "FLIN",
     "text": "\"It won't do to stick here,\"",
-    "how": "paragraph-subject"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -1311,7 +1311,7 @@
    {
     "voice": "FLIN",
     "text": "\"It is grand, majestic, awful!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -1364,9 +1364,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "FLIN",
     "text": "\"Ah,\"",
-    "how": "narration"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -1376,7 +1376,7 @@
    {
     "voice": "FLIN",
     "text": "\"I wish my worthy fellows of the honourable Society for the Exploration of Unknown Regions could be aware that I am at the present moment looking upon a specimen of the anthracotherium, that evidently lived in the pre- historic age. It is clear, too, that the human inhabitants of the earth were in keeping with the huge animals that were contemporary with them. For here the skeletons show that there were a race of giants. It is strange now,\"",
-    "how": "following-pronoun"
+    "how": "pre-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -1396,7 +1396,7 @@
    {
     "voice": "FLIN",
     "text": "\"My conscience, this is marvellous,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -1466,7 +1466,7 @@
    {
     "voice": "FLIN",
     "text": "\"Umph, very strange, very strange indeed,\"",
-    "how": "following-pronoun"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -1511,7 +1511,7 @@
    {
     "voice": "FLIN",
     "text": "\"This intense cold is very extraordinary, and seems to upset the theory altogether about the internal heats. The fact is, I have always been of the same opinion as Sir Humphrey Davy. That grand old philosopher did not believe in central fires, and I think I shall be able to prove that he was right. But I must get out of this mess, otherwise my great discovery will never be known to the world. But how am I to do it? that's the question!\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -1521,7 +1521,7 @@
    {
     "voice": "FLIN",
     "text": "\"By Jove! I have it.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -1544,7 +1544,7 @@
    {
     "voice": "FLIN",
     "text": "\"By Jove! I have it,\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -1604,7 +1604,7 @@
    {
     "voice": "FLIN",
     "text": "\"Dear me, this is not at all comfortable,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -1664,7 +1664,7 @@
    {
     "voice": "FLIN",
     "text": "\"Whatever can be the cause of this increase of temperature?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -1674,7 +1674,7 @@
    {
     "voice": "FLIN",
     "text": "\"Why, it is positively tropical.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -1782,7 +1782,7 @@
    {
     "voice": "FLIN",
     "text": "\"O Incomprehensible! in the presence of such marvels I bow my head in the dust!\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -2005,7 +2005,7 @@
    {
     "voice": "FLIN",
     "text": "\"Why, bless my life -- dear me, how very extraordinary -- surely I cannot be mistaken. It is -- no it isn't -- yes it is, I declare. Hurrah!\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -2123,7 +2123,7 @@
    {
     "voice": "FLIN",
     "text": "\"Bless my life, this is very extraordinary,\"",
-    "how": "following-pronoun"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -2138,7 +2138,7 @@
    {
     "voice": "FLIN",
     "text": "\"Good gracious! this is appalling and marvellous.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    }
   ]
  },
@@ -2351,7 +2351,7 @@
    {
     "voice": "FLIN",
     "text": "\"This, then, was the end of all his devotion to the cause he had so much at heart,\"",
-    "how": "following-pronoun"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -2569,7 +2569,7 @@
    {
     "voice": "FLIN",
     "text": "\"I, Josiah Flintabbatey Flonatin, F.S.E.U.R., hereby, in the name of the President of the United States and the great American Republic, and on behalf of the Society for the Exploration of Unknown Regions, take possession of this portion of our globe, and call the place the Sea of Echoes, by which name it shall ever be known.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -2667,12 +2667,12 @@
    {
     "voice": "FLIN",
     "text": "\"The beautiful colours of the clouds gradually died, and with them the light, so that for the space of an hour a darkness that was horrible was over all things. It was truly an Egyptian night. But presently a silvery electrical radiance gleamed from the sea, and though this only partially dispelled the gloom, the effect was marvellous and beautiful. Inside the vessel every piece of exposed metal was illuminated with a blue flame, my own hair and extremities were also luminous, and when I wrote with the pencil it seemed to mark the paper like a lucifer match. In fact everything was actually immersed in the electrical fluid. Suddenly the clouds discharged one awful, blinding sheet of flame, that extended from horizon to horizon. And this was immediately followed by a burst of thunder that made me think the firm earth had been shattered into a million fragments. No known words could possibly convey anything like an adequate notion of that fearful peal. The vessel trembled as if she had received a violent blow. The surface of the water was agitated as if tons of small shot had been sprinkled over it from a gigantic sieve. Then the echoes of the peal were scarcely less terrible than the grand crash itself. These echoes came and faded with startling suddenness. They seemed to bound from peak to peak, and from crag to crag. To be one minute down in the gorges, the next amongst the pinnacles of rock, and then again afar off on the opposite side of the sea. The effect of these echoes was the most marvellous thing I ever experienced, and I feel that my pen is quite powerless to convey anything like a proper notion of the awfulness of the storm which raged for upwards of two hours. It seemed sometimes as if the whole region were literally bathed in fire. An electric spark would shoot up from the water, and in mid- air would be met by another spark from the clouds, and as the two came in collision they separated into thousands of little balls that darted about with astonishing rapidity. Then every now and then some prominent rock appeared to be suddenly illuminated, as if it had been saturated with spirits of wine and set on fire. This phenomenon would last for a minute of so, when there would be a tremendous explosion, and from the illuminated rock millions of sparks would shoot into the air, and all would be dark again. This was the most appalling sight that could possibly be imagined. Another extraordinary appearance was that a transparent cloud of fire -- or what seemed to be fire -- appeared as if by magic overhead. The colour of this cloud was sometimes red, at others mauve or blue. It would float along very quickly, while it seemed to come in collision with something, when it would burst with an awful roar, and a flash that was horrifying. Gradually the storm ceased, and a deathlike silence took the place of the roar and crashing that for two hours had fairly shook the solid rocks. This silence seemed to be due to some change in the atmosphere, which had caused it to lose its acoustic properties. Because up to this time the roar of the waterfalls had been almost deafening; but now not a sound, however faint, could be heard, and not a gleam of light could be seen. The silence was absolute. The darkness was palpable. I confess that I trembled with awe. I felt humbled into the very dust in the presence of such awful evidence of Nature's wonderful power. Here the pent-up electric forces had been disturbed, and the storm that followed made the most terrible of storms of the upper earth pale into insignificance by comparison. I have wondered whether I was not responsible in a measure for this storm which broke over the Sea of Echoes, as I have reason to think that the report of my gun when I fired at the turtle disturbed the electric currents, and caused the clouds to discharge their streams of the subtle fluid on to the earth below. This theory, however, may be incorrect, though I have faith in it myself.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
     "text": "\"The noiseless silence -- and in using this somewhat tautological phrase I do so that a better idea may be gathered. Because even in the most solemn hours of night in the upper world some sounds may be detected, however faint, but here it was a region of death. The air was perfectly stagnant, and the sound waves had ceased to flow. There was not a motion in the water, not a motion in the vessel -- I say that the noiseless silence and the perfect darkness lasted for some time. I waited in dread suspense, for I did not know what might happen next. I thought that there might be one grand final crash, in which I and my puny vessel would be annihilated. But fortunately all danger had passed. Very gradually the darkness seemed to melt away, and a sort of phosphorescent glow spread over the surface of the water. The air was set in motion again. Sound awoke, and the roar of the waterfalls grew more and more distinct. The clouds became luminous, and the colours were even more beautiful than before. The storm had passed. I lived, and gazed upon the wondrous scene, over which an unseen yet warm and beautiful sun seemed to be shining, endowing the whole place with fairy-like glory. A strong breeze sprang up, and the sea was broken into short, chopping waves.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -2755,7 +2755,7 @@
    {
     "voice": "FLIN",
     "text": "\"Man's inhumanity to man made countless thousands mourn.\"",
-    "how": "following-pronoun"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -2780,7 +2780,7 @@
    {
     "voice": "FLIN",
     "text": "\"Sea of Echoes,\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -2892,9 +2892,9 @@
     "how": "narration"
    },
    {
-    "voice": "GUBMUH",
+    "voice": "FLIN",
     "text": "\"Tisrucco ot em ruoy ytsejam taht siht tsum eb emos suorobrab egavas morf emos trap fo eht htrae hcihw ruoy ytsejam swonk ton fo. Eht ecnesba fo a liat dluow dael em ot refni taht siht dehcterw erutaerc tsum tneserper a ecar yltsav roirefni ot eht denethgilne stcejbus fo ruoy s'ytsejam mlaer. Eno dluow tsomla kniht taht eh saw eno fo eht yradnegel stirips ohw era desoppus ot llewd no eht edistuo fo eht htrae.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -2967,9 +2967,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "GUBMUH",
     "text": "\"Nemeltneg siht ylmeesnu ruomalc si yllaer elbanodrapnu ni sih S'ytsejam ecneserp. Dna tonnac eb desucxe neve no eht sdnuorg taht siht dehcterw egavas seticxe ruoy ytisoiruc. Uoy lliw erofereht eb doog hguone ot llaf kcab dna evreserp luftcepser redro.\"",
-    "how": "alternation"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -3014,7 +3014,7 @@
    {
     "voice": "FLIN",
     "text": "\"Bless my life, this is altogether a strange and undignified proceeding,\"",
-    "how": "paragraph-subject"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3084,7 +3084,7 @@
    {
     "voice": "FLIN",
     "text": "\"Mr. Ytidrusba,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3104,7 +3104,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"You are a presumptuous and daring man,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3159,7 +3159,7 @@
    {
     "voice": "FLIN",
     "text": "\"Really, sir, you astonish me very much,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3169,7 +3169,7 @@
    {
     "voice": "FLIN",
     "text": "\"I could scarcely have believed, had it not come from such undeniable authority as yourself, that any such order existed among human beings.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "GUBMUH",
@@ -3189,7 +3189,7 @@
    {
     "voice": "FLIN",
     "text": "\"Dear me, dear me,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3204,7 +3204,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"I beg to remark that I am quite aware of this fact,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3214,7 +3214,7 @@
    {
     "voice": "FLIN",
     "text": "\"Upon my word this is startling,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3244,7 +3244,7 @@
    {
     "voice": "FLIN",
     "text": "\"Then I take it, sir, that you are a spiritualist?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3264,7 +3264,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"Oh, miraculous!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3282,9 +3282,9 @@
     "how": "narration"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "GUBMUH",
     "text": "\"It is very shocking,\"",
-    "how": "following-pronoun"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -3292,7 +3292,7 @@
     "how": "narration"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "GUBMUH",
     "text": "\"it is very shocking indeed that even the sight of a tailless and degenerated being cannot convince his Majesty that the existence of races in another state is anything more than a fable. This gentleman to whom you refer to as dwelling in England must be a man of incomprehensible wisdom, and I confess that my knowledge does not enable me to tell why he should be doomed to pass a term in such an unenlightened place and among such awful savages. I have no doubt that you will be surprised to hear that we have several eminent authors among us who have written learned treatises also upon the origin or our species. They have sought to prove that we have descended from races who lived in the far-off past, and who spoke no language, wore no clothes, but were covered with long hair and lived like beasts in the jungles. I am happy to say, however, that these gentlemen have only had contempt and ridicule for their pains. That we, enlightened, skilled and highly civilised as we are, should have descended from animals of the monkey tribe is a monstrously absurd theory. But that the writer you speak of should be enabled to tell that you who are human are degenerated from us who are pre-human, shows how deep must be his learning; and that he should have to preach to unbelievers is truly lamentable. Here we have evidence of all he has written. We are as a nation immeasurably superior to the people which you represent, and you see that we have tails. And that your people are without tails is -- as I have before observed -- one of the most dreadful marks of degradation. But when some of our writers try to prove by shallow argument that we have sprung from monkeys, it is really heartrending. We must draw the line somewhere, you know, and we draw it at tails, sir.\"",
     "how": "same-paragraph"
    },
@@ -3304,7 +3304,7 @@
    {
     "voice": "FLIN",
     "text": "\"The knowledge you possess of the upper earth, Mr. Ytidrusba, is, to say the least, very remarkable,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3337,14 +3337,14 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "GUBMUH",
     "text": "\"The vile trade carried on by your people who call themselves spiritualists is a disgrace, if anything can be a disgrace to human beings; and since they trade upon the credulity of the ignorant and vulgar, they should be suppressed with a strong hand.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
     "text": "\"Really, Mr Ytidrusba, you are using very strong language,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3394,7 +3394,7 @@
    {
     "voice": "FLIN",
     "text": "\"If it be true, then,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3404,7 +3404,7 @@
    {
     "voice": "FLIN",
     "text": "\"that the wicked pre- human people who die here take upon themselves the human state, and dwell outside of the earth, it may account for differences in opinion on religious matters being so rife amongst us.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "GUBMUH",
@@ -3449,7 +3449,7 @@
    {
     "voice": "FLIN",
     "text": "\"I must admit that there is some truth in what you say,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3524,7 +3524,7 @@
    {
     "voice": "FLIN",
     "text": "\"May I venture to remark, sir, that I consider that rather a harsh measure,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3549,7 +3549,7 @@
    {
     "voice": "FLIN",
     "text": "\"Ah, very shocking indeed, very shocking,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3632,9 +3632,9 @@
     "how": "narration"
    },
    {
-    "voice": "GUBMUH",
+    "voice": "FLIN",
     "text": "\"I have obtained his Majesty's permission for you to remain, as he has no desire to stand in the way of his subjects acquiring knowledge, and he considers that you will be an excellent study for them for some time. Before releasing you from the mesmeric state I may give you the key to our ancient language. You read from left to right, but we read from right to left, so that with this hint, and if you are diligent, you will soon be able to make yourself understood by our people.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    }
   ]
  },
@@ -3659,7 +3659,7 @@
    {
     "voice": "FLIN",
     "text": "\"Dear me, this is very extraordinary,\"",
-    "how": "following-pronoun"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -3667,9 +3667,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "FLIN",
     "text": "\"very extraordinary,\"",
-    "how": "narration"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -3714,7 +3714,7 @@
    {
     "voice": "FLIN",
     "text": "\"Umph, I forgot that the old savage could not understand the language of a civilised being,\"",
-    "how": "paragraph-subject"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3729,7 +3729,7 @@
    {
     "voice": "FLIN",
     "text": "\"Kindly permit me to once more inquire your name; it is such a very difficult one that I cannot remember it,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3764,7 +3764,7 @@
    {
     "voice": "FLIN",
     "text": "\"Most singular,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3792,9 +3792,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MR_YTIDRUSBA",
     "text": "\"I think I may release you now,\"",
-    "how": "following-pronoun"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -3802,7 +3802,7 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MR_YTIDRUSBA",
     "text": "\"You have slept very soundly,\"",
     "how": "post-tag-gender"
    },
@@ -3817,7 +3817,7 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MR_YTIDRUSBA",
     "text": "\"I was not aware that I had been to sleep,\"",
     "how": "post-tag-gender"
    },
@@ -3832,7 +3832,7 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MR_YTIDRUSBA",
     "text": "\"Indeed, you have slept very long and soundly,\"",
     "how": "post-tag-gender"
    },
@@ -3842,22 +3842,22 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MR_YTIDRUSBA",
     "text": "\"I threw you into a trance, but the influence passed off some twelve hours ago, and since then you have been asleep and snoring loudly.\"",
     "how": "pre-tag-gender"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "FLIN",
     "text": "\"Then am I to really understand that I am amongst a new race of people; that I am not out of my mind and the victim of some strange delusion?\"",
     "how": "alternation"
    },
    {
-    "voice": "FLIN",
+    "voice": "MR_YTIDRUSBA",
     "text": "\"As regards being amongst a new race of people, you err there. We are a very ancient race indeed. Our scholars say that this city of Esnesnon is built on the site of a city that flourished two million years ago.\"",
     "how": "alternation"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "FLIN",
     "text": "\"Impossible!\"",
     "how": "alternation"
    },
@@ -3867,14 +3867,14 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MR_YTIDRUSBA",
     "text": "\"Nothing is impossible, sir, and for you to use such a term serves but to show how pitiably ignorant you are. With reference to the other part of your question, that is not difficult to answer. We do not look for mind in such a sorry specimen of a degraded race as you. You possess no mind, and therefore could not go out of it. And as for your sense, it scarcely enables you to grasp the commonest of truths.\"",
     "how": "alternation"
    },
    {
     "voice": "FLIN",
     "text": "\"Really, Mr. Ytidrusba,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -3892,9 +3892,9 @@
     "how": "narration"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "FLIN",
     "text": "\"You are a most contemptible little animal, and for one so insignificant to assume such airs and graces is very absurd. Your statement that your countrymen are the most learned and civilised in the whole world is another certain sign of your imbecility. We are perfect, and consequently the highest in the scale. You are imperfect and degenerated, consequently are the lowest. Under these circumstances, and taking into consideration the position I occupy in his Majesty's service, I can afford to treat your ignorance with the contempt it merits. Your threats, however, are another thing, and I would politely hint that we have a public officer to whose care we shall have to submit you if you continue to be so saucy. His duty is to publicly flog anyone who is guilty of insulting a member of his Majesty's Court, or those holding high office. As such an insignificant, distorted little animal as yourself would look a very conspicuous object, if placed in a state of nudity upon the scaffold, and flogged before many thousands of our subjects by the public flagellator, I hope you will endeavour to behave in a proper manner for the future, and learn to appreciate the kindness of great King Gubmuh in having given you permission to remain for a time in his beautiful kingdom.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -3937,9 +3937,9 @@
     "how": "narration"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "FLIN",
     "text": "\"Your threats I treat with contempt, and I am truly sorry for your ignorance. But long experience in life has taught me that humble resignation to trials and persecutions is the duty of the true philosopher. I undertook this journey purely in the interests of science, and whatever suffering I may be exposed to I shall endeavour to endure it as a man should. Moreover, I am content to believe that there is a power which neither you nor I can control, but which will throw around me an aegis of protection in consideration of the manner in which I have devoted myself to the great cause of searching for truth. I shall therefore, sir, submit to you in all things. But as a foreigner and a stranger I claim protection and respect. And I would most respectfully hint, that should I be subjected to an outrage, full and ample apology will be exacted by my country. Indeed I do not hesitate to say, so great is American enterprise, that the Government would not hesitate to fit out an expedition, and despatch it by submarine vessels to this country, to avenge any insult offered to me, even at the point of the bayonet. The American people, sir, stick at nothing. I repeat with pride, they are a great people, a mighty people, and I am their representative.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -3947,7 +3947,7 @@
     "how": "narration"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "FLIN",
     "text": "\"Well, upon my word,\"",
     "how": "post-tag-gender"
    },
@@ -3957,7 +3957,7 @@
     "how": "narration"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "FLIN",
     "text": "\"you are a miserable, self-inflated little humbug. But there, I'll forgive you. Our philosophers and scientific men will revel over you, and as for the common people, why, you will afford them amusement for a long time to come. But there, my little fellow\"",
     "how": "post-tag-gender"
    },
@@ -3974,7 +3974,7 @@
    {
     "voice": "FLIN",
     "text": "\"The Esnesnon Gazette!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4062,9 +4062,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MR_YTIDRUSBA",
     "text": "\"Well, these barbarians know how to cook if they don't know anything else.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -4142,9 +4142,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MR_YTIDRUSBA",
     "text": "\"I shall have to study these people,\"",
-    "how": "following-pronoun"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -4164,7 +4164,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"The right glorious and supremely honourable Taerg Ytidrusba, High Priest, and Magician-in-Ordinary to his most gracious Majesty King Gubmuh, commands you to attend him in his private chamber.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
@@ -4228,9 +4228,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YREKCAUQ",
     "text": "\"Most learned brethren, during a very great number of years it has been my distinguished privilege to be a member of your honourable body, and I have ever endeavoured during that time to do all in my power for the advancement of science and general knowledge; and I trust I shall not be accused of sounding my own trumpet if I say that I feel conscious that this great and enlightened city owes something to my years of study and thought.\"",
-    "how": "default"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -4238,7 +4238,7 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YREKCAUQ",
     "text": "\"Your applause,\"",
     "how": "post-tag-gender"
    },
@@ -4248,7 +4248,7 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YREKCAUQ",
     "text": "\"You are a humbug,\"",
     "how": "following-pronoun"
    },
@@ -4260,7 +4260,7 @@
    {
     "voice": "YREKCAUQ",
     "text": "\"There have been times, however,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4270,7 +4270,7 @@
    {
     "voice": "YREKCAUQ",
     "text": "\"when the opinions I have ventured to express as the result of long and anxious study have not always met with approval, but on the contrary have subjected me to the ridicule and insults of the rabble of this country, who are represented by a corrupt press. Perhaps no opinion I have ever advanced had incurred more opposition than that of there being inhabitants on the outside of the earth. I am sorry to say that this opposition has not always come from the lower classes, but persons who by position and learning ought to have known better have been pleased to contradict my theories -- theories that were only arrived at after profound research and anxious thought. I have ever stoutly maintained the possibility of the existence of being differently constituted from ourselves, and greatly inferior in mental and physical organisation. For I think, nay I am sure, that we are the very highest and most intelligent of created beings. (Loud applause.) It is, therefore, very gratifying, no less than it is startling and wonderful, that a specimen of a lower race has been permitted to penetrate the almost boundless thicknesses which separate us from the outside of the globe, and which, but for its enormous thickness, would be liable from many causes to crack and rend asunder. And if such a catastrophe were to take place, the dreadful gases and winds which surround the outer world would rush in and annihilate us. It is well known that the opinion I have entertained with reference to a new race has been shared by Mr. Ytidrusba. Though that gentleman has differed from me, inasmuch as he maintains that the outside of the world is peopled by beings who have once lived here, and who, having died here, have for their sins been transported in another form to what he is pleased to term the 'purgatorial regions.' I am bound to confess that I do not agree with this idea. Though I know that this confession will lay upon me open to the accusation of being a hard-headed materialist if not an infidel. I allow myself, however, to be guided by common sense, and I stoutly maintain, in spite of all opposition, that the outside of the globe is peopled by an original though greatly inferior race. (There was some applause and much disapproval expressed at this assertion, but the Doctor was calm and dignified.) I fear, however, that I am somewhat wandering from my subject. I have to deal at the present moment with this being, I am afraid I can scarcely call him a man.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4290,7 +4290,7 @@
    {
     "voice": "YREKCAUQ",
     "text": "\"You are a fool.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4350,7 +4350,7 @@
    {
     "voice": "YREKCAUQ",
     "text": "\"It is difficult to account for it, sir, very difficult,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4397,7 +4397,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"Well what do you think of Doctor Yrekcauq?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4437,7 +4437,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"Pray be seated, pray be seated,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4452,7 +4452,7 @@
    {
     "voice": "FLIN",
     "text": "\"Ah, just so,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4462,7 +4462,7 @@
    {
     "voice": "FLIN",
     "text": "\"Ah, just so,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4542,7 +4542,7 @@
    {
     "voice": "FLIN",
     "text": "\"Pray speak out,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4580,24 +4580,24 @@
     "how": "narration"
    },
    {
-    "voice": "YREKCAUQ",
+    "voice": "FLIN",
     "text": "\"I do not consider that he is a proper person to hold the position he now occupies.\"",
-    "how": "alternation"
+    "how": "previous-subject"
    },
    {
-    "voice": "FLIN",
+    "voice": "YREKCAUQ",
     "text": "\"May I ask what position that is?\"",
     "how": "alternation"
    },
    {
-    "voice": "YREKCAUQ",
+    "voice": "FLIN",
     "text": "\"Yes. He is Physician-in-General and Professor of Philosophy to his Majesty. But in my opinion he is a sham. His knowledge is exceedingly shallow. But what he is deficient in in this respect he makes up for in cool assurance and consummate impudence. I have spent the best years of my life at the Court in trying to teach my theory of spiritualism, which is truth. But I have always been counteracted and opposed by the Doctor, who preaches his abominable doctrine of materialism. He has influenced the King greatly against me, and though Yrekcauq speaks of me as his dear and valued friend, I firmly believe nothing would give him so much pleasure as to see my remains committed to the cinerary urn.\"",
     "how": "alternation"
    },
    {
     "voice": "FLIN",
     "text": "\"Bless me, how very odd!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4607,7 +4607,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"You must understand,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4617,12 +4617,12 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"that Dr Yrekcauq is a person who has no thought for anyone else. He is thoroughly selfish. And by unscrupulous dealing he has managed to gain considerable influence over the King. As a result I have suffered. I had at one time nearly succeeded in converting his Majesty, but Yrekcauq, by very much cunning diplomacy, undid the good I had done, and I am grieved to have to say that his Majesty still remains in a state of darkness.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "FLIN",
     "text": "\"Ah, very shocking indeed, very shocking,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4632,7 +4632,7 @@
    {
     "voice": "FLIN",
     "text": "\"I am inclined to think you are a much injured man, Mr. Ytidrusba.\"",
-    "how": "same-paragraph"
+    "how": "pre-tag-named"
    },
    {
     "voice": "YREKCAUQ",
@@ -4657,7 +4657,7 @@
    {
     "voice": "FLIN",
     "text": "\"Entertaining this view, I shall be happy to do what I can for you.\"",
-    "how": "alternation"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -4682,7 +4682,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"Thank you, thank you for your good opinion,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4707,7 +4707,7 @@
    {
     "voice": "FLIN",
     "text": "\"Thank you very much,\"",
-    "how": "alternation"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -4722,7 +4722,7 @@
    {
     "voice": "FLIN",
     "text": "\"I thoroughly appreciate that idea,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4757,7 +4757,7 @@
    {
     "voice": "FLIN",
     "text": "\"Ah, capital idea,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4777,7 +4777,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"By the way, it has struck me that, with a view to strengthening our hands, a little harmless artifice may be resorted to,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4792,7 +4792,7 @@
    {
     "voice": "FLIN",
     "text": "\"Really, Mr Ytidrusba,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4810,9 +4810,9 @@
     "how": "narration"
    },
    {
-    "voice": "YREKCAUQ",
+    "voice": "FLIN",
     "text": "\"Pardon my seeming rudeness,\"",
-    "how": "alternation"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -4820,12 +4820,12 @@
     "how": "narration"
    },
    {
-    "voice": "YREKCAUQ",
+    "voice": "FLIN",
     "text": "\"You are such a comical little chap that one cannot help laughing. Why, you are only a baby yet compared with our people. And if you had a little more hair on your head you would not be at all a bad-looking young fellow. Why, the lovely Princess Yobmot, who is a little given to flirting, I am sorry to say, will be quite delighted with the novelty of making love to you for a time.\"",
     "how": "same-paragraph"
    },
    {
-    "voice": "FLIN",
+    "voice": "YREKCAUQ",
     "text": "\"Really, sir, I am very much shocked to hear you speak in such a manner. For you to say that a young lady and a Princess is 'given to flirting,' and that she will make love to me, sounds very strange, and is scarcely compatible with my notions of etiquette and propriety.\"",
     "how": "alternation"
    },
@@ -4835,14 +4835,14 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YREKCAUQ",
     "text": "\"I must really beg your pardon. I had quite forgotten that in your miserable country the gentlemen make love to the ladies. Here in our civilised region it is quite different. The order is reversed. The ladies make love to the males; and I assure you they are terribly wild flirts. No young male with any pretension to looks is safe from the designs of the girls. Our young males are very carefully guarded by their mammas, but I am sorry to say that they are led astray in spite of the watchfulness and care of their parents. We are governed here, sir, by women.\"",
     "how": "pre-tag-gender"
    },
    {
     "voice": "FLIN",
     "text": "\"Governed by women!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4872,7 +4872,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"No doubt, no doubt,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4882,12 +4882,12 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"but here the wisdom of our women is considered infinitely greater than that of the males. Though, to make a confidant of you, our men would rise in rebellion tomorrow if they could only get a resolute leader. The artful ladies, however, exert such a bewitching influence over the male population that I fear it is hopeless to look for anything like a universal rising. But to the point. I will introduce you to the Princess, and you must endeavour to make yourself agreeable. She has influence with her father, who really dotes upon her; and she also has a voice in the parliament. If she takes a fancy to you she will be able to aid us very materially. You see she is young and childish yet, and youth must have its frolic. In other respects you will find her a very nice young lady, but an awful tease.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "FLIN",
     "text": "\"I shall be delighted to make her acquaintance,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4902,7 +4902,7 @@
    {
     "voice": "MR_YTIDRUSBA",
     "text": "\"I am glad to hear you say so,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -4954,7 +4954,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"How very badly you have been brought up to be sure.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -4984,7 +4984,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"You are very young to be travelling alone. How is it your papa did not come with you, or send a competent guardian to take care of you? I am afraid that this is a very bad place for an unprotected young male who has any pretension to beauty. The ladies here are terrible creatures.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -5004,7 +5004,7 @@
    {
     "voice": "FLIN",
     "text": "\"Really, madam,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5019,7 +5019,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Dear me, can it be possible that you are such barbarians!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5049,12 +5049,12 @@
    {
     "voice": "FLIN",
     "text": "\"My dear madam, I cannot for a moment doubt that the attention you are pleased to honour me with is well meant, but you must really make some allowance for my bashfulness as well as for the novelty of the position in which I am placed.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "YOBMOT",
     "text": "\"You are really most charming,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5079,7 +5079,7 @@
    {
     "voice": "FLIN",
     "text": "\"Madam,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5094,7 +5094,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Why, what an irritable little fellow you are, to be sure,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5124,7 +5124,7 @@
    {
     "voice": "FLIN",
     "text": "\"Your Highness, I am really surprised at you; nay more, I may go so far as to say that I am shocked. I would remark that, even if I had been in the heyday of my youth, anything like fastness on the part of a lady would have raised in me a feeling of disgust. But when I remember that I am a grave and sober man of science, I can scarcely find words sufficiently strong to express my aversion for such unpardonable behaviour on the part of a lady occupying the high position that you do.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -5134,7 +5134,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Do, my dear, forgive me for laughing at you. I really cannot help it. You are such a funny little fellow, and you simplicity is charming, upon my word. I cannot tell you how much I admire it. Do you know there is nothing I detest more than a forward young male. And you are so retiring and bashful that you are simply delightful. Why, there are some of our young males in Esnesnon that, if I were to make love to them, they would very soon allow me to caress them. But I don't like such easy conquest. The greatest pleasure you know is in the pursuit of pleasure. Now, I dare be bound that in the course of about an hour I would undertake to kiss the very highest-born young male in our land, in the same way that I am now going to sip the nectar of those beautiful lips of yours.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -5164,7 +5164,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Oh, you curious little creature,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5194,7 +5194,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Can it be possible?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5209,7 +5209,7 @@
    {
     "voice": "FLIN",
     "text": "\"I do not suppose you would, madam,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5304,7 +5304,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Do not be so absurdly funny, there's a darling. You really make my eyes water and my sides ache. Why, you are such an interesting little creature that all the maidens in our fair city will be fighting about you. But let us to business. What is this great favour you require?\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
@@ -5324,7 +5324,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Oh, what a horrid fellow?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5399,14 +5399,14 @@
     "how": "narration"
    },
    {
-    "voice": "GUBMUH",
+    "voice": "YOBMOT",
     "text": "\"I am so glad, sire, you have come. This young male has been telling me his woes, and aroused my sympathy deeply, as I am sure yours will be when you have heard his trouble.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "GUBMUH",
     "text": "\"Peace, child,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5436,7 +5436,7 @@
    {
     "voice": "GUBMUH",
     "text": "\"A tail, you jade,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5451,7 +5451,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Dear King,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5496,7 +5496,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Was ever girl blessed with such a dear parent?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5581,7 +5581,7 @@
    {
     "voice": "FLIN",
     "text": "\"Are you indeed?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5606,7 +5606,7 @@
    {
     "voice": "GUBMUH",
     "text": "\"Your Majesty is undoubtedly a highly civilised and most polished gentleman, and the nation you honour by ruling over it must be a happy and mighty nation, indeed, with such a wise King to govern it. But, while in justice I admit this, I trust you will permit me to say that amongst the nations which dwell on the crust of the earth America stands preeminently the highest and most glorious. I guess it's a mighty tall nation and wants some licking. It can give points to every other nation on the crust of the earth, but of course it is not equal to your own kingdom.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -5624,14 +5624,14 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"What a dear, dear delightful pa you are to be sure. Was ever girl so blessed as I? Heigho! I fear, pa dear, I am not so deserving of you affection as I ought to be, but then, you know, I am going to be ever so good in future.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "GUBMUH",
     "text": "\"Humph!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5646,7 +5646,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"I declare this is too bad,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5676,7 +5676,7 @@
    {
     "voice": "GUBMUH",
     "text": "\"There, there, my darling, dry your tears. I did not mean to hurt your feelings so. Tell me what I can do for you. I promise that I will grant any reasonable request. I will really.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "FLIN",
@@ -5761,7 +5761,7 @@
    {
     "voice": "GUBMUH",
     "text": "\"I confess that I have yielded to my daughter's request very reluctantly,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5826,7 +5826,7 @@
    {
     "voice": "GUBMUH",
     "text": "\"Tut, tut,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -5856,7 +5856,7 @@
    {
     "voice": "GUBMUH",
     "text": "\"Permit me to observe that you Majesty's generosity is only excelled by your exceeding great wisdom.\"",
-    "how": "paragraph-subject"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -5869,9 +5869,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"Oh, you delightful little humbug! Why, I declare, the governor almost believed that you meant what you said. I saw the old buffer's eyes twinkling as though they were going to water.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -5899,9 +5899,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "GUBMUH",
     "text": "\"Really, your Highness, I would remind you that I am a sedate and grave man of science, and such giddiness as you display troubles me. I am not given to speaking what I do not feel, and you may believe me when I say -- \"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -5911,7 +5911,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Oh, do give over, you funny little creature, or I shall faint. We shall have some jolly fun together if you are a good little fellow and only do what I tell you, and between us we shall be able to gammon the governor into anything.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -6014,9 +6014,9 @@
     "how": "narration"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "NARRATOR",
     "text": "\"A few days ago we briefly announced the arrival in this city of a strange being, supposed to have come from some savage region, as yet undiscovered by our geographers. We refrain from giving any detailed account of the creature until we had been able to learn something more about him by a personal interview. With this object we immediately despatched one of the oldest members of our staff to interview the stranger. But we regret to announce that our representative was resolutely and insolently refused admission into the palace. We were not altogether unprepared for this, knowing as we do the amount of cliqueism and favouritism which unfortunately prevail at his Majesty's Court. Our policy has always been to speak out boldly, without fear and without favour; as our readers are aware, this has brought us into bad odour in certain quarters. But in the interests of this great people, and the country generally, we do not hesitate now to inform the King that it is his duty as monarch of a mighty realm to study the interests of his subjects, and to recognise no party. Unhappily -- and we say this with all due respect -- his Majesty allows a few interested office-seekers to stand between him and his people. For a long time the government of the country has virtually been in the hands of Mr. Ytidrusba and Doctor Yrekcauq, and as it is notorious that a bitter feud exists between these two learned beings, we fearlessly assert that they should no longer be allowed to make the Court and the Senate the arena for their personal quarrels. That both gentlemen are endowed with extraordinary ability must be freely admitted, but their high attainments are sullied by a smallness of spirit that would discredit barbarians. The arrival of the strange being is the signal for a renewal of the jealousy which has so long been a disgrace to his Majesty's palace, and both Mr Ytidrusba and Doctor Yrekcauq forget what they owe to the public in their desire to air their own opinions. We would, however, respectfully inform these gentlemen that we, as the organ of public opinion, object to have mud thrown in our eyes. We claim to have a voice in all matters affecting the public weal, and anything like chicanery or humbug we shall oppose with all the energy at our command. We believe that the public are being humbugged with reference to this stranger, whose chief claim to singularity seems to be the absence of a caudal appendage. We understand that there was a meeting yesterday at the Palace of all the learned men and savants of our city, but that they arrived at no definite conclusion, though both Mr Ytidrusba and Doctor Yrekcauq had their pet theories well paraded, as is usually the case when anything strange occurs. Without entering into the merits of the disputes of these scientists we feel called upon to denounce the statement that the stranger has come from the exterior of the earth, as one totally unworthy of a great mind, and equally unworthy of a moment's consideration by intelligent people. Our philosophers and scientific men have proved beyond a doubt that the exterior of this earth is perfectly smooth, and shrouded in eternal night. The idea, therefore, of anything having life being able to dwell upon a smooth ball, and in total darkness, is so ludicrously absurd that it is an insult to ask a person, even of the most ordinary intelligence, to believe it. But science has proved even more than this. It has established the fact that the exterior of the earth is surrounded with gases of such a deadly nature that nothing -- neither animal nor vegetable life -- could possibly exist there for a moment. It is, in short, a region of gloom, silence and death. To say, therefore, that a person similar in being to ourselves could possibly have made his way from there to here is a monstrously-absurd falsehood. This may be strong language, but the time has come when only plain speaking can avail. We have so long groaned under the despotism of cliques, who, from self-interested motives, have not hesitated to cram ridiculous notions down the public throat, that we are determined now to combat this. We feel it to be a duty, and we shall not flinch from doing that duty. Do not let our meaning be misunderstood. We write in the broad spirit of brotherly love and charity. But DUTY is our watchword. In the meantime, we caution the public not to be gulled by the nonsensical idea that this tailless wretch has come to us from the mysterious and unknown regions of solitude and darkness which surround our world. The commonest of logic will disprove this. He was found floating in his strange vessel on the Green River. Now the source of that river has never been discovered, notwithstanding the many attempts that have been made to trace it. It will be remembered that many years ago a powerful electrical vessel was fitted out to ascend the river, and after travelling for a considerable distance she came to the mouth of a huge tunnel, from which the water poured in such force as to render it impossible for the vessel to proceed further. There is no doubt that the new arrival came down this tunnel, and it is equally certain that, dwelling in another part of our world, and connected by the Green River, is an extraordinary race, of which this person is a representative. He had probably been boating when by some mischance he was carried away by the currents, and so found himself, much to his astonishment, amongst civilised people. But to suppose that he could have dropped down from regions that are, for aught we know, thousands of miles above us, is at once childish and ridiculous. If what we have stated is not true, then all we can say is that a cruel hoax is being perpetrated, for reasons that we confess we are unable to define. We shall jealously watch the movements of the Government with reference to the matter and shall not hesitate to expose anything like humbug.\"",
-    "how": "default"
+    "how": "lead-in-press"
    },
    {
     "voice": "NARRATOR",
@@ -6024,9 +6024,9 @@
     "how": "narration"
    },
    {
-    "voice": "MR_YTIDRUSBA",
+    "voice": "FLIN",
     "text": "\"Alas!\"",
-    "how": "following-pronoun"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -6063,9 +6063,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"Oh, I am so delighted to see you, you jolly little male! But do you know, my dad has prohibited me from coming, though that does not trouble me. Love laughs at locksmiths, you know, dear, doesn't it? \"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6073,9 +6073,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "FLIN",
     "text": "\"Really, you Highness,\"",
-    "how": "narration"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6083,9 +6083,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "FLIN",
     "text": "\"your attentions are no doubt well meant, but I must again remind you that I have long passed the hey-day of youth, and that love-making was an art in which I fear I never even reached mediocrity, as testified by the fact that in my old age I am still a bachelor and childless.\"",
-    "how": "narration"
+    "how": "pre-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6095,7 +6095,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Oh, you funny little quack-quack, you talk in such a comical manner that I really cannot refrain from laughing.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -6105,7 +6105,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"You darling, you will drive me mad with laughter if you persist in being so funny. Do try and be sedate, there's a dear.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -6115,7 +6115,7 @@
    {
     "voice": "FLIN",
     "text": "\"Really, my dear madam,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6125,7 +6125,7 @@
    {
     "voice": "FLIN",
     "text": "\"I must respectfully beg that you will be a little less volatile. I am so unused to such behaviour that it quite confuses me.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "YOBMOT",
@@ -6145,7 +6145,7 @@
    {
     "voice": "FLIN",
     "text": "\"I really protest, your Highness -- \"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6155,7 +6155,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"There, there, you funny little thing, don't joke any more now, or else I will get ever so angry with you.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6165,7 +6165,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Now, look here,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6180,7 +6180,7 @@
    {
     "voice": "FLIN",
     "text": "\"And what is that, you Highness?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6190,7 +6190,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Why, you artful little creature, as though you did not know. Well, it is that you do not allow any of the ladies there to make love to you; or I shall be so awfully jealous.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
@@ -6200,7 +6200,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"You silly little thing,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6215,7 +6215,7 @@
    {
     "voice": "FLIN",
     "text": "\"I fear, your Highness, that you promise far too much,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6225,7 +6225,7 @@
    {
     "voice": "FLIN",
     "text": "\"I have heard men in my own country make similar promises, but I know they have seldom been kept. And the husband has cared more for his club than his wife after marriage.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "YOBMOT",
@@ -6270,7 +6270,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Oh, the brutes!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6290,7 +6290,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Oh, horror, I shall faint!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6320,7 +6320,7 @@
    {
     "voice": "FLIN",
     "text": "\"Your Highness is slightly discourteous to doubt my word -- \"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6328,9 +6328,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"Now don't get cross, you little tease, for you know that what you say isn't true. The idea of trying to make me believe such a thing, you naughty little fellow. Now, now\"",
-    "how": "paragraph-subject"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6365,7 +6365,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Come, we must not waste any more time,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6375,7 +6375,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"or the Society's meeting will be over.\"",
-    "how": "pre-tag"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6439,7 +6439,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"I trust I am too much of a lady to enter a carriage before a male. You should remember that women in this country always give way to the weaker sex.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6449,7 +6449,7 @@
    {
     "voice": "FLIN",
     "text": "\"May I inquire, madam,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6484,7 +6484,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"I never heard of such beings,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6494,12 +6494,12 @@
    {
     "voice": "YOBMOT",
     "text": "\"The only animal we use as a draught animal, and then only for heavy loads, is the anoplotherium.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "FLIN",
     "text": "\"Bless my life, is it possible?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6514,7 +6514,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Why, what a funny place your country must be to be sure,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6524,7 +6524,7 @@
    {
     "voice": "FLIN",
     "text": "\"As you are so favoured with regard to the Anoplotherium,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6534,7 +6534,7 @@
    {
     "voice": "FLIN",
     "text": "\"it is possible you have also the menopome here.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6559,7 +6559,7 @@
    {
     "voice": "FLIN",
     "text": "\"Ah, possibly, possibly,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6579,7 +6579,7 @@
    {
     "voice": "FLIN",
     "text": "\"Wonderful, wonderful,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6624,7 +6624,7 @@
    {
     "voice": "FLIN",
     "text": "\"Really, madam, you have mistaken me,\"",
-    "how": "following-pronoun"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6649,7 +6649,7 @@
    {
     "voice": "FLIN",
     "text": "\"I -- I -- madam -- let me entreat you to be a little more decorous,\"",
-    "how": "following-pronoun"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6704,7 +6704,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Sweet male, you are cruel, very cruel, but I shall still hope.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6727,9 +6727,9 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "FLIN",
     "text": "\"How very rude the fellow is to be sure.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "YOBMOT",
@@ -6744,7 +6744,7 @@
    {
     "voice": "FLIN",
     "text": "\"The Princess Yobmot, and the strange savage from the infernal regions.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6757,9 +6757,9 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"I vote Her Royal Highness takes the chair.\"",
-    "how": "alternation"
+    "how": "lead-in-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -6767,9 +6767,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"I really had no intention, my learned sisters, to preside at your meeting to-day, but since you have done me the honour of voting me to the important office I cannot very well refuse. As you will perceive, I have taken the liberty of bringing a stranger and one of the softer sex here\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -6777,7 +6777,7 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"I know that this is not allowable according to our rules,\"",
     "how": "same-paragraph"
    },
@@ -6787,9 +6787,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "YOBMOT",
     "text": "\"but a point may very well be stretched in this case when I tell you that our visitor is no less distinguished a person that the poor barbarian who has arrived from goodness knows where.\"",
-    "how": "narration"
+    "how": "same-paragraph"
    },
    {
     "voice": "NARRATOR",
@@ -6807,9 +6807,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"I thought that your interest would be aroused as soon as you were informed who the person was, and I venture to express a hope, ladies, that his presence will not be allowed to interfere with the transaction of our business. And for fear your attention may be too much distracted I think it will be better for the creature to keep his features concealed.\"",
-    "how": "same-paragraph"
+    "how": "pre-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -6822,12 +6822,12 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"pray let us have a look at him.\"",
     "how": "same-paragraph"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"Well, ladies, if you are so anxious to see him you shall, but I trust it will not cause you to neglect duty.\"",
     "how": "same-paragraph"
    },
@@ -6842,39 +6842,39 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"Isn't he good-looking?\"",
-    "how": "alternation"
+    "how": "lead-in-crowd"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Oh, what a duck!\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"What a charming little fellow, to be sure!\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"What a fine nose he has got!\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"And what a lovely mouth!\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"And such a noble head!\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"And only to think that such a dear fellow should be a savage. How very shocking, to be sure! \"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -6892,9 +6892,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"stop.\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -6922,34 +6922,34 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"The idea!\"",
-    "how": "alternation"
+    "how": "lead-in-crowd"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"Did ever you know of such a thing?\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"The forward hussy, to speak to us like that!\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"I should like to pull her hair for her, so I should!\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"The brazen minx!\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"For a child like her to talk in such a manner is unpardonable.\"",
-    "how": "alternation"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -6967,9 +6967,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Your Royal Highness and ladies, as one of the oldest members of this board, I may be permitted to make a few remarks.\"",
-    "how": "alternation"
+    "how": "lead-in-crowd"
    },
    {
     "voice": "YOBMOT",
@@ -6982,7 +6982,7 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Yes, indeed, the stupid old thing. Why doesn't she stop at home and look after her husband and children?\"",
     "how": "alternation"
    },
@@ -6999,7 +6999,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"What I have to say will be very brief. I cannot but think that our beloved Princess was actuated by the best of motives in bringing this curious being here. But to be candid -- and those who know me know that I cannot be anything else -- ; (\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -7012,9 +7012,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Personal, personal,\"",
-    "how": "alternation"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -7024,7 +7024,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Why, the old wretch is jealous,\"",
-    "how": "alternation"
+    "how": "reply"
    },
    {
     "voice": "NARRATOR",
@@ -7062,9 +7062,9 @@
     "how": "alternation"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Names, names,\"",
-    "how": "alternation"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -7074,17 +7074,17 @@
    {
     "voice": "YOBMOT",
     "text": "\"I refuse to mention names.\"",
-    "how": "alternation"
+    "how": "reply"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Shame! shame! apologise.\"",
     "how": "alternation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"Really, ladies, I must interfere,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -7097,9 +7097,9 @@
     "how": "same-paragraph"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"I believe, your Highness, that she refers to me,\"",
-    "how": "post-tag-gender"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -7109,7 +7109,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"And if she dares to make such a remark again I will scratch her face.\"",
-    "how": "same-paragraph"
+    "how": "reply"
    },
    {
     "voice": "YOBMOT",
@@ -7134,7 +7134,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"You shall soon see me and feel me too, you young chit,\"",
-    "how": "alternation"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -7147,9 +7147,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"I command silence. Otherwise I will leave the room. Such behaviour is really disgraceful.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -7179,7 +7179,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"I did not think, your Highness and ladies, that ever I should have lived to suffer such unmerited insult as has been thrust upon me this day. My length of service, unremitting attention to the interests of the board, and indefatigable zeal -- \"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
@@ -7227,7 +7227,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Don't be alarmed, dear. Although they make a terrible noise they are quite harmless.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -7262,7 +7262,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"I am very much obliged to you, ladies, and now we will proceed to business.\"",
-    "how": "default"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -7272,7 +7272,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"The first business I have on the paper, ladies,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -7292,12 +7292,12 @@
    {
     "voice": "YOBMOT",
     "text": "\"The next case, ladies, is that of a youth aged forty, who was inveigled away from the legal guardianship of his parents by a young woman. She kept him a prisoner in a house in a low part of the town for some time, but he was subsequently turned out and sent home.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"What evidence is there, your Highness,\"",
-    "how": "post-tag-gender"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -7305,19 +7305,19 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"that this boy was taken away against his will?\"",
     "how": "same-paragraph"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"According to the paper here there is the evidence of his parents, as well as his own statement. He says that he was not party. \"",
-    "how": "default"
+    "how": "continuation"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"Then I think it is a matter for our consideration,\"",
-    "how": "post-tag-gender"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -7325,14 +7325,14 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"I am sorry to say that cases of abduction of young men and boys is sadly on the increase, and should be dealt with a firm hand. It is really a disgrace to a civilised country like this that such things should be possible.\"",
-    "how": "same-paragraph"
+    "how": "reply"
    },
    {
     "voice": "YOBMOT",
     "text": "\"I quite agree with your remarks,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -7347,7 +7347,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Why doesn't she set an example?\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -7380,9 +7380,9 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"What is his occupation, your Highness?\"",
-    "how": "default"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -7392,7 +7392,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"He is a public chariot-driver; very hardworking and steady. But his earnings are barely sufficient even to supply necessaries.\"",
-    "how": "default"
+    "how": "reply"
    },
    {
     "voice": "NARRATOR",
@@ -7417,7 +7417,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"I repeat that I oppose the application, on the grounds that a male who drives a public conveyance cannot be a respectable person.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -7425,9 +7425,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "PEOPLE",
     "text": "\"Oh, oh!\"",
-    "how": "narration"
+    "how": "aside"
    },
    {
     "voice": "NARRATOR",
@@ -7435,9 +7435,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "PEOPLE",
     "text": "\"Shame!\"",
-    "how": "narration"
+    "how": "aside"
    },
    {
     "voice": "NARRATOR",
@@ -7447,7 +7447,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Somebody cries 'Oh!' and 'Shame!' but I may be permitted to say that I have made a study of the whole race of chariot- drivers, and have had as much experience of them as anyone in Esnesnon.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -7457,12 +7457,12 @@
    {
     "voice": "YOBMOT",
     "text": "\"You may laugh as much as you like, ladies, but I assert fearlessly that my experience has been bitter. You are aware that scarcely a week passes but what I have to summon one or other of these wretched people, male of female, for overcharging me.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"Why don't you keep a chariot of your own?\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -7477,7 +7477,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"I will not notice that insulting question further than by saying that the reason I don't keep my own chariot is entirely my own business. I choose to patronise the public vehicles in the public interest; and the single handed war which I have so long waged against these chariot-driving sharks ought to have earned for me the public esteem and support, instead of ridicule and contempt. My disinterested exertions -- \"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -7522,12 +7522,12 @@
    {
     "voice": "YOBMOT",
     "text": "\"Who dares to accuse me of talking twaddle? Let the wretch stand up and repeat it, and I promise her such a boxing of the ears as she has never before experienced. Who is the culprit? I call upon her to stand out, and if not I brand her as a coward and a -- \"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "YOBMOT",
     "text": "\"Order!\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -7557,12 +7557,12 @@
    {
     "voice": "YOBMOT",
     "text": "\"She may well keep silent, the miserable minx. It would be better if she were to stay at home and keep the dwelling clean, instead of coming here to interrupt a lady.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "YOBMOT",
     "text": "\"Mrs -- -, I call you to order,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -7587,7 +7587,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"I am a most ill-used and persecuted woman, that I am. Everybody is against me, and yet I never quarrel with anyone, and always carefully avoid saying anything that is calculated to give offence. It is shameful, so it is, and it is seriously affecting my health. I can't stand it. I will resign, that's what I'll do.\"",
-    "how": "same-paragraph"
+    "how": "pre-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -7627,7 +7627,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Mrs -- - ,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -7657,7 +7657,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Upon what grounds?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -7667,47 +7667,47 @@
    {
     "voice": "YOBMOT",
     "text": "\"On the grounds of his being a chariot- driver.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"Have you no other reason?\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"None whatever.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"You don't know the male personally?\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"No.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"Nor anything against his personal character?\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"No. But he is a chariot-driver, and that is sufficient.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"There I differ from you. It is not sufficient for us to merely consider what his occupation is. The fact of his being a male, and subject to ill treatment at the hands of his wife, ought to arouse our tenderest sympathies, and I hope, ladies, those sympathies will not be withheld. It is ever woman's duty to protect her weaker brother, and personal animosity ought not to be allowed to stand in the way of our doing our duty.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"I beg to correct your Highness,\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -7722,7 +7722,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"We will proceed to vote, ladies,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -7737,12 +7737,12 @@
    {
     "voice": "YOBMOT",
     "text": "\"Vote, vote.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"You shall hear me. I have no -- \"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -7752,22 +7752,22 @@
    {
     "voice": "YOBMOT",
     "text": "\"Sit down.\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"I sha'n't sit down. I have -- \"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"Silence, order!\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "YOBMOT",
     "text": "\"I won't be silent, I won't keep order,\"",
-    "how": "default"
+    "how": "continuation"
    },
    {
     "voice": "NARRATOR",
@@ -7873,7 +7873,7 @@
    {
     "voice": "FLIN",
     "text": "\"Send me to Parliament,\"",
-    "how": "default"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -7911,9 +7911,9 @@
     "how": "narration"
    },
    {
-    "voice": "MRS_YTIDRUSBA",
+    "voice": "NARRATOR",
     "text": "\"How long is the peace of the land to be disturbed by the horrible howling of this mad-brained creature? When are the peaceful subjects to be protected from the seditious ravings of this hag? When are the unfortunate and long-oppressed drivers to be relieved of this terrible virago who has pressed upon them like a horrid incubus? When is this desperate and unprincipled woman's tongue to be bridled? The time has arrived when something must be done. Man has groaned too long under the iron sway of feminine rule, rendered the more galling and the more unendurable by this person's ceaseless shriekings, which have been heard for the last hundred years. It is time that man should now assert his independence. He must arise and make his voice heard from the four corners of our land. And the first step gained towards this sighed-for freedom will be the downfall of Mrs -- - . The King must be protected from her insults. And so far from the citizens sending her to Parliament they should send her to an asylum. Every woman in Parliament should, for the honour and glory of her beautiful country, feel that it was a sacred duty she owed to pass a bill making it an unlawful offence to talk as this person has talked. And until this is done our boasted freedom will be but a mockery, for women have made us slaves. Under their merciless sway we have been compelled to grovel in the dust. We have been humiliated before our children, and our hearts could scarcely be called our own. This state of things must no longer be allowed to continue. The end must be hastened, for it is our firm belief that man was never intended to be a woman's slave. Parliament should be constituted of an equal number of males and women. And only when this is done will many of the evils now complained of be remedied.\"",
-    "how": "alternation"
+    "how": "lead-in-press"
    },
    {
     "voice": "NARRATOR",
@@ -8027,7 +8027,7 @@
    {
     "voice": "FLIN",
     "text": "\"I may be permitted to set you right on one point, madam,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8037,7 +8037,7 @@
    {
     "voice": "FLIN",
     "text": "\"The region I have come from is neither nameless nor horrid. I have the honour to hail from America, and I am thoroughly American in blood, in sympathies, in ideas, in -- \"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "MRS_YTIDRUSBA",
@@ -8077,7 +8077,7 @@
    {
     "voice": "FLIN",
     "text": "\"If you will graciously listen to me for a few minutes, madam, I think we shall be able to understand each other better,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8102,7 +8102,7 @@
    {
     "voice": "FLIN",
     "text": "\"That is what I said, madam,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8117,7 +8117,7 @@
    {
     "voice": "MRS_YTIDRUSBA",
     "text": "\"Oh, gracious!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8137,7 +8137,7 @@
    {
     "voice": "MRS_YTIDRUSBA",
     "text": "\"Oh, what poor, miserable, degraded creatures they must be,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8152,7 +8152,7 @@
    {
     "voice": "MRS_YTIDRUSBA",
     "text": "\"You extraordinary being, do talk sense,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8172,7 +8172,7 @@
    {
     "voice": "MRS_YTIDRUSBA",
     "text": "\"Oh, you humbug, you miserable barbarian,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8187,7 +8187,7 @@
    {
     "voice": "FLIN",
     "text": "\"That is a point I cannot concede you, madam,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8205,9 +8205,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MRS_YTIDRUSBA",
     "text": "\"I say that if your husband occupied his proper sphere his mind would expand more as the responsibilities of his position increased. The greatest incentive for a man to labour, to aspire, to struggle for fame, and to fight for glory is the knowledge that on him woman depends. But reverse the order, and man becomes a mere machine, while the height that he might attain, if in his true station, can never be attained by her who assumes man's responsibilities, because nature has not fitted woman for the office.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -8240,14 +8240,14 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "MRS_YTIDRUSBA",
     "text": "\"Hold your tongue, sir, when I speak to you. We do not allow our males here to contradict us, nor would any male in all Esnesnon have had the audacity to talk to a lady as you have talked to me.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "FLIN",
     "text": "\"Poor creatures,\"",
-    "how": "narration"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8262,7 +8262,7 @@
    {
     "voice": "FLIN",
     "text": "\"Shocking, shocking,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8287,12 +8287,12 @@
    {
     "voice": "FLIN",
     "text": "\"Madam, the time has come for me to speak out boldly for the honour and credit of my sex. I will endeavour to emancipate your men from their slavery. I will teach them their true position. I will show them that it is their duty to burst their bonds, and I will set them an example how to rule. All my energies, all my strength of mind and body shall be devoted to the good cause of freeing your unfortunate men from their social degradation.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "MRS_YTIDRUSBA",
     "text": "\"Ah, traitor, traitor!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8355,9 +8355,9 @@
     "how": "narration"
    },
    {
-    "voice": "MRS_YTIDRUSBA",
+    "voice": "FLIN",
     "text": "\"Madam, this outrage on an American subject will be avenged.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -8398,7 +8398,7 @@
    {
     "voice": "FLIN",
     "text": "\"Well, I little thought I was going to place my head into such a scorpion's nest. What a frightful Tartar that Mrs. Ytidrusba is, to be sure. I don't wonder at her unfortunate husband suffering. But the fact is, this is altogether a strange world, and I feel a difficulty sometimes in realising the fact that I am really awake. It is very horrible to contemplate what the power of a woman is when once she has succeeded in gaining the upper hand. Unfortunately for America there are but a few strong-minded ladies; they have never reached above a certain height, where, if they are left alone, they soon fall back again into oblivion. But here man is a nonentity -- a poor, simple, patient, long- suffering fool, domineered over by woman, crushed and ground out of all manly recognition. Alas, it is very sad!\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -8546,9 +8546,9 @@
     "how": "narration"
    },
    {
-    "voice": "MRS_YTIDRUSBA",
+    "voice": "YOBMOT",
     "text": "\"Well, my dear little fellow,\"",
-    "how": "following-pronoun"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -8566,7 +8566,7 @@
     "how": "narration"
    },
    {
-    "voice": "MRS_YTIDRUSBA",
+    "voice": "YOBMOT",
     "text": "\"You have been very indiscreet, very indiscreet,\"",
     "how": "post-tag-gender"
    },
@@ -8613,12 +8613,12 @@
    {
     "voice": "FLIN",
     "text": "\"It is most unfortunate that you have got into such a pitiable mess, and I shall have the greatest possible difficulty getting you out of it. The very best counsel in Esnesnon shall be engaged, and though I think it will be a hard fight, we may succeed in defeating the plans of our enemies.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "FLIN",
     "text": "\"This most gracious condescension on the part of your Highness,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8633,7 +8633,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"And is that all?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8643,7 +8643,7 @@
    {
     "voice": "FLIN",
     "text": "\"That all!\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -8787,7 +8787,7 @@
    {
     "voice": "FLIN",
     "text": "\"Ah, poor young male, how very nice he is to be sure, and what a pity it is for such a dear creature to be placed in so unenviable a situation.\"",
-    "how": "default"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -8865,9 +8865,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "HTURTEHTERAPS",
     "text": "\"The truth hits hard, and some persons groan under it. I am glad, however, that I have sent a shaft home, and the contempt of Court shown by those persons who are evidently smarting under my fire cannot fail to strengthen my hands.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -8900,9 +8900,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "HTURTEHTERAPS",
     "text": "\"That she would not stand there to be insulted in such an unwarranted manner, nor would she yield the palm to anyone for the respect which she entertained for the dignity of the Court. Before she proceeded any further she must demand an apology from her learned friend the counsel for the prosecution \"",
-    "how": "alternation"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -8932,7 +8932,7 @@
    {
     "voice": "HTURTEHTERAPS",
     "text": "\"I am very sorry, my most noble judges, that the order of the Court should have been interrupted by this pretty passage-of- arms. But a little pleasant banter serves to clear our heavy legal atmosphere and enables us to breathe more freely.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -8965,9 +8965,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "HTURTEHTERAPS",
     "text": "\"As I was saying before my learned friend the counsel for the prosecution interrupted me, this unfortunate male, the prisoner at the bar, cannot be guilty of the charge brought against him, and should therefore be acquitted. His accuser is a lady. It is not for me to enter into the motives which led her to place my client in his unfortunate position. Her reasons are best known to herself, but I say that it would have been better for her, and better for this mighty nation, had she shown more consideration for an alien, even assuming that he had been guilty.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -8987,7 +8987,7 @@
    {
     "voice": "HTURTEHTERAPS",
     "text": "\"In conclusion, I would remark,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -9099,9 +9099,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"My dear, I am so glad you have escaped. If anything had happened to you I think I should have died.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
@@ -9156,7 +9156,7 @@
    {
     "voice": "FLIN",
     "text": "\"Really, your Highness,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -9199,14 +9199,14 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"You are uneasy in your mind, dear. Confide in me. Tell me your woes that I may solace them. Let me be your trusted friend.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
     "text": "\"Ah, your Highness,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -9244,9 +9244,9 @@
     "how": "alternation"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "FLIN",
     "text": "\"Really, your Highness,\"",
-    "how": "narration"
+    "how": "post-tag-gender"
    },
    {
     "voice": "NARRATOR",
@@ -9254,9 +9254,9 @@
     "how": "narration"
    },
    {
-    "voice": "NARRATOR",
+    "voice": "FLIN",
     "text": "\"you place me in a very awkward position, and one that is no less novel than awkward. You will remember that I told you that in my country the gentlemen made love to the ladies \"",
-    "how": "narration"
+    "how": "pre-tag-gender"
    },
    {
     "voice": "YOBMOT",
@@ -9356,7 +9356,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"It is I who am not worthy of yours,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -9444,9 +9444,9 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "FLIN",
     "text": "\"My dear madam. If you consider that I am worthy of the notice you are pleased to take of me, it is not for me to offer any opposition to your wishes. And so by necessity I conform to the custom of this strange city, and, reconciling myself to the reversed order of things, I have the honour to say that I am yours.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -9454,14 +9454,14 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"You have made me so happy, and I shall take ever such care of you, and shall insist upon the Governor placing you in some good position. Of course, when I am queen I shall be able to do more for you, but till then, dear, you must be contented.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
     "text": "\"Quite contented,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -9471,12 +9471,12 @@
    {
     "voice": "FLIN",
     "text": "\"I venture to presume that the person to whom you are pleased to refer to as the 'Governor' is his Majesty, you esteemed father. And if so, I need scarcely say that any position it might be his royal pleasure to confer upon me will be faithfully filled as far as my humble abilities will permit me. In fact, I have reason to believe that his Majesty might find me of considerable service.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-named"
    },
    {
     "voice": "YOBMOT",
     "text": "\"Well, I will see what can be done,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -9494,9 +9494,9 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "NARRATOR",
     "text": "\"Of course you will understand that I do not wish to depreciate you. I don't think you will do discredit to your sex. But then you see, darling, you are only a male.\"",
-    "how": "pre-tag"
+    "how": "pre-tag-press"
    },
    {
     "voice": "NARRATOR",
@@ -9678,9 +9678,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"That when he had gone her life's light would be gone. That his voice had been music to her, his presence a joy unspeakable. But not that he was going to leave her, she would be lonely and miserable; and like a menopome that had lost its mate she would pine till he returned.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -9814,7 +9814,7 @@
    {
     "voice": "FLIN",
     "text": "\"You have your day now; mine will come.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -9889,7 +9889,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"When I am in danger of bursting, I will go and whisper among the reeds.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -9927,12 +9927,12 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"Nellie, darling, I will tell you a secret if you will promise me that you won't repeat it.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "FLIN",
     "text": "\"I promise, dear,\"",
     "how": "alternation"
    },
@@ -10063,9 +10063,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "YOBMOT",
     "text": "\"You should not grow angry with me. Custom has unsexed you, but some woman's feeling is still left in your heart. Let that feeling tell you that nature intended man to take the highest scale in creation, and while not inferior to him, woman is essentially a dependent on him, no less than his help- mate. Come down to your proper sphere and you will know the truest happiness. Let me show you how much man is willing to do for woman, providing she keeps her level. You, as the highest lady in this land, make your voice heard. Tell your sex they are usurpers, but the hour has come when they must go back to their true place and allow down-trodden man to come to the front. Do this, and in time your name will ring with honour, and in faroff ages your memory will be revered as one who had the moral strength to rise up and acknowledge her error.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -10075,7 +10075,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Are you mad, or am I dreaming?\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
@@ -10105,7 +10105,7 @@
    {
     "voice": "FLIN",
     "text": "\"If it is your Highness's pleasure that I should die, by all means gratify that pleasure. And I shall be able to show you, and your wretched countrypeople, how I can defy you, and how a brave man should die. But I would remind your Highness that you have won upon my feelings. You have touched the strings of my heart and taught me the magic of love.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "YOBMOT",
@@ -10336,7 +10336,7 @@
    {
     "voice": "YOBMOT",
     "text": "\"Behold my conquest! As the power of woman was strong in the land even in the days of Eve, so is it now. Time has not weakened it, and here at my feet is a slave chained and bound, whom I, a woman frail and weak, have captured, and brought him from the enemy's country to lie prone at my feet and worship me, and he shall do my lightest bidding. I will make him fetch and carry even as I would my spaniel. He shall acknowledge my imperious will, and obey my commands. Even his thoughts shall not be his own, for I shall be his mistress, his queen, his absolute ruler, and if I tell him to look to the left he shall do it, and if I command him to turn to the right that shall he do also.\"",
-    "how": "default"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -10495,7 +10495,7 @@
    {
     "voice": "FLIN",
     "text": "\"How much longer would it be necessary to travel these fearful solitudes, where neither prehuman nor human foot had ever been before?\"",
-    "how": "following-pronoun"
+    "how": "previous-subject"
    },
    {
     "voice": "NARRATOR",
@@ -10510,12 +10510,12 @@
    {
     "voice": "YOBMOT",
     "text": "\"Do not blame yourself. It was all done for the best, and had you not failed Esnesnon would have known an era of splendid prosperity. You have at least taught me my true sphere. To submit as a woman should submit is a woman's duty. But when she attempts to rule, and to assume a position for which she was never intended, she ceases to be a woman and becomes objectionable. This is something at least to have learnt, and I have learned it thoroughly, and would that I could teach it to my countrywomen. But that is hopeless, for my end approaches.\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "FLIN",
     "text": "\"Say not so,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -10600,7 +10600,7 @@
    {
     "voice": "FLIN",
     "text": "\"Will you kindly inform me what locality I am in?\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -10620,7 +10620,7 @@
    {
     "voice": "FLIN",
     "text": "\"You are right, friend,\"",
-    "how": "post-tag"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -10638,9 +10638,9 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Look here, old hoss,\"",
-    "how": "post-tag-gender"
+    "how": "post-tag-crowd"
    },
    {
     "voice": "NARRATOR",
@@ -10648,7 +10648,7 @@
     "how": "narration"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"I guess you had better get away home to your friends; it ain't fit that you should be wandering about without somebody to look after you.\"",
     "how": "same-paragraph"
    },
@@ -10658,19 +10658,19 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "FLIN",
     "text": "\"Possibly what you say, my man, is correct, but you have not answered my question. What place is this?\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
-    "voice": "FLIN",
+    "voice": "PEOPLE",
     "text": "\"Wal, I guess you ain't twenty miles off 'Frisco. \"",
     "how": "alternation"
    },
    {
     "voice": "FLIN",
     "text": "\"San Francisco, eh?\"",
-    "how": "paragraph-subject"
+    "how": "post-tag-named"
    },
    {
     "voice": "NARRATOR",
@@ -10700,7 +10700,7 @@
    {
     "voice": "FLIN",
     "text": "\"He's clean gone off his mind anyhow, I guess.\"",
-    "how": "following-pronoun"
+    "how": "lead-in-named"
    },
    {
     "voice": "NARRATOR",
@@ -10708,9 +10708,9 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "FLIN",
     "text": "\"But, my dear fellow,\"",
-    "how": "alternation"
+    "how": "lead-in-gender"
    },
    {
     "voice": "NARRATOR",
@@ -10738,9 +10738,9 @@
     "how": "narration"
    },
    {
-    "voice": "YOBMOT",
+    "voice": "PEOPLE",
     "text": "\"No, no,\"",
-    "how": "alternation"
+    "how": "lead-in-crowd"
    },
    {
     "voice": "NARRATOR",

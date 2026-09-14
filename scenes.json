@@ -191,7 +191,7 @@
    "note": "Flin wakes at night as the fish strikes a rock and is carried down a rapid and over a waterfall"
   },
   {
-   "cue": 120,
+   "cue": 122,
    "id": "river",
    "flags": [
     "river"
@@ -202,7 +202,7 @@
    "note": "The fish lies jammed in a cove at the foot of the waterfall and Flin unscrews the door"
   },
   {
-   "cue": 138,
+   "cue": 140,
    "id": "cavern",
    "flags": [
     "river"
@@ -245,7 +245,7 @@
    "note": "Flin comes out on a treeless plain of stone and measures the bones of giants and a behemoth"
   },
   {
-   "cue": 76,
+   "cue": 77,
    "id": "river",
    "flags": [
     "river"
@@ -256,7 +256,7 @@
    "note": "Flin finds a second river full of blind fish and follows it downstream"
   },
   {
-   "cue": 101,
+   "cue": 102,
    "id": "cavern",
    "flags": [
     "river",
@@ -268,7 +268,7 @@
    "note": "Flin returns to the moored fish, eats, writes his diary and sleeps"
   },
   {
-   "cue": 112,
+   "cue": 113,
    "id": "cavern",
    "flags": [
     "river",
@@ -771,7 +771,7 @@
    "note": "Flin wakes alone in the gold audience hall of the palace and the priest comes to him"
   },
   {
-   "cue": 24,
+   "cue": 26,
    "id": "chamber",
    "flags": [
     "palace",
