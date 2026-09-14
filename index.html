@@ -52,6 +52,7 @@
       position:sticky;top:0;z-index:2}
     #viz{display:block;width:100%;aspect-ratio:16/9;height:auto;background:#090806;
       border:1px solid #29241c;image-rendering:pixelated;image-rendering:crisp-edges}
+    #viz.ink{image-rendering:auto;background:#efe2c3;border-color:#1c1712}
 
   .blk{margin:0 0 1.15em}
   .blk .who{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
@@ -192,14 +193,15 @@ function pixelCircle(x, y, r, color){
 function sceneAt(){
   if (!chapters.length) return {id: "cavern", hits: {}, characters: []};
   const list = scenes[chapters[cur].n];
-  let scene = list[0];
-  for (const s of list){
-    if (s.cue > cueIdx) break;
-    scene = s;
+  let k = 0;
+  for (let i = 0; i < list.length; i++){
+    if (list[i].cue > cueIdx) break;
+    k = i;
   }
+  const scene = list[k];
   const hits = {};
   for (const f of scene.flags) hits[f] = true;
-  return {id: scene.id, hits, characters: scene.characters};
+  return {id: scene.id, hits, characters: scene.characters, note: scene.note, cue: scene.cue, next: list[k + 1] || null};
 }
 
 function drawPeak(cx, baseY, width, height, color){
@@ -473,7 +475,514 @@ function drawScene(scene, characters, t, pulse, drift, cueProgress, accent, pale
   }
 }
 
+// ---- Chapter 2 is drawn as a 1905 Sunday-supplement page: black ink, flat colour plates, a caption strip ----
+const INK = {
+  paper: "#efe2c3", line: "#1c1712", red: "#c6432c", yellow: "#e9b92f", blue: "#3b78a6",
+  dawn: "#f3d58a", sky: "#a9cfe0", coat: "#6d8a4a", copper: "#c8722f", brass: "#d9a441",
+  iron: "#6b6f74", purple: "#7b4d8b", flesh: "#f1cfa6", white: "#f8f2e4", night: "#22304f",
+  brick: "#b8674a", stone: "#c9b48e", slate: "#7d8ea0", wood: "#8b5a2b", cloth: "#f4efe2",
+  trousers: "#3d3f4c", curtain: "#8f2f2a", wall: "#d8c39a", gold: "#c9a227"
+};
+// The colour plates sit a hair off the black plate, as they did on a printed page
+const REG = [3, 2];
+const INK_W = 960, INK_H = 540;
+let inkPaper = null;
+
+const P = {
+  rect: (x, y, w, h) => g => g.rect(x, y, w, h),
+  round: (x, y, w, h, r) => g => g.roundRect(x, y, w, h, r),
+  ellipse: (cx, cy, rx, ry) => g => g.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2),
+  poly: pts => g => { pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.closePath(); },
+  line: pts => g => pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y))
+};
+
+function inkPaperPattern(){
+  if (inkPaper) return inkPaper;
+  const c = document.createElement("canvas");
+  c.width = c.height = 6;
+  const g = c.getContext("2d");
+  g.fillStyle = INK.paper;
+  g.fillRect(0, 0, 6, 6);
+  g.fillStyle = "rgba(90,70,40,.09)";
+  g.fillRect(2, 2, 1, 1);
+  g.fillRect(5, 0, 1, 1);
+  inkPaper = vx.createPattern(c, "repeat");
+  return inkPaper;
+}
+
+function inkShape(path, fill, opts = {}){
+  if (fill){
+    vx.save();
+    vx.translate(REG[0], REG[1]);
+    vx.beginPath();
+    path(vx);
+    vx.fillStyle = fill;
+    vx.fill();
+    vx.restore();
+  }
+  if (opts.stroke === false) return;
+  vx.beginPath();
+  path(vx);
+  vx.lineWidth = opts.width === undefined ? 3 : opts.width;
+  vx.strokeStyle = opts.ink || INK.line;
+  vx.lineJoin = "round";
+  vx.lineCap = "round";
+  vx.stroke();
+}
+
+function inkFlat(x, y, w, h, color){
+  vx.fillStyle = color;
+  vx.fillRect(x, y, w, h);
+}
+
+function inkWrap(text, maxWidth, font){
+  vx.font = font;
+  const lines = [];
+  let line = "";
+  for (const word of text.split(" ")){
+    const test = line ? line + " " + word : word;
+    if (vx.measureText(test).width > maxWidth && line){
+      lines.push(line);
+      line = word;
+    } else line = test;
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+function inkLetter(text, x, y, size, opts = {}){
+  vx.font = (opts.weight || "bold") + " " + size + "px Georgia, serif";
+  vx.textAlign = opts.align || "center";
+  vx.textBaseline = "middle";
+  vx.fillStyle = opts.color || INK.line;
+  vx.fillText(text.toUpperCase(), x, y);
+}
+
+// Flin Flon: a giant's head on a body like a length of gaspipe, pendulum arms, corkscrew legs,
+// spectacles, bald, an old green coat buttoned to the chin and a broad-brimmed hat out of doors
+function drawFlin(x, ground, s, o = {}){
+  const headY = ground - 172 * s;
+  const bodyTop = ground - 126 * s;
+  const bodyBot = ground - 48 * s;
+  const bw = 22 * s;
+  for (const side of [-1, 1]){
+    const lx = x + side * 8 * s;
+    inkShape(g => {
+      g.moveTo(lx, bodyBot);
+      for (let i = 1; i <= 7; i++) g.lineTo(lx + (i % 2 ? 7 : -7) * s, bodyBot + i * 6 * s);
+      g.lineTo(lx, ground - 3 * s);
+    }, null, {width: 3 * s + 1});
+    inkShape(P.ellipse(lx + side * 4 * s, ground - 3 * s, 12 * s, 4 * s), INK.line, {width: 2});
+  }
+  inkShape(P.round(x - bw / 2, bodyTop, bw, bodyBot - bodyTop, 8 * s), INK.coat);
+  for (let i = 0; i < 6; i++)
+    inkShape(P.ellipse(x, bodyTop + 10 * s + i * 12 * s, 2.2 * s, 2.2 * s), INK.line, {width: 1});
+  for (const side of [-1, 1]){
+    const ax = x + side * bw / 2;
+    const swing = (o.swing || 0) * side * s;
+    const raised = o.point === side;
+    const hx = raised ? ax + side * 40 * s : ax + side * 6 * s + swing;
+    const hy = raised ? bodyTop - 10 * s : ground - 30 * s;
+    inkShape(P.line([[ax, bodyTop + 8 * s], [hx, hy]]), null, {width: 4 * s + 1});
+    inkShape(P.ellipse(hx, hy, 5 * s, 6 * s), INK.flesh, {width: 2});
+  }
+  inkShape(P.rect(x - 5 * s, headY + 38 * s, 10 * s, 14 * s), INK.flesh, {width: 2});
+  inkShape(P.ellipse(x, headY, 34 * s, 42 * s), INK.flesh);
+  inkShape(P.ellipse(x - 34 * s, headY + 4 * s, 6 * s, 9 * s), INK.flesh, {width: 2});
+  inkShape(P.ellipse(x + 34 * s, headY + 4 * s, 6 * s, 9 * s), INK.flesh, {width: 2});
+  const ey = headY - 2 * s;
+  inkShape(P.ellipse(x - 13 * s, ey, 11 * s, 9 * s), INK.white, {width: 2.5});
+  inkShape(P.ellipse(x + 13 * s, ey, 11 * s, 9 * s), INK.white, {width: 2.5});
+  inkShape(P.line([[x - 2 * s, ey], [x + 2 * s, ey]]), null, {width: 2.5});
+  inkShape(P.line([[x - 24 * s, ey - 2 * s], [x - 33 * s, ey + 2 * s]]), null, {width: 2});
+  inkShape(P.line([[x + 24 * s, ey - 2 * s], [x + 33 * s, ey + 2 * s]]), null, {width: 2});
+  const look = (o.look || 0) * 3 * s;
+  inkShape(P.ellipse(x - 13 * s + look, ey, 2.6 * s, 2.6 * s), INK.line, {width: 1});
+  inkShape(P.ellipse(x + 13 * s + look, ey, 2.6 * s, 2.6 * s), INK.line, {width: 1});
+  inkShape(P.line([[x, ey + 4 * s], [x + 3 * s, ey + 16 * s], [x - 2 * s, ey + 17 * s]]), null, {width: 2});
+  if (o.talking) inkShape(P.ellipse(x, ey + 28 * s, 7 * s, 4 * s), INK.line, {width: 2});
+  else inkShape(P.line([[x - 9 * s, ey + 27 * s], [x, ey + 30 * s], [x + 9 * s, ey + 27 * s]]), null, {width: 2});
+  inkShape(P.ellipse(x + 12 * s, ey + 31 * s, 2 * s, 2 * s), INK.line, {width: 1});
+  inkShape(P.line([[x + 12 * s, ey + 31 * s], [x + 17 * s, ey + 25 * s]]), null, {width: 1, ink: "#8a8a8a"});
+  inkShape(P.line([[x + 12 * s, ey + 31 * s], [x + 19 * s, ey + 29 * s]]), null, {width: 1, ink: "#8a8a8a"});
+  inkShape(P.ellipse(x - 13 * s, ey + 12 * s, 1.4 * s, 1.4 * s), INK.red, {width: 1});
+  inkShape(P.line([[x - 14 * s, headY - 28 * s], [x - 5 * s, headY - 35 * s]]), null, {width: 2, ink: INK.white});
+  if (o.hat){
+    inkShape(P.ellipse(x, headY - 30 * s, 58 * s, 9 * s), INK.line);
+    inkShape(P.round(x - 26 * s, headY - 62 * s, 52 * s, 34 * s, 6 * s), INK.line);
+  }
+  return [x, headY - (o.hat ? 66 : 44) * s];
+}
+
+function drawGent(x, ground, s, o = {}){
+  const coat = o.coat || INK.line;
+  inkShape(P.rect(x - 9 * s, ground - 40 * s, 7 * s, 40 * s), INK.trousers, {width: 2});
+  inkShape(P.rect(x + 2 * s, ground - 40 * s, 7 * s, 40 * s), INK.trousers, {width: 2});
+  inkShape(P.poly([[x - 16 * s, ground - 36 * s], [x - 14 * s, ground - 95 * s], [x + 14 * s, ground - 95 * s], [x + 16 * s, ground - 36 * s]]), coat);
+  inkShape(P.poly([[x - 5 * s, ground - 95 * s], [x + 5 * s, ground - 95 * s], [x + 3 * s, ground - 70 * s], [x - 3 * s, ground - 70 * s]]), INK.white, {width: 1.5});
+  if (o.paper){
+    const px = x + 20 * s, py = ground - 120 * s + o.paper * 10 * s;
+    inkShape(P.line([[x + 12 * s, ground - 88 * s], [px, py + 8 * s]]), null, {width: 3 * s + 1});
+    inkShape(P.rect(px - 10 * s, py - 12 * s, 20 * s, 26 * s), INK.white, {width: 2});
+    for (let i = 0; i < 4; i++) inkShape(P.line([[px - 6 * s, py - 6 * s + i * 5 * s], [px + 6 * s, py - 6 * s + i * 5 * s]]), null, {width: 1});
+  }
+  inkShape(P.ellipse(x, ground - 108 * s, 12 * s, 14 * s), INK.flesh, {width: 2});
+  if (o.beard) inkShape(P.ellipse(x, ground - 100 * s, 9 * s, 7 * s), o.beard, {width: 1.5});
+  inkShape(P.rect(x - 11 * s, ground - 142 * s, 22 * s, 24 * s), INK.line, {width: 2});
+  inkShape(P.rect(x - 17 * s, ground - 120 * s, 34 * s, 4 * s), INK.line, {width: 2});
+}
+
+function drawLady(x, ground, s, o = {}){
+  inkShape(P.poly([[x - 30 * s, ground], [x + 30 * s, ground], [x + 12 * s, ground - 80 * s], [x - 12 * s, ground - 80 * s]]), o.gown || INK.red);
+  inkShape(P.ellipse(x, ground - 95 * s, 11 * s, 13 * s), INK.flesh, {width: 2});
+  inkShape(P.ellipse(x, ground - 108 * s, 11 * s, 7 * s), o.hair || "#5a3a1e", {width: 2});
+  if (o.jewel !== undefined){
+    const tw = Math.sin(o.jewel) > .6;
+    inkShape(P.ellipse(x, ground - 84 * s, 2.5 * s, 2.5 * s), tw ? INK.white : INK.blue, {width: 1});
+    if (tw) for (let i = 0; i < 4; i++){
+      const a = i * Math.PI / 2 + Math.PI / 4;
+      inkShape(P.line([[x + Math.cos(a) * 4 * s, ground - 84 * s + Math.sin(a) * 4 * s], [x + Math.cos(a) * 9 * s, ground - 84 * s + Math.sin(a) * 9 * s]]), null, {width: 1.5});
+    }
+  }
+}
+
+// Flin's fish: a copper pike, plate glass eyes with lamps in them, paddle wheels at the belly
+function drawFish(cx, cy, L, o = {}){
+  const R = L * .13;
+  const body = g => {
+    g.moveTo(cx + L / 2, cy);
+    g.bezierCurveTo(cx + L * .3, cy - R * 1.15, cx - L * .1, cy - R * 1.1, cx - L * .32, cy - R * .4);
+    g.lineTo(cx - L * .5, cy - R * .9);
+    g.lineTo(cx - L * .44, cy);
+    g.lineTo(cx - L * .5, cy + R * .9);
+    g.lineTo(cx - L * .32, cy + R * .4);
+    g.bezierCurveTo(cx - L * .1, cy + R * 1.1, cx + L * .3, cy + R * 1.15, cx + L / 2, cy);
+    g.closePath();
+  };
+  const built = o.built === undefined ? 1 : o.built;
+  if (built < 1){
+    vx.save();
+    vx.beginPath();
+    body(vx);
+    vx.lineWidth = 3;
+    vx.stroke();
+    vx.clip();
+    for (let i = 0; i < 9; i++){
+      const rx = cx - L * .5 + i * L * .11;
+      inkShape(P.line([[rx, cy - R * 1.3], [rx, cy + R * 1.3]]), null, {width: 3, ink: INK.iron});
+    }
+    inkShape(P.line([[cx - L * .5, cy], [cx + L * .5, cy]]), null, {width: 4, ink: INK.iron});
+    vx.restore();
+    vx.save();
+    vx.beginPath();
+    vx.rect(cx + L / 2 - built * L, cy - R * 2, built * L + 10, R * 4);
+    vx.clip();
+  }
+  inkShape(body, INK.copper);
+  for (let i = 0; i < 12; i++) for (let j = 0; j < 3; j++){
+    const px = cx - L * .28 + i * L * .058, py = cy - R * .5 + j * R * .5;
+    inkShape(P.ellipse(px, py, 1.6, 1.6), null, {width: 1});
+  }
+  inkShape(P.poly([[cx - L * .06, cy - R * .8], [cx + L * .02, cy - R * 1.5], [cx + L * .14, cy - R * .85]]), INK.copper);
+  const gx = cx + L * .3;
+  inkShape(P.line([[gx, cy - R * .5], [gx - L * .02, cy + R * .5]]), null, {width: 3});
+  inkShape(P.line([[gx + L * .03, cy - R * .5], [gx + L * .01, cy + R * .5]]), null, {width: 3});
+  const ex = cx + L * .41, er = R * .28;
+  const lit = o.lamp || 0;
+  if (lit > 0){
+    vx.fillStyle = "rgba(233,185,47," + (lit * .45) + ")";
+    vx.beginPath();
+    vx.ellipse(ex, cy - R * .25, er * 2.4, er * 2.4, 0, 0, Math.PI * 2);
+    vx.fill();
+  }
+  inkShape(P.ellipse(ex, cy - R * .25, er, er), lit > .5 ? INK.yellow : INK.white, {width: 2.5});
+  inkShape(P.ellipse(ex, cy - R * .25, er * .35, er * .35), INK.line, {width: 1});
+  inkShape(P.line([[cx + L * .5, cy], [cx + L * .38, cy + R * .35]]), null, {width: 3});
+  if (o.wheel){
+    const wx = cx, wy = cy + R * 1.0, wr = R * .45;
+    inkShape(P.ellipse(wx, wy, wr, wr), INK.brass, {width: 2.5});
+    for (let i = 0; i < 6; i++){
+      const a = i * Math.PI / 3 + (o.spin || 0);
+      inkShape(P.line([[wx, wy], [wx + Math.cos(a) * wr, wy + Math.sin(a) * wr]]), null, {width: 2});
+    }
+  }
+  if (built < 1) vx.restore();
+}
+
+function drawBalloon(text, tipX, tipY, area){
+  const font = "bold 19px Georgia, serif";
+  const lines = inkWrap(text, 320, font).slice(0, 4);
+  if (lines.length === 4) lines[3] = lines[3].replace(/\s*\S*$/, "") + " …";
+  vx.font = font;
+  const tw = Math.max(...lines.map(l => vx.measureText(l).width));
+  const w = tw + 36, h = lines.length * 24 + 24;
+  let bx = clamp(tipX - w / 2, area.x + 10, area.x + area.w - w - 10);
+  let by = tipY - h - 34;
+  if (by < area.y + 10) by = area.y + 10;
+  inkShape(P.round(bx, by, w, h, 18), INK.white, {width: 3});
+  const tx = clamp(tipX, bx + 30, bx + w - 30);
+  inkShape(P.poly([[tx - 14, by + h - 1], [tx + 10, by + h - 1], [tipX, tipY - 6]]), INK.white, {width: 3});
+  inkFlat(tx - 12, by + h - 4, 20, 6, INK.white);
+  vx.font = font;
+  vx.textAlign = "center";
+  vx.textBaseline = "middle";
+  vx.fillStyle = INK.line;
+  lines.forEach((l, i) => vx.fillText(l, bx + w / 2, by + 22 + i * 24));
+}
+
+function inkCityMorning(a, sp, t, pulse){
+  const ground = a.y + a.h - 34;
+  inkFlat(a.x, a.y, a.w, a.h, INK.dawn);
+  const sunX = a.x + a.w * .5, sunY = ground - 230 - sp * (a.h - 330);
+  for (let i = 0; i < 16; i++){
+    const ang = i * Math.PI / 8 + t * .04;
+    const r2 = 110 + (i % 2) * 30;
+    inkShape(P.line([[sunX + Math.cos(ang) * 72, sunY + Math.sin(ang) * 72], [sunX + Math.cos(ang) * r2, sunY + Math.sin(ang) * r2]]), null, {width: 3});
+  }
+  inkShape(P.ellipse(sunX, sunY, 60, 60), INK.yellow, {width: 4});
+  const blocks = [[-10, 200, INK.brick], [100, 262, INK.stone], [212, 330, INK.slate], [318, 226, INK.brick],
+    [420, 170, INK.stone], [536, 250, INK.slate], [640, 300, INK.brick], [752, 214, INK.stone], [856, 282, INK.slate]];
+  for (const [bx, bh, col] of blocks){
+    const bw = 104;
+    inkShape(P.rect(a.x + bx, ground - bh, bw, bh), col);
+    inkShape(P.rect(a.x + bx - 5, ground - bh - 8, bw + 10, 10), INK.line, {width: 2});
+    for (let r = 0; r < Math.floor((bh - 20) / 46); r++) for (let c = 0; c < 3; c++)
+      inkShape(P.rect(a.x + bx + 13 + c * 30, ground - bh + 20 + r * 46, 18, 26), INK.white, {width: 2});
+  }
+  inkShape(P.rect(a.x - 5, ground, a.w + 10, 44), INK.stone, {width: 3});
+  for (let i = 0; i < 6; i++){
+    const px = a.x + wrap(i * 181 + t * 45, a.w + 60) - 30;
+    const py = ground - 210 - (i * 37) % 120 + Math.sin(t * 2 + i) * 10;
+    vx.save();
+    vx.translate(px, py);
+    vx.rotate(Math.sin(t * 1.5 + i) * .5);
+    inkShape(P.rect(-14, -9, 28, 18), INK.white, {width: 2});
+    for (let k = 0; k < 3; k++) inkShape(P.line([[-9, -4 + k * 4], [9, -4 + k * 4]]), null, {width: 1});
+    vx.restore();
+  }
+  const gents = [[60, .95, INK.line], [150, 1.05, INK.blue], [255, .9, INK.line], [360, 1, INK.purple],
+    [590, 1, INK.line], [690, .92, INK.blue], [790, 1.06, INK.line], [880, .96, INK.purple]];
+  gents.forEach(([gx, gs, coat], i) => {
+    const bob = Math.sin(t * 3 + i * 1.3) * 3;
+    drawGent(a.x + gx, ground + 6 + bob, gs, {coat, paper: i % 2 ? Math.sin(t * 4 + i) : 0, beard: i % 3 === 0 ? "#6b4a2b" : null});
+  });
+  const nb = a.x + 478, ns = .8, arm = Math.sin(t * 5) * 10;
+  inkShape(P.rect(nb - 8 * ns, ground - 36 * ns, 6 * ns, 36 * ns), INK.trousers, {width: 2});
+  inkShape(P.rect(nb + 2 * ns, ground - 36 * ns, 6 * ns, 36 * ns), INK.trousers, {width: 2});
+  inkShape(P.poly([[nb - 14 * ns, ground - 34 * ns], [nb - 12 * ns, ground - 80 * ns], [nb + 12 * ns, ground - 80 * ns], [nb + 14 * ns, ground - 34 * ns]]), INK.red);
+  inkShape(P.line([[nb + 10 * ns, ground - 74 * ns], [nb + 34 * ns, ground - 118 * ns + arm]]), null, {width: 4});
+  inkShape(P.rect(nb + 22 * ns, ground - 138 * ns + arm, 26 * ns, 32 * ns), INK.white, {width: 2});
+  inkShape(P.ellipse(nb, ground - 92 * ns, 11 * ns, 12 * ns), INK.flesh, {width: 2});
+  inkShape(P.ellipse(nb, ground - 102 * ns, 14 * ns, 6 * ns), INK.blue, {width: 2});
+  inkShape(P.ellipse(nb, ground - 100 * ns, 8 * ns, 3 * ns), INK.line, {width: 1});
+  inkShape(P.ellipse(nb, ground - 92 * ns + 6 * ns, 3 * ns, 2.5 * ns + Math.max(0, Math.sin(t * 5)) * 2), INK.line, {width: 1});
+  return {};
+}
+
+function inkWorks(a, sp, t, pulse){
+  const ground = a.y + a.h - 30;
+  inkFlat(a.x, a.y, a.w, a.h, INK.wall);
+  inkShape(P.round(a.x + 560, a.y + 30, 300, 220, 150), INK.sky, {width: 4});
+  for (let i = 1; i < 4; i++) inkShape(P.line([[a.x + 560 + i * 75, a.y + 30], [a.x + 560 + i * 75, a.y + 250]]), null, {width: 2});
+  for (let i = 1; i < 3; i++) inkShape(P.line([[a.x + 560, a.y + 30 + i * 74], [a.x + 860, a.y + 30 + i * 74]]), null, {width: 2});
+  for (let i = 0; i < 3; i++){
+    const gy = a.y + 18 + i * 22;
+    inkShape(P.line([[a.x, gy], [a.x + a.w, gy]]), null, {width: 4});
+    for (let k = 0; k < 24; k++) inkShape(P.ellipse(a.x + 20 + k * 40, gy, 2, 2), INK.white, {width: 1});
+  }
+  inkShape(P.rect(a.x - 5, ground, a.w + 10, 40), INK.wood, {width: 3});
+  for (let k = 0; k < 12; k++) inkShape(P.line([[a.x + k * 84, ground], [a.x + k * 84 + 30, ground + 40]]), null, {width: 1.5});
+  const fx = a.x + 520, fy = ground - 150, L = 560;
+  for (const tx of [fx - 170, fx + 150]){
+    inkShape(P.poly([[tx - 40, ground], [tx, fy + 40], [tx + 40, ground]]), INK.wood, {width: 3});
+    inkShape(P.line([[tx - 24, ground - 30], [tx + 24, ground - 30]]), null, {width: 3});
+  }
+  drawFish(fx, fy, L, {built: .62, wheel: true});
+  const wx = fx - 90, wg = fy + 84;
+  inkShape(P.rect(wx - 30, wg, 12, ground - wg), INK.wood, {width: 2});
+  inkShape(P.rect(wx + 18, wg, 12, ground - wg), INK.wood, {width: 2});
+  for (let r = 0; r < 4; r++) inkShape(P.line([[wx - 30, wg + 20 + r * 34], [wx + 30, wg + 20 + r * 34]]), null, {width: 3});
+  const ws = .85, hit = Math.sin(t * 8);
+  inkShape(P.rect(wx - 8 * ws, wg - 38 * ws, 7 * ws, 38 * ws), INK.blue, {width: 2});
+  inkShape(P.rect(wx + 2 * ws, wg - 38 * ws, 7 * ws, 38 * ws), INK.blue, {width: 2});
+  inkShape(P.poly([[wx - 15 * ws, wg - 36 * ws], [wx - 13 * ws, wg - 90 * ws], [wx + 13 * ws, wg - 90 * ws], [wx + 15 * ws, wg - 36 * ws]]), INK.white);
+  inkShape(P.ellipse(wx, wg - 102 * ws, 11 * ws, 12 * ws), INK.flesh, {width: 2});
+  inkShape(P.ellipse(wx, wg - 112 * ws, 13 * ws, 5 * ws), INK.trousers, {width: 2});
+  const hx = wx - 12, hy = wg - 80, ang = -2.2 + hit * .7;
+  inkShape(P.line([[hx, hy], [hx + Math.cos(ang) * 48, hy + Math.sin(ang) * 48]]), null, {width: 4});
+  inkShape(P.rect(hx + Math.cos(ang) * 48 - 12, hy + Math.sin(ang) * 48 - 8, 24, 16), INK.iron, {width: 2});
+  if (hit > .85) for (let i = 0; i < 5; i++){
+    const sa = -1.2 + i * .5;
+    inkShape(P.line([[hx + Math.cos(ang) * 48 + Math.cos(sa) * 14, hy + Math.sin(ang) * 48 + Math.sin(sa) * 14], [hx + Math.cos(ang) * 48 + Math.cos(sa) * 30, hy + Math.sin(ang) * 48 + Math.sin(sa) * 30]]), null, {width: 2, ink: INK.yellow});
+  }
+  const head = drawFlin(a.x + 150, ground + 8, 1, {hat: true, point: 1, look: 1, talking: !!pulse.talking});
+  return {FLIN: head};
+}
+
+function inkMuseum(a, sp, t, pulse){
+  const ground = a.y + a.h - 24;
+  inkFlat(a.x, a.y, a.w, a.h, INK.curtain);
+  for (let k = 0; k < 15; k++) inkShape(P.line([[a.x + 30 + k * 64, a.y + 70], [a.x + 40 + k * 64, ground]]), null, {width: 2, ink: "#5e1d1a"});
+  inkShape(P.rect(a.x - 5, a.y - 5, a.w + 10, 64), INK.white, {width: 3});
+  inkLetter("Barnum's Museum", a.x + a.w / 2, a.y + 28, 34);
+  for (let k = 0; k < 16; k++){
+    const bx = a.x + k * 58;
+    inkShape(P.poly([[bx, a.y + 60], [bx + 58, a.y + 60], [bx + 29, a.y + 88 + Math.sin(t * 2 + k) * 2]]), k % 2 ? INK.blue : INK.yellow, {width: 2});
+  }
+  inkShape(P.rect(a.x - 5, ground, a.w + 10, 30), INK.wood, {width: 3});
+  const fx = a.x + a.w / 2, fy = ground - 140, L = 720;
+  inkShape(P.rect(fx - 200, fy + 60, 400, ground - fy - 60), INK.stone, {width: 3});
+  for (const cx of [fx - 150, fx + 150]) inkShape(P.poly([[cx - 40, fy + 60], [cx - 24, fy + 20], [cx + 24, fy + 20], [cx + 40, fy + 60]]), INK.wood, {width: 3});
+  const lamp = .5 + .5 * Math.sin(t * 1.6);
+  drawFish(fx, fy, L, {wheel: true, spin: t * .6, lamp});
+  for (const px of [a.x + 60, a.x + a.w / 2, a.x + a.w - 60]) inkShape(P.rect(px - 5, ground - 90, 10, 90), INK.brass, {width: 2});
+  for (const [x1, x2] of [[a.x + 60, a.x + a.w / 2], [a.x + a.w / 2, a.x + a.w - 60]])
+    inkShape(g => { g.moveTo(x1, ground - 86); g.quadraticCurveTo((x1 + x2) / 2, ground - 60, x2, ground - 86); }, null, {width: 4, ink: INK.red});
+  for (let k = 0; k < 13; k++){
+    const hx = a.x + 20 + k * 74 + (k % 2) * 12;
+    const bob = Math.sin(t * 2.2 + k) * 3;
+    const hy = ground + 40 + bob;
+    if (k % 3 === 1){
+      inkShape(P.ellipse(hx, hy - 60, 26, 30), INK.line);
+      inkShape(P.ellipse(hx, hy - 78, 34, 14), k % 2 ? INK.purple : INK.blue, {width: 2});
+    } else {
+      inkShape(P.ellipse(hx, hy - 60, 24, 26), INK.line);
+      inkShape(P.rect(hx - 20, hy - 120, 40, 42), INK.line, {width: 2});
+      inkShape(P.rect(hx - 30, hy - 82, 60, 6), INK.line, {width: 2});
+    }
+  }
+  return {};
+}
+
+function inkBanquet(a, sp, t, pulse){
+  const ground = a.y + a.h - 10;
+  inkFlat(a.x, a.y, a.w, a.h, INK.cloth);
+  inkFlat(a.x, a.y, a.w, 150, INK.wall);
+  for (let k = 0; k < 6; k++){
+    const ax = a.x + 40 + k * 152;
+    inkShape(g => { g.moveTo(ax, a.y + 150); g.lineTo(ax, a.y + 60); g.arc(ax + 56, a.y + 60, 56, Math.PI, 0); g.lineTo(ax + 112, a.y + 150); }, INK.purple, {width: 3});
+    drawLady(ax + 56, a.y + 150, .7, {gown: k % 2 ? INK.red : INK.blue, jewel: t * 3 + k * 1.7});
+  }
+  inkShape(P.rect(a.x - 5, a.y + 148, a.w + 10, 14), INK.stone, {width: 3});
+  for (let k = 0; k < 30; k++) inkShape(P.rect(a.x + 10 + k * 32, a.y + 120, 8, 30), INK.stone, {width: 1.5});
+  const cx = a.x + a.w / 2, cy = a.y + 215;
+  inkShape(P.line([[cx, a.y], [cx, cy - 30]]), null, {width: 3});
+  inkShape(P.ellipse(cx, cy, 120, 22), INK.brass, {width: 3});
+  for (let k = 0; k < 9; k++){
+    const fxp = cx - 100 + k * 25, fl = 10 + Math.sin(t * 9 + k * 2) * 3;
+    inkShape(P.rect(fxp - 3, cy - 24, 6, 20), INK.white, {width: 1.5});
+    inkShape(P.ellipse(fxp, cy - 30, 4, fl), INK.yellow, {width: 1.5});
+  }
+  const guests = [[90, INK.line], [210, INK.blue], [330, INK.line], [630, INK.line], [750, INK.purple], [870, INK.line]];
+  guests.forEach(([gx, coat], i) => drawGent(a.x + gx, ground + 30, 1, {coat, beard: i % 2 ? "#6b4a2b" : null}));
+  const head = drawFlin(a.x + 480, ground - 10, 1.05, {talking: !!pulse.talking, look: 0, point: pulse.talking ? 1 : 0});
+  const ty = ground - 60;
+  inkShape(P.poly([[a.x - 5, ty + 90], [a.x + 60, ty], [a.x + a.w - 60, ty], [a.x + a.w + 5, ty + 90]]), INK.white);
+  for (let k = 0; k < 9; k++){
+    const px = a.x + 90 + k * 98;
+    inkShape(P.ellipse(px, ty + 22, 28, 9), INK.white, {width: 2});
+    if (k % 3 === 1){
+      inkShape(P.rect(px + 40, ty - 40, 14, 56), INK.coat, {width: 2});
+      inkShape(P.rect(px + 44, ty - 52, 6, 14), INK.coat, {width: 2});
+    }
+    if (k % 3 === 2) inkShape(P.ellipse(px - 30, ty + 6, 16, 20), INK.brass, {width: 2});
+  }
+  return {FLIN: head};
+}
+
+function inkStreetsNight(a, sp, t, pulse){
+  const ground = a.y + a.h - 34;
+  inkFlat(a.x, a.y, a.w, a.h, INK.night);
+  for (let i = 0; i < 24; i++) inkShape(P.ellipse(a.x + (i * 173) % a.w, a.y + 20 + (i * 61) % 160, 1.5, 1.5), INK.white, {width: 1});
+  inkShape(g => { g.arc(a.x + 780, a.y + 80, 44, .9, 5.4); g.arc(a.x + 800, a.y + 72, 40, 5.1, 1.2, true); }, INK.yellow, {width: 3});
+  const blocks = [[-10, 240], [110, 320], [230, 200], [340, 360], [470, 260], [590, 330], [700, 220], [820, 300]];
+  for (const [bx, bh] of blocks){
+    inkShape(P.rect(a.x + bx, ground - bh, 118, bh), "#2c3140");
+    for (let r = 0; r < Math.floor((bh - 20) / 46); r++) for (let c = 0; c < 3; c++){
+      const lit = ((bx + r * 7 + c * 13) % 11) < 3;
+      inkShape(P.rect(a.x + bx + 20 + c * 32, ground - bh + 20 + r * 46, 18, 26), lit ? INK.yellow : "#1d2130", {width: 1.5});
+    }
+  }
+  inkShape(P.rect(a.x - 5, ground, a.w + 10, 44), "#3a3a44", {width: 3});
+  for (const lx of [a.x + 200, a.x + 700]){
+    const fl = 1 + Math.sin(t * 11 + lx) * .15;
+    for (let i = 0; i < 12; i++){
+      const ang = i * Math.PI / 6 + Math.PI / 12;
+      inkShape(P.line([[lx + Math.cos(ang) * 30, ground - 185 + Math.sin(ang) * 36], [lx + Math.cos(ang) * (44 + (i % 2) * 10) * fl, ground - 185 + Math.sin(ang) * (52 + (i % 2) * 10) * fl]]), null, {width: 2, ink: INK.yellow});
+    }
+    inkShape(P.rect(lx - 4, ground - 160, 8, 160), INK.line, {width: 2});
+    inkShape(P.poly([[lx - 16, ground - 160], [lx + 16, ground - 160], [lx + 12, ground - 210], [lx - 12, ground - 210]]), INK.white, {width: 2.5});
+    inkShape(P.ellipse(lx, ground - 184, 5, 9 * fl), INK.yellow, {width: 1.5});
+  }
+  for (let i = 0; i < 5; i++){
+    const gx = a.x + wrap(i * 205 + 60 - t * 28, a.w + 80) - 40;
+    drawGent(gx, ground + 6 + Math.sin(t * 6 + i) * 2, 1, {coat: i % 2 ? INK.blue : INK.line});
+  }
+  return {};
+}
+
+const INK_SCENES = {city: inkCityMorning, chamber: inkWorks, hall: inkBanquet};
+
+function inkSceneFor(scene){
+  if (scene.id === "chamber" && scene.hits.crowd) return inkMuseum;
+  if (scene.id === "city" && !scene.hits.crowd) return inkStreetsNight;
+  const fn = INK_SCENES[scene.id];
+  if (!fn) throw new Error("No inked drawing for scene '" + scene.id + "' in chapter " + chapters[cur].n);
+  return fn;
+}
+
+function drawInk(){
+  const W = viz.width, H = viz.height;
+  const t = au.currentTime || 0;
+  const cue = cueIdx >= 0 ? cues[cueIdx] : null;
+  const scene = sceneAt();
+  const playing = !au.paused && !au.ended;
+  const start = cues.length ? cues[Math.min(scene.cue, cues.length - 1)].start : 0;
+  const end = scene.next && cues.length ? cues[Math.min(scene.next.cue, cues.length - 1)].start : (au.duration || start + 1);
+  const sp = clamp((t - start) / Math.max(1, end - start), 0, 1);
+  const talking = !!(cue && cue.voice !== "NARRATOR" && playing);
+
+  vx.setTransform(1, 0, 0, 1, 0, 0);
+  vx.fillStyle = inkPaperPattern();
+  vx.fillRect(0, 0, W, H);
+  const m = 22, capH = 62;
+  const box = {x: m, y: m, w: W - 2 * m, h: H - 2 * m};
+  const area = {x: box.x, y: box.y, w: box.w, h: box.h - capH};
+
+  vx.save();
+  vx.beginPath();
+  vx.rect(area.x, area.y, area.w, area.h);
+  vx.clip();
+  const anchors = inkSceneFor(scene)(area, sp, t, {talking});
+  if (talking && cue && anchors[cue.voice]) drawBalloon(cue.text, anchors[cue.voice][0], anchors[cue.voice][1], area);
+  vx.restore();
+
+  inkFlat(box.x, area.y + area.h, box.w, capH, INK.white);
+  const capFont = "bold 20px Georgia, serif";
+  const lines = inkWrap(scene.note.toUpperCase(), box.w - 60, capFont).slice(0, 2);
+  vx.font = capFont;
+  vx.textAlign = "center";
+  vx.textBaseline = "middle";
+  vx.fillStyle = INK.line;
+  lines.forEach((l, i) => vx.fillText(l, W / 2, area.y + area.h + capH / 2 + (i - (lines.length - 1) / 2) * 24));
+  inkShape(P.line([[box.x, area.y + area.h], [box.x + box.w, area.y + area.h]]), null, {width: 4});
+  inkShape(P.rect(box.x, box.y, box.w, box.h), null, {width: 6});
+  inkShape(P.rect(box.x + 8, box.y + 8, box.w - 16, box.h - 16), null, {width: 1.5});
+
+  const progress = au.duration ? clamp(t / au.duration, 0, 1) : 0;
+  inkFlat(box.x, box.y + box.h + 6, Math.round(progress * box.w), 4, INK.red);
+}
+
 function drawViz(){
+  const ink = chapters.length > 0 && chapters[cur].n === 2;
+  if (ink && viz.width !== INK_W){ viz.width = INK_W; viz.height = INK_H; }
+  if (!ink && viz.width !== 96){ viz.width = 96; viz.height = 54; }
+  viz.classList.toggle("ink", ink);
+  if (ink){
+    drawInk();
+    requestAnimationFrame(drawViz);
+    return;
+  }
   const w = viz.width, h = viz.height;
   const t = au.currentTime || 0;
   const cue = cueIdx >= 0 ? cues[cueIdx] : null;
